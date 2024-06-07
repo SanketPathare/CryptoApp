@@ -2,10 +2,10 @@ import "./Navbar.css";
 // import logo from "../../assets/logo.png";
 import Arrow from "../../assets/arrow_icon.png";
 import { useContext } from "react";
+import { Link } from "react-router-dom";
 import { CoinContext } from "../../context/coinContext";
 const Navbar = () => {
   const { SetCurrency } = useContext(CoinContext);
-
   const currencyHandler = (event) => {
     switch (event.target.value) {
       case "usd": {
@@ -16,18 +16,20 @@ const Navbar = () => {
         SetCurrency({ name: "inr", Symbol: "₹" });
         break;
       }
-       default :{
+      default: {
         SetCurrency({ name: "usd", Symbol: "$" });
         break;
-       }
+      }
     }
   };
   return (
     <div className="navbar">
-      <h2>Crypto.</h2>
+      <Link to={"/"}>
+        <h2>Crypto.</h2>
+      </Link>
       {/* <img src={logo} alt="img" className="logo" /> */}
       <ul>
-        <li>Home</li>
+         <Link to={"/"}><li>Home</li></Link>
         <li>Pricing</li>
         <li>Blog</li>
         <li>About</li>
