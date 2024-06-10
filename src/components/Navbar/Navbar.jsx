@@ -30,7 +30,7 @@ const Navbar = () => {
       {/* <img src={logo} alt="img" className="logo" /> */}
       <ul>
          <Link to={"/"}><li>Home</li></Link>
-        <li>Pricing</li>
+        <Link to={"/pricing"}><li>Pricing</li></Link> 
         <li>Blog</li>
         <li>About</li>
       </ul>
@@ -39,9 +39,7 @@ const Navbar = () => {
           <option value="usd">USD</option>
           <option value="inr">INR</option>
         </select>
-        <button>
-          Sign up <img src={Arrow} alt="img" />
-        </button>
+       
       </div>
     </div>
   );
