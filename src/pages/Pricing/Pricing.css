@@ -29,16 +29,16 @@
   font-size: 15px;
   margin-right: 2px;
   border: 2px solid #fff;
-  background: transparent;
-  color: #fff;
+  background: gold;  
+  color: #000;
   padding: 10px 30px;
   border-radius: 25px;
   cursor: pointer;
 }
 
 .price-title .btn:hover {
-  background: gold;
-  color: #000;
+  background: transparent;
+  color: #fff;
 }
 @media (max-width: 768px) {
   .price {

@@ -5,7 +5,6 @@ import Coins from "./pages/Coins/Coins";
 import Footer from "./components/Footer/Footer";
 import Pricing from "./pages/Pricing/Pricing";
 import Contact from "./pages/Contact/Contact";
-import About from "./pages/About/About";
 const App = () => {
   return (
     <div className="app">
@@ -13,8 +12,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/pricing" element={<Pricing/>}/>
-         <Route path="/contact" element={<Contact/>}/>
-         <Route path="/about"  element={<About/>}/>
+         <Route path="/contact" element={<Contact/>}/>       
         <Route path="/coins/:coinId" element={<Coins />} />
       </Routes>
       <Footer />
