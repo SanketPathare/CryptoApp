@@ -10,9 +10,11 @@ form {
   justify-content: space-between;
   align-items: center;
   gap: 10px;
+  
 }
 
 form input {
+  
   background: transparent;
   flex: 1;
   font-size: 16px;
@@ -37,11 +39,12 @@ button:hover {
 }
 
 .table {
+  filter: drop-shadow(5px 5px  150px #fff);
   max-width: 800px;
   margin: auto;
   background: linear-gradient(
-    rgba(195, 191, 186, 0.15),
-    rgba(172, 168, 142, 0.15)
+    rgba(195, 191, 186, 0),
+    rgba(240, 209, 10, 0.173)
   );
   border-radius: 15px;
 }
