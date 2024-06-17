@@ -16,10 +16,16 @@ const Navbar = () => {
         SetCurrency({ name: "inr", Symbol: "₹" });
         break;
       }
+      case "eur": {
+        SetCurrency({ name: "eur", Symbol: "€" });
+        break;
+      }
       default: {
         SetCurrency({ name: "usd", Symbol: "$" });
         break;
       }
+
+
     }
   };
   return (
@@ -44,6 +50,7 @@ const Navbar = () => {
         <select onChange={currencyHandler}>
           <option value="usd">USD</option>
           <option value="inr">INR</option>
+          <option value="eur">EUR</option>
         </select>
       </div>
     </div>

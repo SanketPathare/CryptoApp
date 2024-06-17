@@ -12,7 +12,7 @@ const Home = () => {
          Prices by Market Cap
         </h1>
         <p>
-        “Explore the World of Cryptocurrencies: Dive into the fascinating realm of digital currencies, blockchain technology, and decentralized finance. Our platform offers expert insights, market trends, and practical guides to help you navigate the crypto landscape. Whether you’re a seasoned investor or a curious newcomer, discover the power of crypto with us!”
+        Our platform offers expert insights, market trends, and practical guides to help you navigate the crypto landscape. Whether you’re a seasoned investor or a curious newcomer, discover the power of crypto with us.
         </p>
         </div>
         <div className="home-img">

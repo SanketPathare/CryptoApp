@@ -4,7 +4,7 @@
 }
 
 .Home .Hero {
-  margin: 75px;
+  margin: 50px;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -43,7 +43,7 @@
 
 .Hero p {
   text-align: justify !important;
-  margin-left: 55px;
+  margin-left: 70px;
   margin-top: 30px;
   text-align: center;
   width: 75%;
@@ -55,7 +55,7 @@
 
 .home-img img {
 filter: drop-shadow(5px 5px 90px #fff);
-  width: 450px;
+  width: 400px;
 }
 @media (max-width: 768px) {
   .Home .Hero {
