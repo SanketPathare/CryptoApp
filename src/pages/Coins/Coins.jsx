@@ -19,6 +19,8 @@ const Coins = () => {
       },
     };
 
+
+    
     fetch(`https://api.coingecko.com/api/v3/coins/${coinId}`, options)
       .then((response) => response.json())
       .then((response) => SetCoinData(response))
