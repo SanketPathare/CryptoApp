@@ -1,8 +1,10 @@
 import { motion } from "framer-motion";
-import { HiTrendingUp, HiCurrencyDollar, HiChartBar, HiCube } from "react-icons/hi";
+import { Link } from "react-router-dom";
+import { HiTrendingUp, HiCurrencyDollar, HiChartBar, HiCube, HiArrowRight } from "react-icons/hi";
 import SearchCoins from "../../components/searchCoins/SearchCoins";
 import StatsCard from "../../components/StatsCard";
 import AnimatedBackground from "../../components/AnimatedBackground";
+import TypingEffect from "../../components/TypingEffect";
 
 const Home = () => {
   return (
@@ -35,7 +37,9 @@ const Home = () => {
             >
               <span className="text-gradient-gold">Today's Crypto</span>
               <br />
-              <span className="text-text-primary/70">Prices by Market Cap</span>
+              <span className="text-text-primary/70">
+                <TypingEffect text="Prices by Market Cap" speed={60} />
+              </span>
             </motion.h1>
 
             <motion.p
@@ -44,8 +48,28 @@ const Home = () => {
               transition={{ delay: 0.3 }}
               className="mt-6 text-text-secondary text-base md:text-lg leading-relaxed max-w-xl mx-auto md:mx-0"
             >
-              Expert insights, market trends, and practical guides to help you navigate the crypto landscape. Whether you&apos;re a seasoned investor or a curious newcomer.
+              Expert insights, market trends, and practical guides to help you navigate the crypto landscape.
             </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.35 }}
+              className="flex flex-wrap gap-3 mt-8 justify-center md:justify-start"
+            >
+              <Link
+                to="/dashboard"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gold text-black font-semibold text-sm hover:bg-gold-dark transition-colors"
+              >
+                Market Overview <HiArrowRight className="w-4 h-4" />
+              </Link>
+              <Link
+                to="/watchlist"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl glass text-text-primary text-sm hover:border-gold/30 transition-all"
+              >
+                My Watchlist
+              </Link>
+            </motion.div>
           </div>
 
           <motion.div

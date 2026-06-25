@@ -5,7 +5,13 @@ import ThemeToggle from "./ThemeToggle";
 
 const navLinks = [
   { path: "/", label: "Home" },
+  { path: "/dashboard", label: "Dashboard" },
+  { path: "/watchlist", label: "Watchlist" },
   { path: "/pricing", label: "Pricing" },
+  { path: "/converter", label: "Converter" },
+  { path: "/categories", label: "Categories" },
+  { path: "/portfolio", label: "Portfolio" },
+  { path: "/compare", label: "Compare" },
   { path: "/contact", label: "Contact" },
 ];
 
@@ -34,18 +40,18 @@ const MobileMenu = ({ isOpen, onClose }) => {
             >
               <HiX className="w-6 h-6 text-text-primary" />
             </button>
-            <nav className="flex flex-col gap-6 mt-8">
+            <nav className="flex flex-col gap-5 mt-8">
               {navLinks.map((link, i) => (
                 <motion.div
                   key={link.path}
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.1 }}
+                  transition={{ delay: i * 0.05 }}
                 >
                   <Link
                     to={link.path}
                     onClick={onClose}
-                    className="font-display text-2xl font-medium text-text-primary hover:text-gold transition-colors duration-200"
+                    className="font-display text-xl font-medium text-text-primary hover:text-gold transition-colors duration-200"
                   >
                     {link.label}
                   </Link>

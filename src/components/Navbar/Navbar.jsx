@@ -7,12 +7,13 @@ import MobileMenu from "../MobileMenu";
 
 const navLinks = [
   { path: "/", label: "Home" },
+  { path: "/dashboard", label: "Dashboard" },
   { path: "/pricing", label: "Pricing" },
   { path: "/contact", label: "Contact" },
 ];
 
 const Navbar = () => {
-  const { SetCurrency } = useContext(CoinContext);
+  const { setCurrency } = useContext(CoinContext);
   const location = useLocation();
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -22,7 +23,7 @@ const Navbar = () => {
       inr: { name: "inr", Symbol: "₹" },
       eur: { name: "eur", Symbol: "€" },
     };
-    SetCurrency(map[event.target.value] || map.usd);
+    setCurrency(map[event.target.value] || map.usd);
   };
 
   return (
@@ -35,12 +36,12 @@ const Navbar = () => {
             </h2>
           </Link>
 
-          <ul className="hidden md:flex items-center gap-8">
+          <ul className="hidden md:flex items-center gap-6">
             {navLinks.map((link) => (
               <li key={link.path}>
                 <Link
                   to={link.path}
-                  className={`relative text-sm font-medium uppercase tracking-widest transition-colors duration-200 ${
+                  className={`relative text-xs font-medium uppercase tracking-widest transition-colors duration-200 ${
                     location.pathname === link.path
                       ? "text-gold"
                       : "text-text-secondary hover:text-text-primary"
@@ -53,12 +54,27 @@ const Navbar = () => {
                 </Link>
               </li>
             ))}
+            <li>
+              <Link
+                to="/watchlist"
+                className={`relative text-xs font-medium uppercase tracking-widest transition-colors duration-200 ${
+                  location.pathname === "/watchlist"
+                    ? "text-gold"
+                    : "text-text-secondary hover:text-text-primary"
+                }`}
+              >
+                Watchlist
+                {location.pathname === "/watchlist" && (
+                  <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-gold rounded-full" />
+                )}
+              </Link>
+            </li>
           </ul>
 
           <div className="flex items-center gap-3">
             <select
               onChange={currencyHandler}
-              className="py-2 px-3 rounded-xl glass text-sm text-text-primary border border-glass-border focus:border-gold/50 focus:outline-none cursor-pointer appearance-none bg-transparent"
+              className="py-2 px-3 rounded-xl glass text-xs text-text-primary border border-glass-border focus:border-gold/50 focus:outline-none cursor-pointer appearance-none bg-transparent"
             >
               <option value="usd" className="bg-surface text-text-primary">USD</option>
               <option value="inr" className="bg-surface text-text-primary">INR</option>

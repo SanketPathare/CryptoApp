@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { HiMail, HiUser, HiTag, HiChat } from "react-icons/hi";
+import { toast } from "react-toastify";
 
 const inputFields = [
   { icon: HiUser, placeholder: "Name", type: "text" },
@@ -10,6 +11,13 @@ const inputFields = [
 const Contact = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
+    const formData = new FormData(e.target);
+    const data = Object.fromEntries(formData);
+    const messages = JSON.parse(localStorage.getItem("crypto-messages") || "[]");
+    messages.push({ ...data, date: new Date().toISOString() });
+    localStorage.setItem("crypto-messages", JSON.stringify(messages));
+    toast.success("Message sent! We'll get back to you soon.");
+    e.target.reset();
   };
 
   return (
@@ -44,6 +52,7 @@ const Contact = () => {
               <input
                 required
                 type={type}
+                name={placeholder.toLowerCase()}
                 placeholder={placeholder}
                 className="flex-1 bg-transparent text-sm text-text-primary outline-none border-none placeholder-text-secondary"
               />
@@ -54,6 +63,7 @@ const Contact = () => {
             <HiChat className="w-5 h-5 text-text-secondary flex-shrink-0 mt-1" />
             <textarea
               required
+              name="message"
               placeholder="Message"
               rows={4}
               className="flex-1 bg-transparent text-sm text-text-primary outline-none border-none placeholder-text-secondary resize-none"
