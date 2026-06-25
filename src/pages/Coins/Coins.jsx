@@ -1,5 +1,4 @@
 import { useContext, useEffect, useState } from "react";
-import "./Coins.css";
 import { useParams } from "react-router-dom";
 import { CoinContext } from "../../context/coinContext";
 import LineChart from "../../components/LineChart/LineChart";
@@ -45,49 +44,49 @@ const Coins = () => {
 
   if ((coinData, historicalData)) {
     return (
-      <div className="coin">
-        <div className="coin-name">
-          <img src={coinData.image.large} alt="" />
+      <div className="px-5">
+        <div className="flex flex-col items-center gap-5 my-[100px] mx-auto mb-[50px]">
+          <img src={coinData.image.large} alt="" className="max-w-[100px]" />
           <p>
-            <b>
+            <b className="text-[44px] font-medium">
               {coinData.name}({coinData.symbol.toUpperCase()})
             </b>
           </p>
         </div>
-        <div className="coin-chart">
+        <div className="max-w-[600px] h-[250px] mx-auto">
           <LineChart historicalData={historicalData} />
         </div>
-        <div className="coin_info">
-          <ul>
+        <div className="max-w-[600px] my-[50px] mx-auto flex flex-col">
+          <ul className="flex justify-between py-2.5 border-b border-[#5f5d5f] list-none">
             <li>Crypto Market Rank</li>
-            <li>{coinData.market_cap_rank}</li>
+            <li className="font-light">{coinData.market_cap_rank}</li>
           </ul>
-          <ul>
+          <ul className="flex justify-between py-2.5 border-b border-[#5f5d5f] list-none">
             <li>Current Price</li>
-            <li>
+            <li className="font-light">
               {currency.Symbol}
               {coinData.market_data.current_price[
                 currency.name
               ].toLocaleString()}
             </li>
           </ul>
-          <ul>
+          <ul className="flex justify-between py-2.5 border-b border-[#5f5d5f] list-none">
             <li>Market Cap</li>
-            <li>
+            <li className="font-light">
               {currency.Symbol}
               {coinData.market_data.market_cap[currency.name].toLocaleString()}
             </li>
           </ul>
-          <ul>
+          <ul className="flex justify-between py-2.5 border-b border-[#5f5d5f] list-none">
             <li>24 Hour High</li>
-            <li>
+            <li className="font-light">
               {currency.Symbol}
               {coinData.market_data.high_24h[currency.name].toLocaleString()}
             </li>
           </ul>
-          <ul>
+          <ul className="flex justify-between py-2.5 border-b border-[#5f5d5f] list-none">
             <li>24 Hour Low</li>
-            <li>
+            <li className="font-light">
               {currency.Symbol}
               {coinData.market_data.low_24h[currency.name].toLocaleString()}
             </li>
@@ -97,8 +96,8 @@ const Coins = () => {
     );
   } else {
     return (
-      <div className="spinner">
-        <div className="spin"></div>
+      <div className="grid place-items-center min-h-[80vh]">
+        <div className="w-[65px] h-[65px] rounded-full border-[5px] border-[#bdbdbd] border-t-[#4500c6] animate-spin"></div>
       </div>
     );
   }

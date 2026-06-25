@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react"
-import "./LineChart.css"
 import Chart from "react-google-charts"
 
 const LineChart = ({ historicalData }) => {

@@ -1,4 +1,3 @@
-import "./Navbar.css";
 // import logo from "../../assets/logo.png";
 import Arrow from "../../assets/arrow_icon.png";
 import { useContext } from "react";
@@ -29,28 +28,28 @@ const Navbar = () => {
     }
   };
   return (
-    <div className="navbar">
+    <div className="flex items-center justify-between py-5 px-[5%] md:px-[8%] lg:px-[10%] text-[#ddd] border-b-2 border-[#cecbc896]">
       <Link to={"/"}>
-        <h2>Crypto.</h2>
+        <h2 className="text-2xl font-bold text-white tracking-wider hover:text-gold transition-colors duration-300">Crypto.</h2>
       </Link>
       {/* <img src={logo} alt="img" className="logo" /> */}
-      <ul>
+      <ul className="hidden md:flex gap-10 list-none">
         <Link to={"/"}>
-          <li>Home</li>
+          <li className="text-[1.2rem] cursor-pointer hover:text-gold hover:border-b-2 hover:border-gold transition-all duration-200">Home</li>
         </Link>
         <Link to={"/pricing"}>
-          <li>Pricing</li>
+          <li className="text-[1.2rem] cursor-pointer hover:text-gold hover:border-b-2 hover:border-gold transition-all duration-200">Pricing</li>
         </Link>
 
         <Link to={"/contact"}>
-          <li>Contact</li>
+          <li className="text-[1.2rem] cursor-pointer hover:text-gold hover:border-b-2 hover:border-gold transition-all duration-200">Contact</li>
         </Link>
       </ul>
-      <div className="nav-right">
-        <select onChange={currencyHandler}>
-          <option value="usd">USD</option>
-          <option value="inr">INR</option>
-          <option value="eur">EUR</option>
+      <div className="flex items-center gap-[max(1vw,14px)]">
+        <select onChange={currencyHandler} className="py-2.5 px-2 rounded-xl border-2 border-white text-white bg-transparent mr-[30px] focus:outline-none cursor-pointer">
+          <option value="usd" className="bg-[#bdbdc1] text-white">USD</option>
+          <option value="inr" className="bg-[#bdbdc1] text-white">INR</option>
+          <option value="eur" className="bg-[#bdbdc1] text-white">EUR</option>
         </select>
       </div>
     </div>

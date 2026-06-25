@@ -7,7 +7,7 @@ import Pricing from "./pages/Pricing/Pricing";
 import Contact from "./pages/Contact/Contact";
 const App = () => {
   return (
-    <div className="app">
+    <div className="min-h-screen text-white bg-black">
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
