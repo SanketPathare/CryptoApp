@@ -1,70 +1,128 @@
+import { motion } from "framer-motion";
+
+const plans = [
+  {
+    name: "Basic",
+    price: "Free",
+    badge: null,
+    features: [
+      "10 Portfolios",
+      "20,000 Transactions",
+      "40 Daily sync count",
+      "Basic Support (72h)",
+    ],
+  },
+  {
+    name: "Premium",
+    price: "$13.99/mo",
+    badge: "Popular",
+    featured: true,
+    features: [
+      "100 Portfolios",
+      "1,000,000 Transactions",
+      "200 Daily sync count",
+      "Priority Support (24h)",
+    ],
+  },
+  {
+    name: "Degen",
+    price: "$49.99/mo",
+    badge: null,
+    features: [
+      "500 Portfolios",
+      "10,000,000 Transactions",
+      "Unlimited sync",
+      "VIP Support (1h)",
+    ],
+  },
+  {
+    name: "Team",
+    price: "Custom",
+    badge: null,
+    features: [
+      "VIP Support",
+      "Seats For Communities",
+      "Personalized Features",
+      "Priority Support (24h)",
+    ],
+  },
+];
+
 const Card = () => {
-    return (
-        <div>
-            <div className="flex flex-col justify-center items-center mt-10">
-                <h1 className="text-[30px] md:text-[40px] font-semibold text-center mb-5 text-gold md:border-b-[3px] md:border-gold rounded-lg p-[5px] mx-1">Discover the Full Potential of CoinApp</h1>
-                <p className="text-center text-[15px] md:text-[16px] text-gray-300 px-5">
-                    14-day money-back guarantee. Cancel anytime for any reason. <br />{" "}
-                    Explore CoinStats without limitations and you’ll never want to go
-                    back.
-                </p>
-            </div>
-            <div className="m-5 md:m-[100px] flex flex-col lg:flex-row justify-center items-center gap-6">
-                <div className="w-[300px] h-[400px] rounded-[20px] transition-all duration-300 hover:shadow-[0_0_30px_1px_rgba(235,220,13,0.3)] mb-5 lg:mb-0 cursor-pointer" style={{ backgroundImage: "linear-gradient(163deg, #e5ec17 0%, #dbdadf 100%)" }}>
-                    <div className="flex flex-col justify-center items-center w-[300px] h-[400px] bg-[#1a1a1a] rounded-[20px] transition-all duration-200 hover:scale-[0.98] leading-[42px]">
-                        <h6 className="text-[10px] tracking-widest text-gray-400 font-bold uppercase mt-4">CURRENT PLAN</h6>
-                        <h2 className="text-2xl font-bold text-gold">Basic</h2>
-                        <h4 className="text-xl font-bold text-white">Free</h4>
-                        <button className="text-[14px] mr-[2px] border-none bg-gold text-black py-2.5 px-[30px] rounded-xl cursor-pointer my-5 hover:text-red-600 transition-colors duration-200 font-semibold">Select</button>
-                        <p className="leading-[30px] text-start text-sm text-gray-300 pb-4">
-                            ✓  10 Portfolios <br />
-                            ✓ 20,000 Transactions <br />✓ 40 Daily sync count per Portfolio
-                            <br />✓  Basic Support (Under 72 hours)
-                        </p>
-                    </div>
-                </div>
-                <div className="w-[300px] h-[400px] rounded-[20px] transition-all duration-300 hover:shadow-[0_0_30px_1px_rgba(235,220,13,0.3)] mb-5 lg:mb-0 cursor-pointer" style={{ backgroundImage: "linear-gradient(163deg, #e5ec17 0%, #dbdadf 100%)" }}>
-                    <div className="flex flex-col justify-center items-center w-[300px] h-[400px] bg-[#1a1a1a] rounded-[20px] transition-all duration-200 hover:scale-[0.98] leading-[42px]">
-                        <h6 className="text-[10px] tracking-widest text-gray-400 font-bold uppercase mt-4">PREMIUM PLAN</h6>
-                        <h2 className="text-2xl font-bold text-gold">Premium</h2>
-                        <h4 className="text-xl font-bold text-white">$13.99/month</h4>
-                        <button className="text-[14px] mr-[2px] border-none bg-gold text-black py-2.5 px-[30px] rounded-xl cursor-pointer my-5 hover:text-red-600 transition-colors duration-200 font-semibold">Start Free Trial</button>
-                        <p className="leading-[30px] text-start text-sm text-gray-300 pb-4">
-                            ✓  100 Portfolios <br />
-                            ✓ 1,00,000 Transactions <br />✓ 200 Daily sync count per Portfolio
-                            <br />✓ Priority Support (Under 24 hours)
-                        </p>
-                    </div>
-                </div>
-                <div className="w-[300px] h-[400px] rounded-[20px] transition-all duration-300 hover:shadow-[0_0_30px_1px_rgba(235,220,13,0.3)] mb-5 lg:mb-0 cursor-pointer" style={{ backgroundImage: "linear-gradient(163deg, #e5ec17 0%, #dbdadf 100%)" }}>
-                    <div className="flex flex-col justify-center items-center w-[300px] h-[400px] bg-[#1a1a1a] rounded-[20px] transition-all duration-200 hover:scale-[0.98] leading-[42px]">
-                        <h6 className="text-[10px] tracking-widest text-gray-400 font-bold uppercase mt-4">DEGEN PLAN</h6>
-                        <h2 className="text-2xl font-bold text-gold">Degen</h2>
-                        <h4 className="text-xl font-bold text-white">$49.99/month</h4>
-                        <button className="text-[14px] mr-[2px] border-none bg-gold text-black py-2.5 px-[30px] rounded-xl cursor-pointer my-5 hover:text-red-600 transition-colors duration-200 font-semibold">Select Plan</button>
-                        <p className="leading-[30px] text-start text-sm text-gray-300 pb-4">
-                            ✓  500 Portfolios <br />
-                            ✓ 10,00,000 Transactions <br />✓ Daily sync count per Portfolio
-                            <br />✓  VIP Support (Under 1 hour)
-                        </p>
-                    </div>
-                </div>
-                <div className="w-[300px] h-[400px] rounded-[20px] transition-all duration-300 hover:shadow-[0_0_30px_1px_rgba(235,220,13,0.3)] mb-5 lg:mb-0 cursor-pointer" style={{ backgroundImage: "linear-gradient(163deg, #e5ec17 0%, #dbdadf 100%)" }}>
-                    <div className="flex flex-col justify-center items-center w-[300px] h-[400px] bg-[#1a1a1a] rounded-[20px] transition-all duration-200 hover:scale-[0.98] leading-[42px]">
-                        <h6 className="text-[10px] tracking-widest text-gray-400 font-bold uppercase mt-4">TEAM PLAN</h6>
-                        <h2 className="text-2xl font-bold text-gold">Team</h2>
-                        <h4 className="text-sm font-bold text-white text-center px-4 leading-normal">Get CoinStats tailored to your needs.</h4>
-                        <button className="text-[14px] mr-[2px] border-none bg-gold text-black py-2.5 px-[30px] rounded-xl cursor-pointer my-5 hover:text-red-600 transition-colors duration-200 font-semibold">Contact Us</button>
-                        <p className="leading-[30px] text-start text-sm text-gray-300 pb-4">
-                            ✓ VIP Support <br />
-                            ✓ Seats For Communities <br />✓Personalized Features
-                            <br />✓ Priority Support (Under 24 hours)
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    );
+  return (
+    <div>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="text-center max-w-2xl mx-auto mb-12 px-5"
+      >
+        <h2 className="font-display text-3xl md:text-4xl font-bold text-gradient-gold mb-4">
+          Discover the Full Potential
+        </h2>
+        <p className="text-text-secondary text-sm md:text-base leading-relaxed">
+          14-day money-back guarantee. Cancel anytime for any reason. Explore
+          without limitations and you&apos;ll never want to go back.
+        </p>
+      </motion.div>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto px-5 pb-20">
+        {plans.map((plan, index) => (
+          <motion.div
+            key={plan.name}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: index * 0.1 }}
+            className={`relative rounded-2xl p-6 flex flex-col ${
+              plan.featured
+                ? "glass-hover border-gold/40 shadow-[0_0_30px_rgba(245,158,11,0.15)]"
+                : "glass-card"
+            }`}
+          >
+            {plan.badge && (
+              <span className="absolute -top-3 right-4 px-3 py-1 rounded-full bg-gold text-black text-xs font-semibold uppercase tracking-wider">
+                {plan.badge}
+              </span>
+            )}
+
+            <h6 className="text-xs font-medium uppercase tracking-widest text-text-secondary mb-2">
+              {plan.name} Plan
+            </h6>
+            <h3 className="font-display text-2xl font-bold text-text-primary mb-6">
+              {plan.price}
+            </h3>
+
+            <button
+              className={`w-full py-2.5 rounded-xl text-sm font-semibold transition-all duration-300 mb-6 cursor-pointer ${
+                plan.featured
+                  ? "bg-gold text-black hover:bg-gold-dark shadow-lg shadow-gold/20"
+                  : "glass hover:border-gold/30 hover:text-gold text-text-primary"
+              }`}
+            >
+              {plan.name === "Premium"
+                ? "Start Free Trial"
+                : plan.name === "Team"
+                ? "Contact Us"
+                : "Select Plan"}
+            </button>
+
+            <ul className="space-y-3 mt-auto">
+              {plan.features.map((feature) => (
+                <li
+                  key={feature}
+                  className="flex items-start gap-2 text-sm text-text-secondary"
+                >
+                  <span className="text-signal-green mt-0.5 flex-shrink-0">✓</span>
+                  {feature}
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+        ))}
+      </div>
+    </div>
+  );
 };
 
 export default Card;

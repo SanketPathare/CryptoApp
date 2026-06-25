@@ -1,32 +1,84 @@
+import { motion } from "framer-motion";
+import { HiTrendingUp, HiCurrencyDollar, HiChartBar, HiCube } from "react-icons/hi";
 import SearchCoins from "../../components/searchCoins/SearchCoins";
-import HomeImg from "../../assets/home1.webp"
+import StatsCard from "../../components/StatsCard";
+import AnimatedBackground from "../../components/AnimatedBackground";
+
 const Home = () => {
- 
   return (
-    <div className="p-2.5 pb-[100px]">
-      <div className="m-[50px] mb-0 md:mb-[280px] flex flex-col md:flex-row justify-around items-center text-center gap-[30px]">
-        <div>
-        <h1 
-          className="flex ml-0 md:ml-[70px] text-[50px] md:text-[max(4vw,66px)] animate-shine"
-          style={{ 
-            background: "linear-gradient(to right, gold, gold, hsl(0, 0%, 30%) 20%)", 
-            WebkitBackgroundClip: "text", 
-            WebkitTextFillColor: "transparent" 
-          }}
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="relative"
+    >
+      <AnimatedBackground />
+
+      <section className="relative z-10 max-w-7xl mx-auto px-5 pt-16 pb-8 md:pt-24">
+        <div className="flex flex-col md:flex-row items-center gap-10 md:gap-16">
+          <div className="flex-1 text-center md:text-left">
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1 }}
+              className="inline-flex items-center gap-2 glass rounded-full px-4 py-1.5 text-xs font-medium uppercase tracking-widest text-gold mb-6"
+            >
+              <span className="live-dot active" />
+              Live Market Data
+            </motion.p>
+
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+              className="font-display text-4xl md:text-6xl lg:text-7xl font-bold leading-tight"
+            >
+              <span className="text-gradient-gold">Today's Crypto</span>
+              <br />
+              <span className="text-text-primary/70">Prices by Market Cap</span>
+            </motion.h1>
+
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 }}
+              className="mt-6 text-text-secondary text-base md:text-lg leading-relaxed max-w-xl mx-auto md:mx-0"
+            >
+              Expert insights, market trends, and practical guides to help you navigate the crypto landscape. Whether you&apos;re a seasoned investor or a curious newcomer.
+            </motion.p>
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.4, duration: 0.6 }}
+            className="flex-shrink-0"
+          >
+            <div className="glass-card rounded-3xl p-8 animate-float">
+              <div className="w-64 h-64 md:w-72 md:h-72 rounded-2xl bg-gradient-to-br from-gold/20 to-gold/5 flex items-center justify-center">
+                <HiCurrencyDollar className="w-32 h-32 text-gold/40" />
+              </div>
+            </div>
+          </motion.div>
+        </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5 }}
+          className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-16"
         >
-        Today's Crypto <br/>
-         Prices by Market Cap
-        </h1>
-        <p className="hidden md:block !text-justify ml-[70px] mt-[30px] w-[75%] text-[#e3e3e3] leading-[1.5] text-[1.2rem]">
-        Our platform offers expert insights, market trends, and practical guides to help you navigate the crypto landscape. Whether you’re a seasoned investor or a curious newcomer, discover the power of crypto with us.
-        </p>
-        </div>
-        <div className="home-img">
-          <img src={HomeImg} alt="" className="w-[350px] md:w-[400px]" style={{ filter: "drop-shadow(5px 5px 90px #fff)" }} />
-        </div>
-      </div>
-      <SearchCoins/>
-    </div>
+          <StatsCard icon={<HiTrendingUp />} label="Market Cap" value="$2.4T" />
+          <StatsCard icon={<HiChartBar />} label="24h Volume" value="$98.2B" />
+          <StatsCard icon={<HiCube />} label="BTC Dominance" value="52.3%" />
+          <StatsCard icon={<HiCurrencyDollar />} label="Active Coins" value="12,846" />
+        </motion.div>
+      </section>
+
+      <section className="relative z-10 max-w-7xl mx-auto px-5 pb-20">
+        <SearchCoins />
+      </section>
+    </motion.div>
   );
 };
 

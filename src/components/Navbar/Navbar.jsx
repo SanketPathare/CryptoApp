@@ -1,58 +1,87 @@
-// import logo from "../../assets/logo.png";
-import Arrow from "../../assets/arrow_icon.png";
-import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { useState, useContext } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { CoinContext } from "../../context/coinContext";
+import { HiMenu } from "react-icons/hi";
+import ThemeToggle from "../ThemeToggle";
+import MobileMenu from "../MobileMenu";
+
+const navLinks = [
+  { path: "/", label: "Home" },
+  { path: "/pricing", label: "Pricing" },
+  { path: "/contact", label: "Contact" },
+];
+
 const Navbar = () => {
   const { SetCurrency } = useContext(CoinContext);
+  const location = useLocation();
+  const [mobileOpen, setMobileOpen] = useState(false);
+
   const currencyHandler = (event) => {
-    switch (event.target.value) {
-      case "usd": {
-        SetCurrency({ name: "usd", Symbol: "$" });
-        break;
-      }
-      case "inr": {
-        SetCurrency({ name: "inr", Symbol: "₹" });
-        break;
-      }
-      case "eur": {
-        SetCurrency({ name: "eur", Symbol: "€" });
-        break;
-      }
-      default: {
-        SetCurrency({ name: "usd", Symbol: "$" });
-        break;
-      }
-
-
-    }
+    const map = {
+      usd: { name: "usd", Symbol: "$" },
+      inr: { name: "inr", Symbol: "₹" },
+      eur: { name: "eur", Symbol: "€" },
+    };
+    SetCurrency(map[event.target.value] || map.usd);
   };
-  return (
-    <div className="flex items-center justify-between py-5 px-[5%] md:px-[8%] lg:px-[10%] text-[#ddd] border-b-2 border-[#cecbc896]">
-      <Link to={"/"}>
-        <h2 className="text-2xl font-bold text-white tracking-wider hover:text-gold transition-colors duration-300">Crypto.</h2>
-      </Link>
-      {/* <img src={logo} alt="img" className="logo" /> */}
-      <ul className="hidden md:flex gap-10 list-none">
-        <Link to={"/"}>
-          <li className="text-[1.2rem] cursor-pointer hover:text-gold hover:border-b-2 hover:border-gold transition-all duration-200">Home</li>
-        </Link>
-        <Link to={"/pricing"}>
-          <li className="text-[1.2rem] cursor-pointer hover:text-gold hover:border-b-2 hover:border-gold transition-all duration-200">Pricing</li>
-        </Link>
 
-        <Link to={"/contact"}>
-          <li className="text-[1.2rem] cursor-pointer hover:text-gold hover:border-b-2 hover:border-gold transition-all duration-200">Contact</li>
-        </Link>
-      </ul>
-      <div className="flex items-center gap-[max(1vw,14px)]">
-        <select onChange={currencyHandler} className="py-2.5 px-2 rounded-xl border-2 border-white text-white bg-transparent mr-[30px] focus:outline-none cursor-pointer">
-          <option value="usd" className="bg-[#bdbdc1] text-white">USD</option>
-          <option value="inr" className="bg-[#bdbdc1] text-white">INR</option>
-          <option value="eur" className="bg-[#bdbdc1] text-white">EUR</option>
-        </select>
-      </div>
-    </div>
+  return (
+    <>
+      <nav className="sticky top-0 z-30 glass backdrop-blur-xl border-b border-glass-border">
+        <div className="max-w-7xl mx-auto flex items-center justify-between px-5 md:px-10 py-4">
+          <Link to="/" className="group">
+            <h2 className="font-display text-2xl font-bold text-gradient-gold tracking-wider">
+              Crypto.
+            </h2>
+          </Link>
+
+          <ul className="hidden md:flex items-center gap-8">
+            {navLinks.map((link) => (
+              <li key={link.path}>
+                <Link
+                  to={link.path}
+                  className={`relative text-sm font-medium uppercase tracking-widest transition-colors duration-200 ${
+                    location.pathname === link.path
+                      ? "text-gold"
+                      : "text-text-secondary hover:text-text-primary"
+                  }`}
+                >
+                  {link.label}
+                  {location.pathname === link.path && (
+                    <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-gold rounded-full" />
+                  )}
+                </Link>
+              </li>
+            ))}
+          </ul>
+
+          <div className="flex items-center gap-3">
+            <select
+              onChange={currencyHandler}
+              className="py-2 px-3 rounded-xl glass text-sm text-text-primary border border-glass-border focus:border-gold/50 focus:outline-none cursor-pointer appearance-none bg-transparent"
+            >
+              <option value="usd" className="bg-surface text-text-primary">USD</option>
+              <option value="inr" className="bg-surface text-text-primary">INR</option>
+              <option value="eur" className="bg-surface text-text-primary">EUR</option>
+            </select>
+
+            <div className="hidden md:block">
+              <ThemeToggle />
+            </div>
+
+            <button
+              onClick={() => setMobileOpen(true)}
+              className="md:hidden p-2 rounded-xl glass hover:border-gold/30 transition-all cursor-pointer"
+              aria-label="Open menu"
+            >
+              <HiMenu className="w-5 h-5 text-text-primary" />
+            </button>
+          </div>
+        </div>
+      </nav>
+
+      <MobileMenu isOpen={mobileOpen} onClose={() => setMobileOpen(false)} />
+    </>
   );
 };
 
