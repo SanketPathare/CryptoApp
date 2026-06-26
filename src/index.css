@@ -5,15 +5,15 @@
 @tailwind utilities;
 
 :root {
-  --color-surface: #05070a;
-  --color-surface-secondary: #0a0e1a;
-  --color-glass: rgba(255, 255, 255, 0.03);
-  --color-glass-hover: rgba(255, 255, 255, 0.06);
-  --color-glass-border: rgba(255, 255, 255, 0.06);
-  --color-text-primary: #f1f5f9;
-  --color-text-secondary: #94a3b8;
-  --scrollbar-track: #010101;
-  --scrollbar-thumb: #f59e0b;
+  --color-surface: #05070b;
+  --color-surface-secondary: #0d0f1a;
+  --color-glass: rgba(255, 255, 255, 0.02);
+  --color-glass-hover: rgba(255, 255, 255, 0.05);
+  --color-glass-border: rgba(255, 255, 255, 0.08);
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #9aa0b0;
+  --scrollbar-track: #05070b;
+  --scrollbar-thumb: #FF793F;
 }
 
 .light {
@@ -25,7 +25,7 @@
   --color-text-primary: #0f172a;
   --color-text-secondary: #64748b;
   --scrollbar-track: #e2e8f0;
-  --scrollbar-thumb: #f59e0b;
+  --scrollbar-thumb: #FF793F;
 }
 
 * {
@@ -74,20 +74,20 @@ a {
 
   .glass-card:hover {
     background: var(--color-glass-hover);
-    border-color: rgba(245, 158, 11, 0.3);
-    box-shadow: 0 8px 32px rgba(245, 158, 11, 0.1), 0 0 60px rgba(245, 158, 11, 0.05);
+    border-color: rgba(255, 121, 63, 0.35);
+    box-shadow: 0 8px 32px rgba(195, 135, 255, 0.15), 0 0 60px rgba(255, 121, 63, 0.08);
     transform: translateY(-2px);
   }
 
   .text-gradient-gold {
-    background: linear-gradient(to right, #f59e0b, #d97706, #f59e0b);
+    background: linear-gradient(to right, #FF793F, #C387FF);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
 
   .border-glow-gold {
-    box-shadow: 0 0 15px rgba(245, 158, 11, 0.15), inset 0 0 15px rgba(245, 158, 11, 0.05);
+    box-shadow: 0 0 15px rgba(255, 121, 63, 0.15), inset 0 0 15px rgba(255, 121, 63, 0.05);
   }
 
   .skeleton-shimmer {

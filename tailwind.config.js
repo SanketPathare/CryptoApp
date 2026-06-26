@@ -8,8 +8,13 @@ export default {
   theme: {
     extend: {
       colors: {
-        gold: "#f59e0b",
-        "gold-dark": "#d97706",
+        gold: "#FF793F",
+        "gold-dark": "#E05A22",
+        brand: {
+          orange: "#FF793F",
+          purple: "#C387FF",
+          "purple-dark": "#43256E",
+        },
         surface: {
           DEFAULT: "var(--color-surface)",
           secondary: "var(--color-surface-secondary)",

@@ -114,7 +114,7 @@ const Coins = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="max-w-5xl mx-auto px-5 pt-12 pb-20"
+      className="max-w-5xl mx-auto px-5 pt-24 pb-20"
     >
       <motion.div
         initial={{ opacity: 0, y: 20 }}

@@ -25,7 +25,7 @@ const Contact = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="min-h-[80vh] flex items-center justify-center px-5 pt-16 pb-20"
+      className="min-h-[80vh] flex items-center justify-center px-5 pt-28 pb-20"
     >
       <motion.div
         initial={{ opacity: 0, y: 30, scale: 0.95 }}

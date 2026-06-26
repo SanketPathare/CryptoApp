@@ -22,7 +22,7 @@ const Compare = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="max-w-5xl mx-auto px-5 pt-12 pb-20"
+      className="max-w-5xl mx-auto px-5 pt-24 pb-20"
     >
       <div className="mb-8">
         <h1 className="font-display text-3xl md:text-4xl font-bold text-text-primary mb-2">

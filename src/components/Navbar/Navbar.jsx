@@ -2,20 +2,29 @@ import { useState, useContext } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { CoinContext } from "../../context/coinContext";
 import { HiMenu } from "react-icons/hi";
+import { FiLogIn, FiLock, FiCpu, FiCompass } from "react-icons/fi";
 import ThemeToggle from "../ThemeToggle";
 import MobileMenu from "../MobileMenu";
+import { motion, AnimatePresence } from "framer-motion";
+import { toast } from "react-toastify";
 
 const navLinks = [
   { path: "/", label: "Home" },
   { path: "/dashboard", label: "Dashboard" },
   { path: "/pricing", label: "Pricing" },
+  { path: "/portfolio", label: "Portfolio" },
+  { path: "/compare", label: "Compare" },
   { path: "/contact", label: "Contact" },
 ];
 
 const Navbar = () => {
-  const { setCurrency } = useContext(CoinContext);
+  const { setCurrency, currency } = useContext(CoinContext);
   const location = useLocation();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [loginOpen, setLoginOpen] = useState(false);
+  const [isConnected, setIsConnected] = useState(false);
+  const [connecting, setConnecting] = useState(false);
+  const [walletAddress, setWalletAddress] = useState("");
 
   const currencyHandler = (event) => {
     const map = {
@@ -26,77 +35,176 @@ const Navbar = () => {
     setCurrency(map[event.target.value] || map.usd);
   };
 
+  const handleWalletConnect = () => {
+    setConnecting(true);
+    setTimeout(() => {
+      setConnecting(false);
+      setIsConnected(true);
+      const addr = "0x" + Array.from({length: 40}, () => Math.floor(Math.random()*16).toString(16)).join("");
+      setWalletAddress(addr);
+      toast.success("Wallet connected successfully!");
+      setLoginOpen(false);
+    }, 1200);
+  };
+
+  const handleDisconnect = () => {
+    setIsConnected(false);
+    setWalletAddress("");
+    toast.info("Wallet disconnected");
+  };
+
   return (
     <>
-      <nav className="sticky top-0 z-30 glass backdrop-blur-xl border-b border-glass-border">
-        <div className="max-w-7xl mx-auto flex items-center justify-between px-5 md:px-10 py-4">
-          <Link to="/" className="group">
-            <h2 className="font-display text-2xl font-bold text-gradient-gold tracking-wider">
-              Crypto.
+      <div className="sticky top-4 z-40 max-w-7xl mx-auto px-4 md:px-6 pointer-events-none">
+        <nav className="pointer-events-auto flex items-center justify-between bg-black/40 backdrop-blur-xl border border-white/10 rounded-full px-5 py-3 shadow-[0_15px_30px_rgba(0,0,0,0.5)]">
+          <Link to="/" className="flex items-center gap-2 group">
+            <svg className="w-6 h-6 text-[#FF793F]" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2L15 9H9L12 2Z" fill="currentColor" />
+              <path d="M12 22L9 15H15L12 22Z" fill="currentColor" />
+              <path d="M2 12L9 9V15L2 12Z" fill="currentColor" />
+              <path d="M22 12L15 15V9L22 12Z" fill="currentColor" />
+              <circle cx="12" cy="12" r="3" fill="#C387FF" />
+            </svg>
+            <h2 className="font-display text-lg md:text-xl font-bold tracking-wider text-white">
+              Quantis <span className="text-[#FF793F]">Crypto.</span>
             </h2>
           </Link>
 
-          <ul className="hidden md:flex items-center gap-6">
+          <ul className="hidden lg:flex items-center gap-1.5 bg-white/5 border border-white/5 rounded-full p-1">
             {navLinks.map((link) => (
               <li key={link.path}>
                 <Link
                   to={link.path}
-                  className={`relative text-xs font-medium uppercase tracking-widest transition-colors duration-200 ${
+                  className={`relative text-[11px] font-semibold uppercase tracking-wider px-4 py-2 rounded-full transition-all duration-200 block ${
                     location.pathname === link.path
-                      ? "text-gold"
-                      : "text-text-secondary hover:text-text-primary"
+                      ? "text-black bg-[#FF793F]"
+                      : "text-text-secondary hover:text-text-primary hover:bg-white/5"
                   }`}
                 >
                   {link.label}
-                  {location.pathname === link.path && (
-                    <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-gold rounded-full" />
-                  )}
                 </Link>
               </li>
             ))}
-            <li>
-              <Link
-                to="/watchlist"
-                className={`relative text-xs font-medium uppercase tracking-widest transition-colors duration-200 ${
-                  location.pathname === "/watchlist"
-                    ? "text-gold"
-                    : "text-text-secondary hover:text-text-primary"
-                }`}
-              >
-                Watchlist
-                {location.pathname === "/watchlist" && (
-                  <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-gold rounded-full" />
-                )}
-              </Link>
-            </li>
           </ul>
 
           <div className="flex items-center gap-3">
             <select
               onChange={currencyHandler}
-              className="py-2 px-3 rounded-xl glass text-xs text-text-primary border border-glass-border focus:border-gold/50 focus:outline-none cursor-pointer appearance-none bg-transparent"
+              value={currency.name}
+              className="py-1.5 px-3 rounded-full bg-black/30 text-xs text-text-primary border border-white/10 focus:border-[#FF793F]/50 focus:outline-none cursor-pointer appearance-none text-center"
             >
               <option value="usd" className="bg-surface text-text-primary">USD</option>
               <option value="inr" className="bg-surface text-text-primary">INR</option>
               <option value="eur" className="bg-surface text-text-primary">EUR</option>
             </select>
 
-            <div className="hidden md:block">
+            <div className="hidden sm:block">
               <ThemeToggle />
             </div>
 
+            {isConnected ? (
+              <button
+                onClick={handleDisconnect}
+                className="px-4 py-1.5 rounded-full border border-green-500/35 bg-green-500/10 text-green-400 text-xs font-semibold hover:bg-green-500/20 transition-all cursor-pointer truncate max-w-[140px] text-ellipsis"
+                title="Click to disconnect"
+              >
+                {walletAddress.slice(0, 6)}...{walletAddress.slice(-4)}
+              </button>
+            ) : (
+              <button
+                onClick={() => setLoginOpen(true)}
+                className="px-4 py-1.5 rounded-full bg-gradient-to-r from-[#FF793F] to-[#C387FF] text-black text-xs font-bold hover:brightness-110 shadow-lg shadow-[#FF793F]/20 transition-all cursor-pointer flex items-center gap-1.5"
+              >
+                Connect <FiLogIn className="w-3.5 h-3.5" />
+              </button>
+            )}
+
             <button
               onClick={() => setMobileOpen(true)}
-              className="md:hidden p-2 rounded-xl glass hover:border-gold/30 transition-all cursor-pointer"
+              className="lg:hidden p-2 rounded-full bg-white/5 border border-white/10 hover:border-[#FF793F]/30 transition-all cursor-pointer"
               aria-label="Open menu"
             >
-              <HiMenu className="w-5 h-5 text-text-primary" />
+              <HiMenu className="w-4 h-4 text-text-primary" />
             </button>
           </div>
-        </div>
-      </nav>
+        </nav>
+      </div>
 
       <MobileMenu isOpen={mobileOpen} onClose={() => setMobileOpen(false)} />
+
+      <AnimatePresence>
+        {loginOpen && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setLoginOpen(false)}
+              className="fixed inset-0 bg-black/80 backdrop-blur-md"
+            />
+            
+            <motion.div
+              initial={{ scale: 0.95, y: 20, opacity: 0 }}
+              animate={{ scale: 1, y: 0, opacity: 1 }}
+              exit={{ scale: 0.95, y: 20, opacity: 0 }}
+              className="relative w-full max-w-md bg-[#0d0f1a] border border-white/10 rounded-3xl p-6 md:p-8 shadow-[0_20px_50px_rgba(255,121,63,0.15)] overflow-hidden z-10"
+            >
+              <div className="absolute -top-10 -right-10 w-32 h-32 bg-[#FF793F]/10 rounded-full blur-2xl" />
+              <div className="absolute -bottom-10 -left-10 w-32 h-32 bg-[#C387FF]/10 rounded-full blur-2xl" />
+
+              <h3 className="font-display text-2xl font-bold text-white text-center mb-2">
+                Connect Wallet
+              </h3>
+              <p className="text-xs text-text-secondary text-center mb-6">
+                Link your cryptographic key to start utilizing decentralized Quantis node calculations.
+              </p>
+
+              <div className="space-y-4">
+                <button
+                  disabled={connecting}
+                  onClick={handleWalletConnect}
+                  className="w-full flex items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-[#FF793F]/40 hover:bg-[#FF793F]/5 transition-all text-left group cursor-pointer disabled:opacity-50"
+                >
+                  <div className="flex items-center gap-3">
+                    <FiCpu className="w-5 h-5 text-[#FF793F] group-hover:animate-pulse" />
+                    <div>
+                      <p className="text-sm font-semibold text-white">Browser Extension Wallet</p>
+                      <p className="text-xs text-text-secondary">Metamask, TrustWallet, Phantom</p>
+                    </div>
+                  </div>
+                  <span className="text-xs text-[#FF793F] font-bold">Local</span>
+                </button>
+
+                <button
+                  disabled={connecting}
+                  onClick={handleWalletConnect}
+                  className="w-full flex items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-[#C387FF]/40 hover:bg-[#C387FF]/5 transition-all text-left group cursor-pointer disabled:opacity-50"
+                >
+                  <div className="flex items-center gap-3">
+                    <FiCompass className="w-5 h-5 text-[#C387FF] group-hover:animate-pulse" />
+                    <div>
+                      <p className="text-sm font-semibold text-white">WalletConnect</p>
+                      <p className="text-xs text-text-secondary">Scan QR code with mobile wallet</p>
+                    </div>
+                  </div>
+                  <span className="text-xs text-[#C387FF] font-bold">Any Chain</span>
+                </button>
+              </div>
+
+              {connecting && (
+                <div className="mt-6 flex flex-col items-center justify-center gap-3">
+                  <div className="w-8 h-8 border-2 border-[#FF793F] border-t-transparent rounded-full animate-spin" />
+                  <p className="text-xs text-text-secondary animate-pulse">Requesting connection from extension...</p>
+                </div>
+              )}
+
+              <div className="mt-8 pt-4 border-t border-white/5 flex items-center gap-2 justify-center text-[10px] text-text-secondary">
+                <FiLock className="w-3.5 h-3.5 text-[#FF793F]" /> Secured by end-to-end sandbox cryptographic handshakes
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </>
   );
 };

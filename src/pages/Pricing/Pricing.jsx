@@ -9,7 +9,7 @@ const Pricing = () => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
     >
-      <section className="max-w-7xl mx-auto px-5 pt-16 pb-8 md:pt-24">
+      <section className="max-w-7xl mx-auto px-5 pt-28 pb-8 md:pt-36">
         <div className="flex flex-col md:flex-row items-center gap-10 md:gap-16">
           <div className="flex-1 text-center md:text-left">
             <motion.h1

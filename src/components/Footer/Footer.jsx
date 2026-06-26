@@ -16,23 +16,32 @@ const Footer = () => {
   };
 
   return (
-    <footer className="border-t border-glass-border mt-20">
-      <div className="max-w-7xl mx-auto px-5 md:px-10 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
+    <footer className="border-t border-white/5 bg-gradient-to-t from-black/60 to-transparent mt-24">
+      <div className="max-w-7xl mx-auto px-5 md:px-10 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
           <div className="md:col-span-1">
-            <h3 className="font-display text-xl font-bold text-gradient-gold mb-4">
-              Crypto.
-            </h3>
-            <p className="text-text-secondary text-sm leading-relaxed">
+            <div className="flex items-center gap-2 mb-4">
+              <svg className="w-5 h-5 text-[#FF793F]" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2L15 9H9L12 2Z" fill="currentColor" />
+                <path d="M12 22L9 15H15L12 22Z" fill="currentColor" />
+                <path d="M2 12L9 9V15L2 12Z" fill="currentColor" />
+                <path d="M22 12L15 15V9L22 12Z" fill="currentColor" />
+                <circle cx="12" cy="12" r="3" fill="#C387FF" />
+              </svg>
+              <h3 className="font-display text-lg font-bold text-white">
+                Quantis <span className="text-[#FF793F]">Crypto.</span>
+              </h3>
+            </div>
+            <p className="text-text-secondary text-xs leading-relaxed">
               Real-time cryptocurrency tracking and portfolio management. Stay ahead of the market with live data and insights.
             </p>
           </div>
 
           <div>
-            <h4 className="font-display text-sm font-medium text-text-primary uppercase tracking-widest mb-4">
+            <h4 className="font-display text-xs font-bold text-white uppercase tracking-widest mb-4">
               Markets
             </h4>
-            <ul className="space-y-3">
+            <ul className="space-y-2.5">
               {[
                 { path: "/", label: "Home" },
                 { path: "/dashboard", label: "Dashboard" },
@@ -40,7 +49,7 @@ const Footer = () => {
                 { path: "/compare", label: "Compare" },
               ].map((link) => (
                 <li key={link.path}>
-                  <Link to={link.path} className="text-text-secondary hover:text-gold transition-colors duration-200 text-sm">
+                  <Link to={link.path} className="text-text-secondary hover:text-gold transition-colors duration-200 text-xs">
                     {link.label}
                   </Link>
                 </li>
@@ -49,10 +58,10 @@ const Footer = () => {
           </div>
 
           <div>
-            <h4 className="font-display text-sm font-medium text-text-primary uppercase tracking-widest mb-4">
+            <h4 className="font-display text-xs font-bold text-white uppercase tracking-widest mb-4">
               Tools
             </h4>
-            <ul className="space-y-3">
+            <ul className="space-y-2.5">
               {[
                 { path: "/portfolio", label: "Portfolio" },
                 { path: "/watchlist", label: "Watchlist" },
@@ -60,7 +69,7 @@ const Footer = () => {
                 { path: "/pricing", label: "Pricing" },
               ].map((link) => (
                 <li key={link.path}>
-                  <Link to={link.path} className="text-text-secondary hover:text-gold transition-colors duration-200 text-sm">
+                  <Link to={link.path} className="text-text-secondary hover:text-gold transition-colors duration-200 text-xs">
                     {link.label}
                   </Link>
                 </li>
@@ -69,10 +78,10 @@ const Footer = () => {
           </div>
 
           <div>
-            <h4 className="font-display text-sm font-medium text-text-primary uppercase tracking-widest mb-4">
+            <h4 className="font-display text-xs font-bold text-white uppercase tracking-widest mb-4">
               Connect
             </h4>
-            <div className="flex gap-3 mb-6">
+            <div className="flex gap-2.5 mb-6">
               {[
                 { icon: FaGithub, href: "https://github.com" },
                 { icon: FaTwitter, href: "https://twitter.com" },
@@ -81,24 +90,24 @@ const Footer = () => {
                 <a
                   key={i}
                   href={href}
-                  className="w-10 h-10 flex items-center justify-center rounded-xl glass hover:border-gold/30 hover:text-gold transition-all duration-300"
+                  className="w-9 h-9 flex items-center justify-center rounded-full bg-white/5 border border-white/10 hover:border-[#FF793F]/30 hover:text-gold transition-all duration-350"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <Icon className="w-4 h-4" />
+                  <Icon className="w-3.5 h-3.5" />
                 </a>
               ))}
             </div>
-            <form onSubmit={handleSubscribe} className="glass rounded-xl p-1 flex">
+            <form onSubmit={handleSubscribe} className="bg-white/5 border border-white/10 rounded-full p-1 flex">
               <input
                 name="email"
                 type="email"
                 placeholder="Your email"
-                className="flex-1 bg-transparent border-none outline-none px-3 py-2 text-sm text-text-primary placeholder-text-secondary"
+                className="flex-1 bg-transparent border-none outline-none px-4 py-2 text-xs text-text-primary placeholder-text-secondary"
               />
               <button
                 type="submit"
-                className="px-4 py-2 rounded-lg bg-gold text-black text-sm font-semibold hover:bg-gold-dark transition-colors cursor-pointer"
+                className="px-4 py-2 rounded-full bg-gradient-to-r from-[#FF793F] to-[#C387FF] text-black text-xs font-bold hover:brightness-110 shadow-lg shadow-[#FF793F]/20 transition-colors cursor-pointer"
               >
                 Subscribe
               </button>
@@ -106,12 +115,12 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="mt-10 pt-6 border-t border-glass-border flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-text-secondary text-xs">
-            &copy; {new Date().getFullYear()} CryptoApp. All rights reserved.
+        <div className="mt-12 pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-4">
+          <p className="text-text-secondary text-[10px]">
+            &copy; {new Date().getFullYear()} Quantis CryptoApp. All rights reserved.
           </p>
-          <p className="text-text-secondary text-xs flex items-center gap-1">
-            Made with <HiHeart className="text-signal-red w-3 h-3" /> by CryptoApp
+          <p className="text-text-secondary text-[10px] flex items-center gap-1">
+            Made with <HiHeart className="text-signal-red w-3 h-3" /> by Quantis team
           </p>
         </div>
       </div>
