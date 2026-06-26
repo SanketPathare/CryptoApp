@@ -16,7 +16,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="border-t border-white/5 bg-gradient-to-t from-black/60 to-transparent mt-24">
+    <footer className="border-t border-glass-border bg-surface-secondary/40 backdrop-blur-md mt-24">
       <div className="max-w-7xl mx-auto px-5 md:px-10 py-16">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
           <div className="md:col-span-1">
@@ -28,7 +28,7 @@ const Footer = () => {
                 <path d="M22 12L15 15V9L22 12Z" fill="currentColor" />
                 <circle cx="12" cy="12" r="3" fill="#C387FF" />
               </svg>
-              <h3 className="font-display text-lg font-bold text-white">
+              <h3 className="font-display text-lg font-bold text-text-primary">
                 Quantis <span className="text-[#FF793F]">Crypto.</span>
               </h3>
             </div>
@@ -38,7 +38,7 @@ const Footer = () => {
           </div>
 
           <div>
-            <h4 className="font-display text-xs font-bold text-white uppercase tracking-widest mb-4">
+            <h4 className="font-display text-xs font-bold text-text-primary uppercase tracking-widest mb-4">
               Markets
             </h4>
             <ul className="space-y-2.5">
@@ -58,7 +58,7 @@ const Footer = () => {
           </div>
 
           <div>
-            <h4 className="font-display text-xs font-bold text-white uppercase tracking-widest mb-4">
+            <h4 className="font-display text-xs font-bold text-text-primary uppercase tracking-widest mb-4">
               Tools
             </h4>
             <ul className="space-y-2.5">
@@ -78,7 +78,7 @@ const Footer = () => {
           </div>
 
           <div>
-            <h4 className="font-display text-xs font-bold text-white uppercase tracking-widest mb-4">
+            <h4 className="font-display text-xs font-bold text-text-primary uppercase tracking-widest mb-4">
               Connect
             </h4>
             <div className="flex gap-2.5 mb-6">
@@ -90,7 +90,7 @@ const Footer = () => {
                 <a
                   key={i}
                   href={href}
-                  className="w-9 h-9 flex items-center justify-center rounded-full bg-white/5 border border-white/10 hover:border-[#FF793F]/30 hover:text-gold transition-all duration-350"
+                  className="w-9 h-9 flex items-center justify-center rounded-full bg-glass border border-glass-border text-text-secondary hover:border-[#FF793F]/30 hover:text-gold transition-all duration-350"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -98,12 +98,12 @@ const Footer = () => {
                 </a>
               ))}
             </div>
-            <form onSubmit={handleSubscribe} className="bg-white/5 border border-white/10 rounded-full p-1 flex">
+            <form onSubmit={handleSubscribe} className="bg-glass border border-glass-border rounded-full p-1 flex">
               <input
                 name="email"
                 type="email"
                 placeholder="Your email"
-                className="flex-1 bg-transparent border-none outline-none px-4 py-2 text-xs text-text-primary placeholder-text-secondary"
+                className="flex-1 bg-transparent border-none outline-none px-4 py-2 text-base md:text-xs text-text-primary placeholder-text-secondary"
               />
               <button
                 type="submit"
@@ -115,7 +115,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="mt-12 pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="mt-12 pt-8 border-t border-glass-border flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-text-secondary text-[10px]">
             &copy; {new Date().getFullYear()} Quantis CryptoApp. All rights reserved.
           </p>

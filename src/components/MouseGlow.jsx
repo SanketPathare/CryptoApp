@@ -30,7 +30,7 @@ const MouseGlow = ({ children, className = "" }) => {
         className="pointer-events-none absolute inset-0 opacity-0 hover:opacity-100 transition-opacity duration-300"
         style={{
           background:
-            "radial-gradient(600px circle at var(--mouse-x) var(--mouse-y), rgba(245,158,11,0.06), transparent 40%)",
+            "radial-gradient(600px circle at var(--mouse-x) var(--mouse-y), var(--color-glass-hover), transparent 40%)",
         }}
       />
       {children}

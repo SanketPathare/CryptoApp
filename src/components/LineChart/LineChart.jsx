@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import Chart from "react-google-charts";
 
+const getCSSVar = (name) => getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+
 const LineChart = ({ historicalData }) => {
   const [data, setData] = useState([["Date", "Prices"]]);
 
@@ -36,11 +38,11 @@ const LineChart = ({ historicalData }) => {
         legend: { textStyle: { color: "#94a3b8" } },
         hAxis: {
           textStyle: { color: "#94a3b8" },
-          gridlines: { color: "rgba(255,255,255,0.05)" },
+          gridlines: { color: getCSSVar("--color-gridline") || "rgba(255,255,255,0.05)" },
         },
         vAxis: {
           textStyle: { color: "#94a3b8" },
-          gridlines: { color: "rgba(255,255,255,0.05)" },
+          gridlines: { color: getCSSVar("--color-gridline") || "rgba(255,255,255,0.05)" },
         },
         lineWidth: 2,
         colors: ["#f59e0b"],

@@ -1,5 +1,7 @@
 import { useEffect, useRef } from "react";
 
+const getCSSVar = (name) => getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+
 const AnimatedBackground = () => {
   const canvasRef = useRef(null);
 
@@ -44,7 +46,7 @@ const AnimatedBackground = () => {
     }
 
     const animate = () => {
-      ctx.fillStyle = "#05070b";
+      ctx.fillStyle = getCSSVar("--color-canvas-bg") || "#05070b";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       const horizonX = canvas.width / 2;

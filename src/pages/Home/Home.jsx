@@ -12,11 +12,11 @@ import { toast } from "react-toastify";
 // Card 1: Network Graph animation
 const NetworkGraph = () => {
   return (
-    <div className="relative w-full h-40 flex items-center justify-center overflow-hidden bg-black/20 rounded-2xl border border-white/5 mt-4">
+    <div className="relative w-full h-40 flex items-center justify-center overflow-hidden bg-glass rounded-2xl border border-glass-border mt-4">
       <motion.div
         animate={{ scale: [1, 1.08, 1] }}
         transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
-        className="w-12 h-12 rounded-full bg-gradient-to-r from-[#FF793F] to-[#C387FF] flex items-center justify-center z-10 shadow-[0_0_20px_rgba(255,121,63,0.3)] border border-white/10"
+        className="w-12 h-12 rounded-full bg-gradient-to-r from-[#FF793F] to-[#C387FF] flex items-center justify-center z-10 shadow-[0_0_20px_rgba(255,121,63,0.3)] border border-glass-border"
       >
         <span className="text-[10px] font-bold text-black uppercase tracking-wider">Quantis</span>
       </motion.div>
@@ -54,7 +54,7 @@ const NetworkGraph = () => {
               ease: "easeInOut"
             }}
             style={{ transform: `translate(${node.x}px, ${node.y}px)` }}
-            className="w-8 h-8 rounded-full bg-[#161b2a] border border-white/10 flex items-center justify-center shadow-lg"
+            className="w-8 h-8 rounded-full bg-surface-secondary/60 border border-glass-border flex items-center justify-center shadow-lg"
           >
             <span className="text-[9px] font-bold text-text-primary">{node.name}</span>
           </motion.div>
@@ -90,7 +90,7 @@ const WalletGenerator = () => {
   };
 
   return (
-    <div className="bg-black/20 border border-white/5 rounded-2xl p-4 mt-4 text-left flex flex-col gap-3 min-h-[160px] justify-between">
+    <div className="bg-glass border border-glass-border rounded-2xl p-4 mt-4 text-left flex flex-col gap-3 min-h-[160px] justify-between">
       {!wallet && !generating ? (
         <div className="flex flex-col items-center justify-center py-6 text-center">
           <FiKey className="w-7 h-7 text-[#FF793F] mb-3 animate-pulse" />
@@ -115,7 +115,7 @@ const WalletGenerator = () => {
                 {copied ? <FiCheck className="w-3.5 h-3.5 text-green-400" /> : <FiCopy className="w-3.5 h-3.5" />}
               </button>
             </div>
-            <p className="font-mono text-xs text-white bg-black/40 border border-white/5 rounded-lg px-2.5 py-2 select-all">
+            <p className="font-mono text-xs text-text-primary bg-glass border border-glass-border rounded-lg px-2.5 py-2 select-all">
               {wallet.address}
             </p>
           </div>
@@ -161,16 +161,16 @@ const BlockMiner = () => {
   }, []);
 
   return (
-    <div className="bg-black/20 border border-white/5 rounded-2xl p-4 mt-4 text-left flex flex-col gap-3.5 min-h-[160px] justify-between font-mono text-[9px]">
-      <div className="flex justify-between items-center text-text-secondary border-b border-white/5 pb-1.5">
+    <div className="bg-glass border border-glass-border rounded-2xl p-4 mt-4 text-left flex flex-col gap-3.5 min-h-[160px] justify-between font-mono text-[9px]">
+      <div className="flex justify-between items-center text-text-secondary border-b border-glass-border pb-1.5">
         <span>Hashrate: <span className="text-[#FF793F]">{hashrate} TH/s</span></span>
         <span>Gas: <span className="text-[#C387FF]">14 Gwei</span></span>
       </div>
 
       <div className="space-y-1.5">
         {blocks.map((b) => (
-          <div key={b.height} className="flex justify-between items-center bg-black/40 border border-white/5 rounded-lg p-2">
-            <span className="text-white font-bold">#{b.height}</span>
+          <div key={b.height} className="flex justify-between items-center bg-glass border border-glass-border rounded-lg p-2">
+            <span className="text-text-primary font-bold">#{b.height}</span>
             <span className="text-text-secondary">{b.txs} txs</span>
             <span className="text-text-secondary">{b.hash}</span>
             <span className="text-[#FF793F]">{b.time}</span>
@@ -195,7 +195,7 @@ const Home = () => {
         <motion.div
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
-          className="inline-flex items-center gap-2 bg-black/40 border border-white/10 rounded-full px-4 py-1.5 text-[10px] font-bold uppercase tracking-widest text-[#FF793F] mb-8"
+          className="inline-flex items-center gap-2 bg-glass border border-glass-border rounded-full px-4 py-1.5 text-[10px] font-bold uppercase tracking-widest text-[#FF793F] mb-8"
         >
           <span className="w-1.5 h-1.5 rounded-full bg-[#FF793F] animate-pulse" />
           BEST BLOCKCHAIN 2026
@@ -205,7 +205,7 @@ const Home = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="font-display text-4xl md:text-6xl lg:text-7xl font-bold leading-tight tracking-tight text-white mb-6 max-w-5xl mx-auto"
+          className="font-display text-4xl md:text-6xl lg:text-7xl font-bold leading-tight tracking-tight text-text-primary mb-6 max-w-5xl mx-auto"
         >
           Redefining the Future of <br />
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF793F] to-[#C387FF]">Crypto</span> and <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF793F] to-[#C387FF]">Fintech</span> Products
@@ -231,7 +231,7 @@ const Home = () => {
             onClick={() => {
               document.getElementById("search-section")?.scrollIntoView({ behavior: "smooth" });
             }}
-            className="w-14 h-14 rounded-full bg-black/50 border border-white/10 hover:border-[#FF793F]/40 flex items-center justify-center text-white hover:text-[#FF793F] hover:bg-[#FF793F]/5 shadow-xl transition-all duration-300 group cursor-pointer"
+            className="w-14 h-14 rounded-full bg-glass border border-glass-border hover:border-[#FF793F]/40 flex items-center justify-center text-text-primary hover:text-[#FF793F] hover:bg-[#FF793F]/5 shadow-xl transition-all duration-300 group cursor-pointer"
           >
             <HiArrowRight className="w-5 h-5 rotate-45 group-hover:rotate-[135deg] transition-all duration-300" />
           </button>
@@ -246,7 +246,7 @@ const Home = () => {
             className="glass-card rounded-3xl p-6 flex flex-col justify-between"
           >
             <div>
-              <h3 className="font-display text-lg font-semibold text-white mb-2">Trade with trust and assurance</h3>
+              <h3 className="font-display text-lg font-semibold text-text-primary mb-2">Trade with trust and assurance</h3>
               <p className="text-xs text-text-secondary">Assured that you maintain full authority</p>
             </div>
             <NetworkGraph />
@@ -259,7 +259,7 @@ const Home = () => {
             className="glass-card rounded-3xl p-6 flex flex-col justify-between"
           >
             <div>
-              <h3 className="font-display text-lg font-semibold text-white mb-2">Create your own personal crypto wallet</h3>
+              <h3 className="font-display text-lg font-semibold text-text-primary mb-2">Create your own personal crypto wallet</h3>
               <p className="text-xs text-text-secondary">Secure keys generated straight inside the sandbox</p>
             </div>
             <WalletGenerator />
@@ -272,7 +272,7 @@ const Home = () => {
             className="glass-card rounded-3xl p-6 flex flex-col justify-between"
           >
             <div>
-              <h3 className="font-display text-lg font-semibold text-white mb-2">Join The Blockchain System</h3>
+              <h3 className="font-display text-lg font-semibold text-text-primary mb-2">Join The Blockchain System</h3>
               <p className="text-xs text-text-secondary">Securely broadcast and watch blocks mined in real-time</p>
             </div>
             <BlockMiner />
@@ -280,18 +280,18 @@ const Home = () => {
         </div>
 
         {/* Global stats section */}
-        <div className="border-t border-white/5 pt-16" id="search-section">
+        <div className="border-t border-glass-border pt-16" id="search-section">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="mb-8"
           >
-            <p className="inline-flex items-center gap-2 bg-[#FF793F]/10 border border-[#FF793F]/20 rounded-full px-4 py-1.5 text-[10px] font-bold uppercase tracking-widest text-[#FF793F]" mb-3>
+            <p className="inline-flex items-center gap-2 bg-[#FF793F]/10 border border-[#FF793F]/20 rounded-full px-4 py-1.5 text-[10px] font-bold uppercase tracking-widest text-[#FF793F] mb-3">
               <span className="live-dot active" />
               Live Market Data
             </p>
-            <h2 className="font-display text-3xl font-bold text-white mt-4">
+            <h2 className="font-display text-3xl font-bold text-text-primary mt-4">
               Cryptocurrency Prices by Market Cap
             </h2>
           </motion.div>

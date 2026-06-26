@@ -672,7 +672,7 @@ const CustomChart = ({ coinId, coinName }) => {
                 cy={hoveredPoint.y}
                 r="6"
                 fill="#FF793F"
-                stroke="rgba(255,255,255,0.8)"
+                stroke="var(--color-text-primary)"
                 strokeWidth="2"
               />
               <circle

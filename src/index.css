@@ -12,8 +12,14 @@
   --color-glass-border: rgba(255, 255, 255, 0.08);
   --color-text-primary: #ffffff;
   --color-text-secondary: #9aa0b0;
+  --color-overlay: rgba(0, 0, 0, 0.6);
+  --color-canvas-bg: #05070b;
+  --color-gridline: rgba(255, 255, 255, 0.05);
+  --color-shimmer: rgba(255, 255, 255, 0.05);
   --scrollbar-track: #05070b;
   --scrollbar-thumb: #FF793F;
+  --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.4);
+  --shadow-card-hover: 0 8px 32px rgba(195, 135, 255, 0.15), 0 0 60px rgba(255, 121, 63, 0.08);
 }
 
 .light {
@@ -24,8 +30,14 @@
   --color-glass-border: rgba(0, 0, 0, 0.08);
   --color-text-primary: #0f172a;
   --color-text-secondary: #64748b;
+  --color-overlay: rgba(0, 0, 0, 0.2);
+  --color-canvas-bg: #f8fafc;
+  --color-gridline: rgba(0, 0, 0, 0.05);
+  --color-shimmer: rgba(0, 0, 0, 0.05);
   --scrollbar-track: #e2e8f0;
   --scrollbar-thumb: #FF793F;
+  --shadow-card: 0 8px 24px rgba(15, 23, 42, 0.06), 0 1px 3px rgba(15, 23, 42, 0.04);
+  --shadow-card-hover: 0 12px 30px rgba(15, 23, 42, 0.1), 0 0 40px rgba(255, 121, 63, 0.04);
 }
 
 * {
@@ -48,6 +60,11 @@ a {
   color: inherit;
 }
 
+select option {
+  background: var(--color-surface);
+  color: var(--color-text-primary);
+}
+
 @layer components {
   .glass {
     background: var(--color-glass);
@@ -68,14 +85,14 @@ a {
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     border: 1px solid var(--color-glass-border);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    box-shadow: var(--shadow-card);
     transition: all 0.3s ease;
   }
 
   .glass-card:hover {
     background: var(--color-glass-hover);
     border-color: rgba(255, 121, 63, 0.35);
-    box-shadow: 0 8px 32px rgba(195, 135, 255, 0.15), 0 0 60px rgba(255, 121, 63, 0.08);
+    box-shadow: var(--shadow-card-hover);
     transform: translateY(-2px);
   }
 
@@ -104,10 +121,16 @@ a {
     background: linear-gradient(
       90deg,
       transparent,
-      rgba(255, 255, 255, 0.05),
+      var(--color-shimmer),
       transparent
     );
     animation: shimmer 2s infinite linear;
+  }
+
+  .overlay {
+    background: var(--color-overlay);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
   }
 
   .live-dot {

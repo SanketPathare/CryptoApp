@@ -7,17 +7,16 @@ const MarketShare = () => {
 
   if (!allCoin || allCoin.length === 0) {
     return (
-      <div className="glass-card rounded-3xl p-5 h-[230px] flex items-center justify-center">
+      <div className="glass-card rounded-3xl p-5 min-h-[200px] sm:min-h-[230px] flex items-center justify-center">
         <div className="w-8 h-8 rounded-full border-2 border-glass-border border-t-gold animate-spin" />
       </div>
     );
   }
 
-  // Take top 4 coins, group others
   const topCount = 4;
   const topCoins = allCoin.slice(0, topCount);
   const totalMarketCap = allCoin.reduce((sum, c) => sum + (c.market_cap || 0), 0);
-  
+
   const segments = topCoins.map((coin, index) => {
     const cap = coin.market_cap || 0;
     const percentage = totalMarketCap > 0 ? (cap / totalMarketCap) * 100 : 0;
@@ -30,7 +29,6 @@ const MarketShare = () => {
     };
   });
 
-  // Calculate others cap
   const topSum = segments.reduce((sum, s) => sum + s.marketCap, 0);
   const othersCap = Math.max(0, totalMarketCap - topSum);
   const othersPercentage = totalMarketCap > 0 ? (othersCap / totalMarketCap) * 100 : 0;
@@ -43,16 +41,14 @@ const MarketShare = () => {
     color: "#64748b",
   });
 
-  // Donut parameters
-  const radius = 55;
-  const strokeWidth = 12;
-  const hoverStrokeWidth = 16;
-  const circumference = 2 * Math.PI * radius; // ~345.57
+  const radius = 50;
+  const strokeWidth = 10;
+  const hoverStrokeWidth = 14;
+  const circumference = 2 * Math.PI * radius;
 
-  // Calculate accumulated angles for segment rotation
-  let accumulatedAngle = -90; // Start at top
+  let accumulatedAngle = -90;
 
-  const chartSegments = segments.map((seg, idx) => {
+  const chartSegments = segments.map((seg) => {
     const angleOffset = accumulatedAngle;
     accumulatedAngle += (seg.percentage / 100) * 360;
     return {
@@ -65,16 +61,16 @@ const MarketShare = () => {
   const activeSegment = hoveredIdx !== null ? chartSegments[hoveredIdx] : null;
 
   return (
-    <div className="glass-card rounded-3xl p-5 flex flex-col items-center justify-between h-[230px]">
+    <div className="glass-card rounded-3xl p-4 sm:p-5 flex flex-col justify-between min-h-[200px] sm:min-h-[230px]">
       <div className="w-full flex items-center justify-between mb-2">
-        <span className="text-xs font-semibold uppercase tracking-widest text-text-secondary">
+        <span className="text-[10px] sm:text-xs font-semibold uppercase tracking-widest text-text-secondary">
           Market Cap Share
         </span>
       </div>
 
-      <div className="w-full grid grid-cols-[1.2fr_1fr] items-center gap-4">
-        {/* SVG Donut */}
-        <div className="relative aspect-square max-w-[125px] mx-auto w-full">
+      <div className="w-full flex flex-col sm:flex-row items-center gap-3 sm:gap-4">
+        {/* Donut */}
+        <div className="relative aspect-square w-[110px] sm:w-[125px] flex-shrink-0">
           <svg viewBox="0 0 150 150" className="w-full h-full overflow-visible">
             {chartSegments.map((seg, idx) => {
               const isHovered = hoveredIdx === idx;
@@ -101,12 +97,11 @@ const MarketShare = () => {
             })}
           </svg>
 
-          {/* Central label inside donut hole */}
-          <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none -mt-1">
-            <span className="text-[10px] text-text-secondary font-semibold uppercase tracking-wider">
+          <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
+            <span className="text-[9px] sm:text-[10px] text-text-secondary font-semibold uppercase tracking-wider">
               {activeSegment ? activeSegment.symbol : "TOTAL"}
             </span>
-            <span className="text-sm font-mono font-bold text-text-primary">
+            <span className="text-xs sm:text-sm font-mono font-bold text-text-primary">
               {activeSegment
                 ? `${activeSegment.percentage.toFixed(1)}%`
                 : `${currency.Symbol}${(totalMarketCap / 1e12).toFixed(2)}T`}
@@ -114,27 +109,27 @@ const MarketShare = () => {
           </div>
         </div>
 
-        {/* Legend list */}
-        <div className="flex flex-col gap-1.5 min-w-0">
+        {/* Legend */}
+        <div className="flex flex-col gap-1.5 w-full sm:min-w-0">
           {chartSegments.map((seg, idx) => (
             <div
               key={`legend-${idx}`}
               onMouseEnter={() => setHoveredIdx(idx)}
               onMouseLeave={() => setHoveredIdx(null)}
-              className={`flex items-center justify-between py-0.5 px-2 rounded-lg cursor-pointer transition-colors ${
+              className={`flex items-center justify-between py-1 px-2 rounded-lg cursor-pointer transition-colors ${
                 hoveredIdx === idx ? "bg-glass-hover" : ""
               }`}
             >
               <div className="flex items-center gap-1.5 min-w-0">
                 <span
-                  className="w-2.5 h-2.5 rounded-full flex-shrink-0"
+                  className="w-2 h-2 rounded-full flex-shrink-0"
                   style={{ backgroundColor: seg.color }}
                 />
-                <span className="text-xs font-semibold text-text-primary truncate uppercase">
+                <span className="text-[10px] sm:text-xs font-semibold text-text-primary truncate uppercase">
                   {seg.symbol}
                 </span>
               </div>
-              <span className="text-[10px] font-mono text-text-secondary font-medium">
+              <span className="text-[9px] sm:text-[10px] font-mono text-text-secondary font-medium flex-shrink-0 ml-2">
                 {seg.percentage.toFixed(1)}%
               </span>
             </div>

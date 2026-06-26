@@ -76,7 +76,7 @@ const Card = () => {
             transition={{ delay: index * 0.1 }}
             className={`relative rounded-2xl p-6 flex flex-col ${
               plan.featured
-                ? "glass-hover border-gold/40 shadow-[0_0_30px_rgba(245,158,11,0.15)]"
+                ? "glass-hover border-gold/40 shadow-[0_0_30px_rgba(255,121,63,0.08)]"
                 : "glass-card"
             }`}
           >

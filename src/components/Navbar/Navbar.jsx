@@ -56,7 +56,7 @@ const Navbar = () => {
   return (
     <>
       <div className="sticky top-4 z-40 max-w-7xl mx-auto px-4 md:px-6 pointer-events-none">
-        <nav className="pointer-events-auto flex items-center justify-between bg-black/40 backdrop-blur-xl border border-white/10 rounded-full px-5 py-3 shadow-[0_15px_30px_rgba(0,0,0,0.5)]">
+        <nav className="pointer-events-auto flex items-center justify-between bg-glass backdrop-blur-xl border border-glass-border rounded-full px-5 py-3 shadow-lg">
           <Link to="/" className="flex items-center gap-2 group">
             <svg className="w-6 h-6 text-[#FF793F]" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M12 2L15 9H9L12 2Z" fill="currentColor" />
@@ -65,12 +65,12 @@ const Navbar = () => {
               <path d="M22 12L15 15V9L22 12Z" fill="currentColor" />
               <circle cx="12" cy="12" r="3" fill="#C387FF" />
             </svg>
-            <h2 className="font-display text-lg md:text-xl font-bold tracking-wider text-white">
+            <h2 className="font-display text-lg md:text-xl font-bold tracking-wider text-text-primary">
               Quantis <span className="text-[#FF793F]">Crypto.</span>
             </h2>
           </Link>
 
-          <ul className="hidden lg:flex items-center gap-1.5 bg-white/5 border border-white/5 rounded-full p-1">
+          <ul className="hidden lg:flex items-center gap-1.5 bg-glass border border-glass-border rounded-full p-1">
             {navLinks.map((link) => (
               <li key={link.path}>
                 <Link
@@ -78,7 +78,7 @@ const Navbar = () => {
                   className={`relative text-[11px] font-semibold uppercase tracking-wider px-4 py-2 rounded-full transition-all duration-200 block ${
                     location.pathname === link.path
                       ? "text-black bg-[#FF793F]"
-                      : "text-text-secondary hover:text-text-primary hover:bg-white/5"
+                      : "text-text-secondary hover:text-text-primary hover:bg-glass-hover"
                   }`}
                 >
                   {link.label}
@@ -91,11 +91,11 @@ const Navbar = () => {
             <select
               onChange={currencyHandler}
               value={currency.name}
-              className="py-1.5 px-3 rounded-full bg-black/30 text-xs text-text-primary border border-white/10 focus:border-[#FF793F]/50 focus:outline-none cursor-pointer appearance-none text-center"
+              className="py-1.5 px-3 rounded-full bg-glass text-xs text-text-primary border border-glass-border focus:border-[#FF793F]/50 focus:outline-none cursor-pointer appearance-none text-center"
             >
-              <option value="usd" className="bg-surface text-text-primary">USD</option>
-              <option value="inr" className="bg-surface text-text-primary">INR</option>
-              <option value="eur" className="bg-surface text-text-primary">EUR</option>
+              <option value="usd">USD</option>
+              <option value="inr">INR</option>
+              <option value="eur">EUR</option>
             </select>
 
             <div className="hidden sm:block">
@@ -121,7 +121,7 @@ const Navbar = () => {
 
             <button
               onClick={() => setMobileOpen(true)}
-              className="lg:hidden p-2 rounded-full bg-white/5 border border-white/10 hover:border-[#FF793F]/30 transition-all cursor-pointer"
+              className="lg:hidden p-2 rounded-full bg-glass border border-glass-border hover:border-[#FF793F]/30 transition-all cursor-pointer"
               aria-label="Open menu"
             >
               <HiMenu className="w-4 h-4 text-text-primary" />
@@ -140,19 +140,19 @@ const Navbar = () => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setLoginOpen(false)}
-              className="fixed inset-0 bg-black/80 backdrop-blur-md"
+              className="fixed inset-0 overlay"
             />
             
             <motion.div
               initial={{ scale: 0.95, y: 20, opacity: 0 }}
               animate={{ scale: 1, y: 0, opacity: 1 }}
               exit={{ scale: 0.95, y: 20, opacity: 0 }}
-              className="relative w-full max-w-md bg-[#0d0f1a] border border-white/10 rounded-3xl p-6 md:p-8 shadow-[0_20px_50px_rgba(255,121,63,0.15)] overflow-hidden z-10"
+              className="relative w-full max-w-md bg-surface-secondary border border-glass-border rounded-3xl p-6 md:p-8 shadow-2xl overflow-hidden z-10"
             >
               <div className="absolute -top-10 -right-10 w-32 h-32 bg-[#FF793F]/10 rounded-full blur-2xl" />
               <div className="absolute -bottom-10 -left-10 w-32 h-32 bg-[#C387FF]/10 rounded-full blur-2xl" />
 
-              <h3 className="font-display text-2xl font-bold text-white text-center mb-2">
+              <h3 className="font-display text-2xl font-bold text-text-primary text-center mb-2">
                 Connect Wallet
               </h3>
               <p className="text-xs text-text-secondary text-center mb-6">
@@ -163,12 +163,12 @@ const Navbar = () => {
                 <button
                   disabled={connecting}
                   onClick={handleWalletConnect}
-                  className="w-full flex items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-[#FF793F]/40 hover:bg-[#FF793F]/5 transition-all text-left group cursor-pointer disabled:opacity-50"
+                  className="w-full flex items-center justify-between p-4 rounded-2xl bg-glass border border-glass-border hover:border-[#FF793F]/40 hover:bg-[#FF793F]/5 transition-all text-left group cursor-pointer disabled:opacity-50"
                 >
                   <div className="flex items-center gap-3">
                     <FiCpu className="w-5 h-5 text-[#FF793F] group-hover:animate-pulse" />
                     <div>
-                      <p className="text-sm font-semibold text-white">Browser Extension Wallet</p>
+                      <p className="text-sm font-semibold text-text-primary">Browser Extension Wallet</p>
                       <p className="text-xs text-text-secondary">Metamask, TrustWallet, Phantom</p>
                     </div>
                   </div>
@@ -178,12 +178,12 @@ const Navbar = () => {
                 <button
                   disabled={connecting}
                   onClick={handleWalletConnect}
-                  className="w-full flex items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-[#C387FF]/40 hover:bg-[#C387FF]/5 transition-all text-left group cursor-pointer disabled:opacity-50"
+                  className="w-full flex items-center justify-between p-4 rounded-2xl bg-glass border border-glass-border hover:border-[#C387FF]/40 hover:bg-[#C387FF]/5 transition-all text-left group cursor-pointer disabled:opacity-50"
                 >
                   <div className="flex items-center gap-3">
                     <FiCompass className="w-5 h-5 text-[#C387FF] group-hover:animate-pulse" />
                     <div>
-                      <p className="text-sm font-semibold text-white">WalletConnect</p>
+                      <p className="text-sm font-semibold text-text-primary">WalletConnect</p>
                       <p className="text-xs text-text-secondary">Scan QR code with mobile wallet</p>
                     </div>
                   </div>
@@ -198,7 +198,7 @@ const Navbar = () => {
                 </div>
               )}
 
-              <div className="mt-8 pt-4 border-t border-white/5 flex items-center gap-2 justify-center text-[10px] text-text-secondary">
+              <div className="mt-8 pt-4 border-t border-glass-border flex items-center gap-2 justify-center text-[10px] text-text-secondary">
                 <FiLock className="w-3.5 h-3.5 text-[#FF793F]" /> Secured by end-to-end sandbox cryptographic handshakes
               </div>
             </motion.div>

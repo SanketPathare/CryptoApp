@@ -29,7 +29,7 @@ const PortfolioForm = ({ onClose }) => {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 overlay">
       <div className="glass-hover rounded-3xl p-6 md:p-8 w-full max-w-md relative">
         <button onClick={onClose} className="absolute top-4 right-4 p-2 rounded-xl glass hover:border-gold/30 transition-all cursor-pointer">
           <HiX className="w-5 h-5 text-text-primary" />
@@ -44,7 +44,7 @@ const PortfolioForm = ({ onClose }) => {
               className="glass rounded-xl p-3 w-full text-sm text-text-primary outline-none border-none appearance-none cursor-pointer"
             >
               {allCoin.map((c) => (
-                <option key={c.id} value={c.id} className="bg-surface text-text-primary">
+                <option key={c.id} value={c.id}>
                   {c.name} ({c.symbol.toUpperCase()})
                 </option>
               ))}

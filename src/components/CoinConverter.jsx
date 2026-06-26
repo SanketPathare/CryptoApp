@@ -57,7 +57,7 @@ const CoinConverter = () => {
               className="glass rounded-xl p-3 w-full text-sm text-text-primary outline-none border-none appearance-none cursor-pointer"
             >
               {allCoin.slice(0, 50).map((c) => (
-                <option key={c.id} value={c.id} className="bg-surface text-text-primary">
+                <option key={c.id} value={c.id}>
                   {c.name} ({c.symbol.toUpperCase()})
                 </option>
               ))}
@@ -81,7 +81,7 @@ const CoinConverter = () => {
               className="glass rounded-xl p-3 w-full text-sm text-text-primary outline-none border-none appearance-none cursor-pointer"
             >
               {allCoin.slice(0, 50).map((c) => (
-                <option key={c.id} value={c.id} className="bg-surface text-text-primary">
+                <option key={c.id} value={c.id}>
                   {c.name} ({c.symbol.toUpperCase()})
                 </option>
               ))}
