@@ -45,7 +45,7 @@ const LineChart = ({ historicalData }) => {
           gridlines: { color: getCSSVar("--color-gridline") || "rgba(255,255,255,0.05)" },
         },
         lineWidth: 2,
-        colors: ["#f59e0b"],
+        colors: ["#10B981"],
         curveType: "function",
         chartArea: { width: "90%", height: "80%" },
       }}

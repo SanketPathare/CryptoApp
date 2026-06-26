@@ -585,7 +585,7 @@ const CustomChart = ({ coinId, coinName }) => {
             <path
               d={sma25Path}
               fill="none"
-              stroke="#f59e0b"
+              stroke="#8B5CF6"
               strokeWidth="2"
               strokeDasharray="4 2"
               strokeLinecap="round"

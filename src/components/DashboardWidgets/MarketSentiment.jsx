@@ -14,7 +14,7 @@ const MarketSentiment = () => {
 
   const getSentimentLabel = (val) => {
     if (val < 25) return { text: "Extreme Fear", color: "text-signal-red" };
-    if (val < 45) return { text: "Fear", color: "text-orange-400" };
+    if (val < 45) return { text: "Fear", color: "text-amber-400" };
     if (val < 55) return { text: "Neutral", color: "text-gold" };
     if (val < 75) return { text: "Greed", color: "text-brand-secondary" };
     return { text: "Extreme Greed", color: "text-signal-green" };

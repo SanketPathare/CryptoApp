@@ -25,7 +25,7 @@ const MarketShare = () => {
       symbol: coin.symbol.toUpperCase(),
       marketCap: cap,
       percentage,
-      color: index === 0 ? "#10B981" : index === 1 ? "#06B6D4" : index === 2 ? "#34d399" : "#fbbf24",
+      color: index === 0 ? "#10B981" : index === 1 ? "#06B6D4" : index === 2 ? "#34d399" : "#8B5CF6",
     };
   });
 
