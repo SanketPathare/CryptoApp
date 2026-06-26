@@ -93,7 +93,7 @@ const Navbar = () => {
             <select
               onChange={currencyHandler}
               value={currency.name}
-              className="py-1.5 px-3 rounded-full bg-glass text-xs text-text-primary border border-glass-border focus:border-[#10B981]/50 focus:outline-none cursor-pointer appearance-none text-center"
+              className="py-1.5 px-3 rounded-full bg-glass text-base md:text-xs text-text-primary border border-glass-border focus:border-[#10B981]/50 focus:outline-none cursor-pointer appearance-none text-center"
             >
               <option value="usd">USD</option>
               <option value="inr">INR</option>

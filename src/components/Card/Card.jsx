@@ -1,4 +1,6 @@
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import TiltCard from "../TiltCard";
 
 const plans = [
   {
@@ -49,6 +51,17 @@ const plans = [
 ];
 
 const Card = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
     <div>
       <motion.div
@@ -74,50 +87,56 @@ const Card = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: index * 0.1 }}
-            className={`relative rounded-2xl p-6 flex flex-col ${
-              plan.featured
-                ? "glass-hover border-gold/30 shadow-[0_0_30px_rgba(255,121,63,0.08)]"
-                : "glass-card"
-            }`}
+            className="h-full"
           >
-            {plan.badge && (
-              <span className="absolute -top-3 right-4 px-3 py-1 rounded-full bg-gold text-black text-xs font-semibold uppercase tracking-wider">
-                {plan.badge}
-              </span>
-            )}
+            <TiltCard disabled={isMobile} className="h-full">
+              <div
+                className={`relative rounded-2xl p-6 flex flex-col h-full ${
+                  plan.featured
+                    ? "glass-hover border-gold/30 shadow-[0_0_30px_rgba(255,121,63,0.08)]"
+                    : "glass-card"
+                }`}
+              >
+                {plan.badge && (
+                  <span className="absolute -top-3 right-4 px-3 py-1 rounded-full bg-gold text-black text-xs font-semibold uppercase tracking-wider">
+                    {plan.badge}
+                  </span>
+                )}
 
-            <h6 className="text-xs font-medium uppercase tracking-widest text-text-secondary mb-2">
-              {plan.name} Plan
-            </h6>
-            <h3 className="font-display text-2xl font-bold text-text-primary mb-6">
-              {plan.price}
-            </h3>
+                <h6 className="text-xs font-medium uppercase tracking-widest text-text-secondary mb-2">
+                  {plan.name} Plan
+                </h6>
+                <h3 className="font-display text-2xl font-bold text-text-primary mb-6">
+                  {plan.price}
+                </h3>
 
-            <button
-              className={`w-full py-2.5 rounded-xl text-sm font-semibold transition-all duration-300 mb-6 cursor-pointer ${
-                plan.featured
-                  ? "bg-gold text-black hover:bg-gold-dark shadow-lg shadow-gold/20"
-                  : "glass hover:border-gold/30 hover:text-gold text-text-primary"
-              }`}
-            >
-              {plan.name === "Premium"
-                ? "Start Free Trial"
-                : plan.name === "Team"
-                ? "Contact Us"
-                : "Select Plan"}
-            </button>
-
-            <ul className="space-y-3 mt-auto">
-              {plan.features.map((feature) => (
-                <li
-                  key={feature}
-                  className="flex items-start gap-2 text-sm text-text-secondary"
+                <button
+                  className={`w-full py-2.5 rounded-xl text-sm font-semibold transition-all duration-300 mb-6 cursor-pointer ${
+                    plan.featured
+                      ? "bg-gold text-black hover:bg-gold-dark shadow-lg shadow-gold/20"
+                      : "glass hover:border-gold/30 hover:text-gold text-text-primary"
+                  }`}
                 >
-                  <span className="text-signal-green mt-0.5 flex-shrink-0">✓</span>
-                  {feature}
-                </li>
-              ))}
-            </ul>
+                  {plan.name === "Premium"
+                    ? "Start Free Trial"
+                    : plan.name === "Team"
+                    ? "Contact Us"
+                    : "Select Plan"}
+                </button>
+
+                <ul className="space-y-3 mt-auto">
+                  {plan.features.map((feature) => (
+                    <li
+                      key={feature}
+                      className="flex items-start gap-2 text-sm text-text-secondary"
+                    >
+                      <span className="text-signal-green mt-0.5 flex-shrink-0">✓</span>
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </TiltCard>
           </motion.div>
         ))}
       </div>

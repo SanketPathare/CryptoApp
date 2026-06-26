@@ -5,8 +5,8 @@ import { HiTrendingUp, HiCurrencyDollar, HiChartBar, HiCube, HiArrowRight } from
 import { FiKey, FiCopy, FiCheck, FiCpu, FiLayers } from "react-icons/fi";
 import SearchCoins from "../../components/searchCoins/SearchCoins";
 import StatsCard from "../../components/StatsCard";
-import AnimatedBackground from "../../components/AnimatedBackground";
 import TypingEffect from "../../components/TypingEffect";
+import TiltCard from "../../components/TiltCard";
 import { toast } from "react-toastify";
 
 // Card 1: Network Graph animation
@@ -182,6 +182,17 @@ const BlockMiner = () => {
 };
 
 const Home = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -189,8 +200,6 @@ const Home = () => {
       exit={{ opacity: 0 }}
       className="relative min-h-screen overflow-x-hidden"
     >
-      <AnimatedBackground />
-
       <section className="relative z-10 max-w-7xl mx-auto px-5 pt-20 pb-8 md:pt-32 text-center">
         <motion.div
           initial={{ opacity: 0, y: 15 }}
@@ -243,39 +252,51 @@ const Home = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
-            className="glass-card rounded-3xl p-6 flex flex-col justify-between"
+            className="h-full"
           >
-            <div>
-              <h3 className="font-display text-lg font-semibold text-text-primary mb-2">Trade with trust and assurance</h3>
-              <p className="text-xs text-text-secondary">Assured that you maintain full authority</p>
-            </div>
-            <NetworkGraph />
+            <TiltCard disabled={isMobile} className="h-full">
+              <div className="glass-card rounded-3xl p-6 flex flex-col justify-between h-full">
+                <div>
+                  <h3 className="font-display text-lg font-semibold text-text-primary mb-2">Trade with trust and assurance</h3>
+                  <p className="text-xs text-text-secondary">Assured that you maintain full authority</p>
+                </div>
+                <NetworkGraph />
+              </div>
+            </TiltCard>
           </motion.div>
 
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
-            className="glass-card rounded-3xl p-6 flex flex-col justify-between"
+            className="h-full"
           >
-            <div>
-              <h3 className="font-display text-lg font-semibold text-text-primary mb-2">Create your own personal crypto wallet</h3>
-              <p className="text-xs text-text-secondary">Secure keys generated straight inside the sandbox</p>
-            </div>
-            <WalletGenerator />
+            <TiltCard disabled={isMobile} className="h-full">
+              <div className="glass-card rounded-3xl p-6 flex flex-col justify-between h-full">
+                <div>
+                  <h3 className="font-display text-lg font-semibold text-text-primary mb-2">Create your own personal crypto wallet</h3>
+                  <p className="text-xs text-text-secondary">Secure keys generated straight inside the sandbox</p>
+                </div>
+                <WalletGenerator />
+              </div>
+            </TiltCard>
           </motion.div>
 
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5 }}
-            className="glass-card rounded-3xl p-6 flex flex-col justify-between"
+            className="h-full"
           >
-            <div>
-              <h3 className="font-display text-lg font-semibold text-text-primary mb-2">Join The Blockchain System</h3>
-              <p className="text-xs text-text-secondary">Securely broadcast and watch blocks mined in real-time</p>
-            </div>
-            <BlockMiner />
+            <TiltCard disabled={isMobile} className="h-full">
+              <div className="glass-card rounded-3xl p-6 flex flex-col justify-between h-full">
+                <div>
+                  <h3 className="font-display text-lg font-semibold text-text-primary mb-2">Join The Blockchain System</h3>
+                  <p className="text-xs text-text-secondary">Securely broadcast and watch blocks mined in real-time</p>
+                </div>
+                <BlockMiner />
+              </div>
+            </TiltCard>
           </motion.div>
         </div>
 

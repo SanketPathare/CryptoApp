@@ -15,28 +15,32 @@ import Contact from "./pages/Contact/Contact";
 import NotFound from "./pages/NotFound/NotFound";
 import ScrollToTop from "./components/ScrollToTop";
 import ToastNotification from "./components/ToastNotification";
+import AnimatedBackground from "./components/AnimatedBackground";
 
 const App = () => {
   const location = useLocation();
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen relative">
+      <AnimatedBackground />
       <Navbar />
-      <AnimatePresence mode="wait">
-        <Routes location={location} key={location.pathname}>
-          <Route path="/" element={<Home />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/watchlist" element={<Watchlist />} />
-          <Route path="/pricing" element={<Pricing />} />
-          <Route path="/categories" element={<Categories />} />
-          <Route path="/converter" element={<Converter />} />
-          <Route path="/portfolio" element={<Portfolio />} />
-          <Route path="/compare" element={<Compare />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/coins/:coinId" element={<Coins />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </AnimatePresence>
-      <Footer />
+      <div className="relative z-10">
+        <AnimatePresence mode="wait">
+          <Routes location={location} key={location.pathname}>
+            <Route path="/" element={<Home />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/watchlist" element={<Watchlist />} />
+            <Route path="/pricing" element={<Pricing />} />
+            <Route path="/categories" element={<Categories />} />
+            <Route path="/converter" element={<Converter />} />
+            <Route path="/portfolio" element={<Portfolio />} />
+            <Route path="/compare" element={<Compare />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/coins/:coinId" element={<Coins />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </AnimatePresence>
+        <Footer />
+      </div>
       <ScrollToTop />
       <ToastNotification />
     </div>

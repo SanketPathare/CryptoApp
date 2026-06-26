@@ -1,6 +1,8 @@
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { HiMail, HiUser, HiTag, HiChat } from "react-icons/hi";
 import { toast } from "react-toastify";
+import TiltCard from "../../components/TiltCard";
 
 const inputFields = [
   { icon: HiUser, placeholder: "Name", type: "text" },
@@ -9,6 +11,17 @@ const inputFields = [
 ];
 
 const Contact = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
@@ -31,56 +44,63 @@ const Contact = () => {
         initial={{ opacity: 0, y: 30, scale: 0.95 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         transition={{ duration: 0.5 }}
-        className="glass-hover rounded-3xl p-8 md:p-10 w-full max-w-lg border-gold/10"
+        className="w-full max-w-lg"
       >
-        <div className="text-center mb-8">
-          <h1 className="font-display text-3xl md:text-4xl font-bold text-gradient-brand mb-2">
-            Contact Us
-          </h1>
-          <p className="text-text-secondary text-sm">
-            Have a question? We&apos;d love to hear from you.
-          </p>
-        </div>
+        <TiltCard disabled={isMobile} className="h-full">
+          <div className="glass-hover rounded-3xl p-8 md:p-10 w-full border border-glass-border shadow-2xl h-full relative">
+            <div className="absolute -top-10 -right-10 w-32 h-32 bg-[#10B981]/10 rounded-full blur-2xl pointer-events-none" />
+            <div className="absolute -bottom-10 -left-10 w-32 h-32 bg-[#06B6D4]/10 rounded-full blur-2xl pointer-events-none" />
 
-        <form onSubmit={handleSubmit} className="space-y-5">
-          {inputFields.map(({ icon: Icon, placeholder, type }) => (
-            <div
-              key={placeholder}
-              className="glass rounded-xl p-3 flex items-center gap-3 focus-within:border-gold/50 transition-colors duration-300"
-            >
-              <Icon className="w-5 h-5 text-text-secondary flex-shrink-0" />
-              <input
-                required
-                type={type}
-                name={placeholder.toLowerCase()}
-                placeholder={placeholder}
-                className="flex-1 bg-transparent text-sm text-text-primary outline-none border-none placeholder-text-secondary"
-              />
-            </div>
-          ))}
-
-          <div className="glass rounded-xl p-3 flex items-start gap-3 focus-within:border-gold/50 transition-colors duration-300">
-            <HiChat className="w-5 h-5 text-text-secondary flex-shrink-0 mt-1" />
-            <textarea
-              required
-              name="message"
-              placeholder="Message"
-              rows={4}
-              className="flex-1 bg-transparent text-sm text-text-primary outline-none border-none placeholder-text-secondary resize-none"
-            />
+          <div className="text-center mb-8">
+            <h1 className="font-display text-3xl md:text-4xl font-bold text-gradient-brand mb-2">
+              Contact Us
+            </h1>
+            <p className="text-text-secondary text-sm">
+              Have a question? We&apos;d love to hear from you.
+            </p>
           </div>
 
-          <motion.button
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            type="submit"
-            className="w-full py-3.5 rounded-xl bg-gold text-black font-semibold text-sm hover:bg-gold-dark transition-colors cursor-pointer"
-          >
-            Send Message
-          </motion.button>
-        </form>
-      </motion.div>
+          <form onSubmit={handleSubmit} className="space-y-5">
+            {inputFields.map(({ icon: Icon, placeholder, type }) => (
+              <div
+                key={placeholder}
+                className="glass rounded-xl p-3 flex items-center gap-3 focus-within:border-gold/50 transition-colors duration-300"
+              >
+                <Icon className="w-5 h-5 text-text-secondary flex-shrink-0" />
+                <input
+                  required
+                  type={type}
+                  name={placeholder.toLowerCase()}
+                  placeholder={placeholder}
+                  className="flex-1 bg-transparent text-base md:text-sm text-text-primary outline-none border-none placeholder-text-secondary"
+                />
+              </div>
+            ))}
+
+            <div className="glass rounded-xl p-3 flex items-start gap-3 focus-within:border-gold/50 transition-colors duration-300">
+              <HiChat className="w-5 h-5 text-text-secondary flex-shrink-0 mt-1" />
+              <textarea
+                required
+                name="message"
+                placeholder="Message"
+                rows={4}
+                className="flex-1 bg-transparent text-base md:text-sm text-text-primary outline-none border-none placeholder-text-secondary resize-none"
+              />
+            </div>
+
+            <motion.button
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              type="submit"
+              className="w-full py-3.5 rounded-xl bg-gold text-black font-semibold text-sm hover:bg-gold-dark transition-colors cursor-pointer"
+            >
+              Send Message
+            </motion.button>
+          </form>
+        </div>
+      </TiltCard>
     </motion.div>
+  </motion.div>
   );
 };
 

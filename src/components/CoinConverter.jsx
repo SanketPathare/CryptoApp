@@ -42,7 +42,7 @@ const CoinConverter = () => {
             onChange={(e) => setAmount(Math.max(0, e.target.value))}
             min="0"
             step="any"
-            className="glass rounded-xl p-3 w-full text-sm text-text-primary outline-none border-none"
+            className="glass rounded-xl p-3 w-full text-base md:text-sm text-text-primary outline-none border-none"
           />
         </div>
 
@@ -54,7 +54,7 @@ const CoinConverter = () => {
             <select
               value={from}
               onChange={(e) => setFrom(e.target.value)}
-              className="glass rounded-xl p-3 w-full text-sm text-text-primary outline-none border-none appearance-none cursor-pointer"
+              className="glass rounded-xl p-3 w-full text-base md:text-sm text-text-primary outline-none border-none appearance-none cursor-pointer"
             >
               {allCoin.slice(0, 50).map((c) => (
                 <option key={c.id} value={c.id}>
@@ -78,7 +78,7 @@ const CoinConverter = () => {
             <select
               value={to}
               onChange={(e) => setTo(e.target.value)}
-              className="glass rounded-xl p-3 w-full text-sm text-text-primary outline-none border-none appearance-none cursor-pointer"
+              className="glass rounded-xl p-3 w-full text-base md:text-sm text-text-primary outline-none border-none appearance-none cursor-pointer"
             >
               {allCoin.slice(0, 50).map((c) => (
                 <option key={c.id} value={c.id}>

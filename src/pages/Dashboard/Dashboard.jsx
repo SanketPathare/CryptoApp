@@ -10,6 +10,7 @@ import MarketShare from "../../components/DashboardWidgets/MarketShare";
 import QuickConverter from "../../components/DashboardWidgets/QuickConverter";
 import DashboardWatchlist from "../../components/DashboardWidgets/DashboardWatchlist";
 import LiveOrderBook from "../../components/DashboardWidgets/LiveOrderBook";
+import TiltCard from "../../components/TiltCard";
 import { HiFire, HiArrowUp, HiArrowDown, HiSearch, HiOutlineTrendingUp, HiChevronDown } from "react-icons/hi";
 
 const quickSelectCoins = [
@@ -26,6 +27,7 @@ const Dashboard = () => {
   const [activeCoinId, setActiveCoinId] = useState("bitcoin");
   const [searchQuery, setSearchQuery] = useState("");
   const [showDropdown, setShowDropdown] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const dropdownRef = useRef(null);
 
   useEffect(() => {
@@ -36,6 +38,15 @@ const Dashboard = () => {
     };
     document.addEventListener("mousedown", handleOutsideClick);
     return () => document.removeEventListener("mousedown", handleOutsideClick);
+  }, []);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   if (!allCoin || allCoin.length === 0) {
@@ -177,22 +188,34 @@ const Dashboard = () => {
 
           {/* Chart */}
           <section>
-            <CustomChart coinId={activeCoin.id} coinName={activeCoin.name} />
+            <TiltCard disabled={isMobile}>
+              <CustomChart coinId={activeCoin.id} coinName={activeCoin.name} />
+            </TiltCard>
           </section>
 
           {/* Quick Actions */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-            <QuickConverter activeCoin={activeCoin} />
-            <LiveOrderBook />
+            <TiltCard disabled={isMobile} className="h-full">
+              <QuickConverter activeCoin={activeCoin} />
+            </TiltCard>
+            <TiltCard disabled={isMobile} className="h-full">
+              <LiveOrderBook />
+            </TiltCard>
           </div>
         </div>
 
         {/* Right Sidebar */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4 sm:gap-6 lg:gap-6">
-          <MarketSentiment />
-          <MarketShare />
+          <TiltCard disabled={isMobile}>
+            <MarketSentiment />
+          </TiltCard>
+          <TiltCard disabled={isMobile}>
+            <MarketShare />
+          </TiltCard>
           <div className="sm:col-span-2 lg:col-span-1">
-            <DashboardWatchlist activeCoinId={activeCoinId} onSelectCoinId={setActiveCoinId} />
+            <TiltCard disabled={isMobile}>
+              <DashboardWatchlist activeCoinId={activeCoinId} onSelectCoinId={setActiveCoinId} />
+            </TiltCard>
           </div>
         </div>
       </div>

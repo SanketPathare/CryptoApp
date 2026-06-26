@@ -11,34 +11,25 @@ const Pricing = () => {
     >
       <section className="max-w-7xl mx-auto px-5 pt-28 pb-8 md:pt-36">
         <div className="flex flex-col md:flex-row items-center gap-10 md:gap-16">
-          <div className="flex-1 text-center md:text-left">
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-tight"
-            >
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="flex-1 text-center md:text-left"
+          >
+            <h1 className="font-display text-text-primary text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
               Grow Your Crypto With{" "}
-              <span className="text-gradient-brand">CoinApp Premium</span>
-            </motion.h1>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 }}
-              className="mt-6 text-text-secondary text-base md:text-lg leading-relaxed max-w-xl"
-            >
+              <span className="text-gradient-brand">Quantis Premium</span>
+            </h1>
+            <p className="mt-6 text-text-secondary text-base md:text-lg leading-relaxed max-w-xl">
               Complete toolset for effortlessly managing all your crypto, NFTs,
               and DeFi assets from one place. Data-based investment decisions at
               the right time.
-            </motion.p>
-            <motion.button
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className="mt-8 px-8 py-3 rounded-xl bg-gold text-black font-semibold text-sm hover:bg-gold-dark transition-colors cursor-pointer"
-            >
+            </p>
+            <button className="mt-8 px-8 py-3 rounded-xl bg-gold text-black font-semibold text-sm hover:bg-gold-dark transition-colors cursor-pointer">
               Start Free Trial
-            </motion.button>
-          </div>
+            </button>
+          </motion.div>
 
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
