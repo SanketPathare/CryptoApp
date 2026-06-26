@@ -25,7 +25,7 @@ const MarketShare = () => {
       symbol: coin.symbol.toUpperCase(),
       marketCap: cap,
       percentage,
-      color: index === 0 ? "#FF793F" : index === 1 ? "#C387FF" : index === 2 ? "#34d399" : "#fbbf24",
+      color: index === 0 ? "#10B981" : index === 1 ? "#06B6D4" : index === 2 ? "#34d399" : "#fbbf24",
     };
   });
 
@@ -63,8 +63,8 @@ const MarketShare = () => {
   return (
     <div className="glass-card rounded-3xl p-4 sm:p-5 flex flex-col justify-between min-h-[200px] sm:min-h-[230px]">
       <div className="w-full flex items-center justify-between mb-2">
-        <span className="text-[10px] sm:text-xs font-semibold uppercase tracking-widest text-text-secondary">
-          Market Cap Share
+        <span className="text-[10px] sm:text-xs font-semibold uppercase tracking-wide text-text-secondary">
+          Market Share
         </span>
       </div>
 

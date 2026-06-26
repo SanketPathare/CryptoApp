@@ -8,12 +8,12 @@ export default {
   theme: {
     extend: {
       colors: {
-        gold: "#FF793F",
-        "gold-dark": "#E05A22",
+        gold: "#10B981",
+        "gold-dark": "#059669",
         brand: {
-          orange: "#FF793F",
-          purple: "#C387FF",
-          "purple-dark": "#43256E",
+          primary: "#10B981",
+          secondary: "#06B6D4",
+          "secondary-dark": "#0891B2",
         },
         surface: {
           DEFAULT: "var(--color-surface)",
@@ -30,7 +30,7 @@ export default {
         },
         signal: {
           green: "#34d399",
-          red: "#fb7185",
+          red: "#F43F5E",
         },
       },
       fontFamily: {
@@ -43,7 +43,10 @@ export default {
         "live-pulse": "live-pulse 2s ease-in-out infinite",
         shimmer: "shimmer 2s infinite linear",
         float: "float 6s ease-in-out infinite",
+        "float-slow": "float 8s ease-in-out infinite",
+        "float-fast": "float 4s ease-in-out infinite",
         "spin-slow": "spin 8s linear infinite",
+        "depth-pulse": "depth-pulse 3s ease-in-out infinite",
       },
       keyframes: {
         shine: {
@@ -61,11 +64,17 @@ export default {
         },
         float: {
           "0%, 100%": { transform: "translateY(0)" },
-          "50%": { transform: "translateY(-10px)" },
+          "50%": { transform: "translateY(-8px)" },
+        },
+        "depth-pulse": {
+          "0%, 100%": { boxShadow: "0 8px 32px rgba(16,185,129,0.1)" },
+          "50%": { boxShadow: "0 12px 48px rgba(16,185,129,0.2)" },
         },
       },
       backdropBlur: {
         glass: "16px",
+        "glass-lg": "24px",
+        "glass-sm": "8px",
       },
     },
   },

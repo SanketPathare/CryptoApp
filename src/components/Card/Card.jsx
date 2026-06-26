@@ -57,7 +57,7 @@ const Card = () => {
         viewport={{ once: true }}
         className="text-center max-w-2xl mx-auto mb-12 px-5"
       >
-        <h2 className="font-display text-3xl md:text-4xl font-bold text-gradient-gold mb-4">
+        <h2 className="font-display text-3xl md:text-4xl font-bold text-gradient-brand mb-4">
           Discover the Full Potential
         </h2>
         <p className="text-text-secondary text-sm md:text-base leading-relaxed">
@@ -76,7 +76,7 @@ const Card = () => {
             transition={{ delay: index * 0.1 }}
             className={`relative rounded-2xl p-6 flex flex-col ${
               plan.featured
-                ? "glass-hover border-gold/40 shadow-[0_0_30px_rgba(255,121,63,0.08)]"
+                ? "glass-hover border-gold/30 shadow-[0_0_30px_rgba(255,121,63,0.08)]"
                 : "glass-card"
             }`}
           >

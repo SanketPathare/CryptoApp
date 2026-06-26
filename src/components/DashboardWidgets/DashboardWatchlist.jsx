@@ -35,8 +35,8 @@ const DashboardWatchlist = ({ activeCoinId, onSelectCoinId }) => {
   return (
     <div className="glass-card rounded-3xl p-4 sm:p-5 flex flex-col min-h-[200px] sm:min-h-[220px]">
       <div className="flex items-center justify-between mb-3 sm:mb-4 flex-shrink-0">
-        <span className="text-[10px] sm:text-xs font-semibold uppercase tracking-widest text-text-secondary">
-          Watchlist glance
+        <span className="text-[10px] sm:text-xs font-semibold uppercase tracking-wide text-text-secondary">
+          Watchlist
         </span>
         <span className="text-[9px] sm:text-[10px] text-text-secondary font-medium">
           {favCoins.length} pinned

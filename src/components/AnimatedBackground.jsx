@@ -2,17 +2,39 @@ import { useEffect, useRef } from "react";
 
 const getCSSVar = (name) => getComputedStyle(document.documentElement).getPropertyValue(name).trim();
 
+const FLOATING_ORBS_COUNT = 3;
+const NEAR_PARTICLES_COUNT = 15;
+const MID_PARTICLES_COUNT = 25;
+const FAR_PARTICLES_COUNT = 40;
+
+const createParticle = (w, h, layer) => {
+  const sizeMap = { near: 2.5, mid: 1.5, far: 0.8 };
+  const speedMap = { near: 0.25, mid: 0.12, far: 0.05 };
+  return {
+    x: Math.random() * w,
+    y: Math.random() * h,
+    vx: (Math.random() - 0.5) * speedMap[layer],
+    vy: (Math.random() - 0.5) * speedMap[layer],
+    r: Math.random() * sizeMap[layer] + 0.5,
+    alpha: layer === "near" ? 0.4 : layer === "mid" ? 0.25 : 0.12,
+    layer,
+  };
+};
+
 const AnimatedBackground = () => {
   const canvasRef = useRef(null);
+  const mouseRef = useRef({ x: 0.5, y: 0.5 });
 
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext("2d");
     let animationId;
-    
-    let floatingParticles = [];
-    let perspectiveSparks = [];
+
+    const nearParticles = [];
+    const midParticles = [];
+    const farParticles = [];
+    const orbs = [];
 
     const resize = () => {
       canvas.width = window.innerWidth;
@@ -21,138 +43,81 @@ const AnimatedBackground = () => {
     resize();
     window.addEventListener("resize", resize);
 
-    const initParticles = () => {
-      const count = Math.min(25, Math.floor(window.innerWidth / 50));
-      floatingParticles = Array.from({ length: count }, () => ({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        vx: (Math.random() - 0.5) * 0.15,
-        vy: (Math.random() - 0.5) * 0.15,
-        r: Math.random() * 3 + 1,
-        color: Math.random() > 0.4 ? "rgba(255, 121, 63, 0.3)" : "rgba(195, 133, 255, 0.3)",
-      }));
+    const handleMouse = (e) => {
+      mouseRef.current = { x: e.clientX / canvas.width, y: e.clientY / canvas.height };
     };
-    initParticles();
+    window.addEventListener("mousemove", handleMouse);
 
-    const sparkCount = 8;
-    for (let i = 0; i < sparkCount; i++) {
-      perspectiveSparks.push({
-        lineIndex: Math.floor(Math.random() * 16),
-        progress: Math.random(),
-        speed: Math.random() * 0.005 + 0.002,
-        length: Math.random() * 40 + 20,
-        brightness: Math.random() * 0.5 + 0.5,
-      });
-    }
+    const init = () => {
+      for (let i = 0; i < NEAR_PARTICLES_COUNT; i++) nearParticles.push(createParticle(canvas.width, canvas.height, "near"));
+      for (let i = 0; i < MID_PARTICLES_COUNT; i++) midParticles.push(createParticle(canvas.width, canvas.height, "mid"));
+      for (let i = 0; i < FAR_PARTICLES_COUNT; i++) farParticles.push(createParticle(canvas.width, canvas.height, "far"));
 
-    const animate = () => {
-      ctx.fillStyle = getCSSVar("--color-canvas-bg") || "#05070b";
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-      const horizonX = canvas.width / 2;
-      const horizonY = canvas.height * 0.45;
-
-      // Purple Glow (Nebula)
-      const purpleGlow = ctx.createRadialGradient(horizonX - 120, horizonY - 40, 0, horizonX - 120, horizonY - 40, 500);
-      purpleGlow.addColorStop(0, "rgba(67, 37, 110, 0.18)");
-      purpleGlow.addColorStop(0.5, "rgba(67, 37, 110, 0.07)");
-      purpleGlow.addColorStop(1, "rgba(5, 7, 11, 0)");
-      ctx.fillStyle = purpleGlow;
-      ctx.beginPath();
-      ctx.arc(horizonX - 120, horizonY - 40, 500, 0, Math.PI * 2);
-      ctx.fill();
-
-      // Orange Glow (Nebula)
-      const orangeGlow = ctx.createRadialGradient(horizonX + 120, horizonY + 40, 0, horizonX + 120, horizonY + 40, 400);
-      orangeGlow.addColorStop(0, "rgba(255, 121, 63, 0.13)");
-      orangeGlow.addColorStop(0.5, "rgba(255, 121, 63, 0.04)");
-      orangeGlow.addColorStop(1, "rgba(5, 7, 11, 0)");
-      ctx.fillStyle = orangeGlow;
-      ctx.beginPath();
-      ctx.arc(horizonX + 120, horizonY + 40, 400, 0, Math.PI * 2);
-      ctx.fill();
-
-      // Draw Perspective Lines radiating from the horizon
-      const linesCount = 16;
-      const angles = [];
-      for (let i = 0; i < linesCount; i++) {
-        const angle = -Math.PI * 0.15 + (i / (linesCount - 1)) * Math.PI * 1.3;
-        angles.push(angle);
-
-        const maxDist = Math.max(canvas.width, canvas.height) * 1.2;
-        const endX = horizonX + Math.cos(angle) * maxDist;
-        const endY = horizonY + Math.sin(angle) * maxDist;
-
-        const lineGrad = ctx.createLinearGradient(horizonX, horizonY, endX, endY);
-        lineGrad.addColorStop(0, "rgba(255, 121, 63, 0.01)");
-        lineGrad.addColorStop(0.1, "rgba(255, 121, 63, 0.08)");
-        lineGrad.addColorStop(0.6, "rgba(255, 121, 63, 0.04)");
-        lineGrad.addColorStop(1, "rgba(255, 121, 63, 0)");
-
-        ctx.strokeStyle = lineGrad;
-        ctx.lineWidth = 1;
-        ctx.beginPath();
-        ctx.moveTo(horizonX, horizonY);
-        ctx.lineTo(endX, endY);
-        ctx.stroke();
+      for (let i = 0; i < FLOATING_ORBS_COUNT; i++) {
+        orbs.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          vx: (Math.random() - 0.5) * 0.08,
+          vy: (Math.random() - 0.5) * 0.08,
+          r: Math.random() * 120 + 80,
+          color: i === 0 ? "16,185,129" : i === 1 ? "6,182,212" : "16,185,129",
+          alpha: Math.random() * 0.04 + 0.02,
+          phase: Math.random() * Math.PI * 2,
+        });
       }
+    };
+    init();
 
-      // Draw Perspective Grid Circles
-      ctx.strokeStyle = "rgba(255, 121, 63, 0.015)";
-      ctx.lineWidth = 1;
-      const ringCount = 8;
-      for (let i = 1; i <= ringCount; i++) {
-        const radius = Math.pow(i / ringCount, 1.8) * Math.max(canvas.width, canvas.height) * 0.8;
-        ctx.beginPath();
-        ctx.arc(horizonX, horizonY, radius, 0, Math.PI * 2);
-        ctx.stroke();
-      }
+    const drawParticles = (particles, mouseOffset) => {
+      particles.forEach((p) => {
+        p.x += p.vx + mouseOffset.x * p.r * 0.02;
+        p.y += p.vy + mouseOffset.y * p.r * 0.02;
 
-      // Animate & Draw Perspective Sparks
-      perspectiveSparks.forEach((spark) => {
-        spark.progress += spark.speed;
-        if (spark.progress > 1) {
-          spark.progress = 0;
-          spark.lineIndex = Math.floor(Math.random() * linesCount);
-          spark.speed = Math.random() * 0.005 + 0.0025;
-        }
+        if (p.x < -10) p.x = canvas.width + 10;
+        if (p.x > canvas.width + 10) p.x = -10;
+        if (p.y < -10) p.y = canvas.height + 10;
+        if (p.y > canvas.height + 10) p.y = -10;
 
-        const angle = angles[spark.lineIndex];
-        const currentDist = spark.progress * Math.max(canvas.width, canvas.height) * 1.0;
-        const sparkX = horizonX + Math.cos(angle) * currentDist;
-        const sparkY = horizonY + Math.sin(angle) * currentDist;
-
-        const tailX = horizonX + Math.cos(angle) * Math.max(0, currentDist - spark.length);
-        const tailY = horizonY + Math.sin(angle) * Math.max(0, currentDist - spark.length);
-
-        const sparkGrad = ctx.createLinearGradient(tailX, tailY, sparkX, sparkY);
-        sparkGrad.addColorStop(0, "rgba(255, 121, 63, 0)");
-        sparkGrad.addColorStop(0.5, `rgba(195, 133, 255, ${0.45 * spark.brightness})`);
-        sparkGrad.addColorStop(1, `rgba(255, 121, 63, ${0.9 * spark.brightness})`);
-
-        ctx.strokeStyle = sparkGrad;
-        ctx.lineWidth = 1.0 + spark.progress * 2.5;
-        ctx.beginPath();
-        ctx.moveTo(tailX, tailY);
-        ctx.lineTo(sparkX, sparkY);
-        ctx.stroke();
-      });
-
-      // Draw Floating Particles
-      floatingParticles.forEach((p) => {
-        p.x += p.vx;
-        p.y += p.vy;
-        
-        if (p.x < 0) p.x = canvas.width;
-        if (p.x > canvas.width) p.x = 0;
-        if (p.y < 0) p.y = canvas.height;
-        if (p.y > canvas.height) p.y = 0;
-
-        ctx.fillStyle = p.color;
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255, 255, 255, ${p.alpha})`;
         ctx.fill();
       });
+    };
+
+    const animate = () => {
+      const bg = getCSSVar("--color-canvas-bg") || "#0A0F1E";
+      ctx.fillStyle = bg;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      const mx = (mouseRef.current.x - 0.5) * 2;
+      const my = (mouseRef.current.y - 0.5) * 2;
+
+      // Draw floating orbs
+      const time = Date.now() / 3000;
+      orbs.forEach((orb) => {
+        orb.x += orb.vx + Math.sin(time + orb.phase) * 0.1;
+        orb.y += orb.vy + Math.cos(time + orb.phase * 1.3) * 0.1;
+
+        if (orb.x < -orb.r) orb.x = canvas.width + orb.r;
+        if (orb.x > canvas.width + orb.r) orb.x = -orb.r;
+        if (orb.y < -orb.r) orb.y = canvas.height + orb.r;
+        if (orb.y > canvas.height + orb.r) orb.y = -orb.r;
+
+        const gradient = ctx.createRadialGradient(orb.x, orb.y, 0, orb.x, orb.y, orb.r);
+        gradient.addColorStop(0, `rgba(${orb.color}, ${orb.alpha * 2})`);
+        gradient.addColorStop(0.4, `rgba(${orb.color}, ${orb.alpha})`);
+        gradient.addColorStop(1, `rgba(${orb.color}, 0)`);
+        ctx.fillStyle = gradient;
+        ctx.beginPath();
+        ctx.arc(orb.x, orb.y, orb.r, 0, Math.PI * 2);
+        ctx.fill();
+      });
+
+      // Draw particles at 3 depth layers (far first = behind)
+      drawParticles(farParticles, { x: mx * 0.1, y: my * 0.1 });
+      drawParticles(midParticles, { x: mx * 0.3, y: my * 0.3 });
+      drawParticles(nearParticles, { x: mx * 0.6, y: my * 0.6 });
 
       animationId = requestAnimationFrame(animate);
     };
@@ -161,6 +126,7 @@ const AnimatedBackground = () => {
     return () => {
       cancelAnimationFrame(animationId);
       window.removeEventListener("resize", resize);
+      window.removeEventListener("mousemove", handleMouse);
     };
   }, []);
 

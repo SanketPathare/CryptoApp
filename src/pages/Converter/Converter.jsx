@@ -10,7 +10,7 @@ const Converter = () => {
       className="max-w-3xl mx-auto px-5 pt-24 pb-20"
     >
       <div className="text-center mb-10">
-        <h1 className="font-display text-3xl md:text-4xl font-bold text-gradient-gold mb-2">
+        <h1 className="font-display text-3xl md:text-4xl font-bold text-gradient-brand mb-2">
           Crypto Converter
         </h1>
         <p className="text-text-secondary text-sm">

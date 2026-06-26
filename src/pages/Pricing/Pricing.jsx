@@ -18,7 +18,7 @@ const Pricing = () => {
               className="font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-tight"
             >
               Grow Your Crypto With{" "}
-              <span className="text-gradient-gold">CoinApp Premium</span>
+              <span className="text-gradient-brand">CoinApp Premium</span>
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 20 }}

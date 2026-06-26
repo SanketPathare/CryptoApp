@@ -55,7 +55,7 @@ const LiveOrderBook = () => {
   return (
     <div className="glass-card rounded-3xl p-4 sm:p-5 flex flex-col min-h-[200px] sm:min-h-[210px] overflow-hidden">
       <div className="flex items-center justify-between mb-2 sm:mb-3 flex-shrink-0">
-        <span className="text-[10px] sm:text-xs font-semibold uppercase tracking-widest text-text-secondary">
+        <span className="text-[10px] sm:text-xs font-semibold uppercase tracking-wide text-text-secondary">
           Live Trade Feed
         </span>
         <span className="flex items-center gap-1.5 text-[8px] sm:text-[9px] text-gold bg-gold/10 px-2 py-0.5 rounded-lg font-mono">

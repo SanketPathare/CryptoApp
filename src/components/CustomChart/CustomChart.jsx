@@ -409,7 +409,7 @@ const CustomChart = ({ coinId, coinName }) => {
             onClick={() => setShowSMA7((prev) => !prev)}
             className={`px-3 py-1 rounded-lg text-xs font-medium border transition-all cursor-pointer ${
               showSMA7
-                ? "bg-brand-purple/20 text-brand-purple border-brand-purple/40"
+                ? "bg-brand-secondary/20 text-brand-secondary border-brand-secondary/40"
                 : "bg-transparent text-text-secondary border-glass-border hover:text-text-primary"
             }`}
           >
@@ -491,13 +491,13 @@ const CustomChart = ({ coinId, coinName }) => {
           <defs>
             {/* Linear Area Gradient */}
             <linearGradient id="chart-area-gradient" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#FF793F" stopOpacity="0.25" />
-              <stop offset="100%" stopColor="#FF793F" stopOpacity="0.0" />
+              <stop offset="0%" stopColor="#10B981" stopOpacity="0.25" />
+              <stop offset="100%" stopColor="#10B981" stopOpacity="0.0" />
             </linearGradient>
             
             {/* SMA Glow Filters */}
             <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
-              <feDropShadow dx="0" dy="2" stdDeviation="4" floodColor="#FF793F" floodOpacity="0.15" />
+              <feDropShadow dx="0" dy="2" stdDeviation="4" floodColor="#10B981" floodOpacity="0.15" />
             </filter>
           </defs>
 
@@ -537,7 +537,7 @@ const CustomChart = ({ coinId, coinName }) => {
             <path
               d={linePathD}
               fill="none"
-              stroke="#FF793F"
+              stroke="#10B981"
               strokeWidth="2.5"
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -575,7 +575,7 @@ const CustomChart = ({ coinId, coinName }) => {
             <path
               d={sma7Path}
               fill="none"
-              stroke="#C387FF"
+              stroke="#06B6D4"
               strokeWidth="2"
               strokeDasharray="2 2"
               strokeLinecap="round"
@@ -624,7 +624,7 @@ const CustomChart = ({ coinId, coinName }) => {
               y1={line.y1}
               x2={line.x2}
               y2={line.y2}
-              stroke="#FF793F"
+              stroke="#10B981"
               strokeWidth="2.5"
               strokeDasharray="4 4"
             />
@@ -637,7 +637,7 @@ const CustomChart = ({ coinId, coinName }) => {
               y1={currentLine.y1}
               x2={currentLine.x2}
               y2={currentLine.y2}
-              stroke="#C387FF"
+              stroke="#06B6D4"
               strokeWidth="2"
               strokeDasharray="2 2"
             />
@@ -652,7 +652,7 @@ const CustomChart = ({ coinId, coinName }) => {
                 y1={margin.top}
                 x2={hoveredPoint.x}
                 y2={margin.top + chartHeight}
-                stroke="rgba(255, 121, 63, 0.4)"
+                stroke="rgba(16, 185, 129, 0.4)"
                 strokeWidth="1"
                 strokeDasharray="3 3"
               />
@@ -662,7 +662,7 @@ const CustomChart = ({ coinId, coinName }) => {
                 y1={hoveredPoint.y}
                 x2={margin.left + chartWidth}
                 y2={hoveredPoint.y}
-                stroke="rgba(255, 121, 63, 0.4)"
+                stroke="rgba(16, 185, 129, 0.4)"
                 strokeWidth="1"
                 strokeDasharray="3 3"
               />
@@ -671,7 +671,7 @@ const CustomChart = ({ coinId, coinName }) => {
                 cx={hoveredPoint.x}
                 cy={hoveredPoint.y}
                 r="6"
-                fill="#FF793F"
+                fill="#10B981"
                 stroke="var(--color-text-primary)"
                 strokeWidth="2"
               />
@@ -680,7 +680,7 @@ const CustomChart = ({ coinId, coinName }) => {
                 cy={hoveredPoint.y}
                 r="12"
                 fill="none"
-                stroke="#FF793F"
+                stroke="#10B981"
                 strokeWidth="1"
                 className="animate-ping"
                 style={{ transformOrigin: `${hoveredPoint.x}px ${hoveredPoint.y}px` }}

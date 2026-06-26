@@ -29,7 +29,7 @@ const QuickConverter = ({ activeCoin }) => {
   return (
     <div className="glass-card rounded-3xl p-4 sm:p-5 flex flex-col min-h-[200px] sm:min-h-[210px]">
       <div className="flex items-center justify-between mb-3 flex-shrink-0">
-        <span className="text-[10px] sm:text-xs font-semibold uppercase tracking-widest text-text-secondary">
+        <span className="text-[10px] sm:text-xs font-semibold uppercase tracking-wide text-text-secondary">
           Quick Converter
         </span>
         <button

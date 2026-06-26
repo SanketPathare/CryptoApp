@@ -16,15 +16,15 @@ const NetworkGraph = () => {
       <motion.div
         animate={{ scale: [1, 1.08, 1] }}
         transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
-        className="w-12 h-12 rounded-full bg-gradient-to-r from-[#FF793F] to-[#C387FF] flex items-center justify-center z-10 shadow-[0_0_20px_rgba(255,121,63,0.3)] border border-glass-border"
+        className="w-12 h-12 rounded-full bg-gradient-to-r from-[#10B981] to-[#06B6D4] flex items-center justify-center z-10 shadow-[0_0_20px_rgba(255,121,63,0.3)] border border-glass-border"
       >
         <span className="text-[10px] font-bold text-black uppercase tracking-wider">Quantis</span>
       </motion.div>
 
       {[
         { name: "T", delay: 0, x: -70, y: -25, color: "#34d399" },
-        { name: "ETH", delay: 0.8, x: 70, y: -20, color: "#C387FF" },
-        { name: "X", delay: 1.6, x: 0, y: 45, color: "#FF793F" }
+        { name: "ETH", delay: 0.8, x: 70, y: -20, color: "#06B6D4" },
+        { name: "X", delay: 1.6, x: 0, y: 45, color: "#10B981" }
       ].map((node, i) => (
         <div key={node.name} className="absolute">
           <svg className="absolute overflow-visible pointer-events-none" style={{ left: 0, top: 0, width: 2, height: 2 }}>
@@ -93,17 +93,17 @@ const WalletGenerator = () => {
     <div className="bg-glass border border-glass-border rounded-2xl p-4 mt-4 text-left flex flex-col gap-3 min-h-[160px] justify-between">
       {!wallet && !generating ? (
         <div className="flex flex-col items-center justify-center py-6 text-center">
-          <FiKey className="w-7 h-7 text-[#FF793F] mb-3 animate-pulse" />
+          <FiKey className="w-7 h-7 text-[#10B981] mb-3 animate-pulse" />
           <button
             onClick={generateKeys}
-            className="px-4 py-2 rounded-xl bg-gradient-to-r from-[#FF793F] to-[#C387FF] text-black font-bold text-[10px] uppercase tracking-wider hover:brightness-110 transition-all cursor-pointer"
+            className="px-4 py-2 rounded-xl bg-gradient-to-r from-[#10B981] to-[#06B6D4] text-black font-bold text-[10px] uppercase tracking-wider hover:brightness-110 transition-all cursor-pointer"
           >
             Generate Keys
           </button>
         </div>
       ) : generating ? (
         <div className="flex flex-col items-center justify-center py-8 gap-2">
-          <div className="w-5 h-5 border-2 border-[#FF793F] border-t-transparent rounded-full animate-spin" />
+          <div className="w-5 h-5 border-2 border-[#10B981] border-t-transparent rounded-full animate-spin" />
           <span className="text-[10px] text-text-secondary animate-pulse">Running keygen sequence...</span>
         </div>
       ) : (
@@ -111,7 +111,7 @@ const WalletGenerator = () => {
           <div>
             <div className="flex items-center justify-between mb-1.5">
               <span className="text-[9px] font-mono text-text-secondary uppercase tracking-widest">Crypto Address</span>
-              <button onClick={copyAddress} className="text-text-secondary hover:text-[#FF793F] transition-colors cursor-pointer">
+              <button onClick={copyAddress} className="text-text-secondary hover:text-[#10B981] transition-colors cursor-pointer">
                 {copied ? <FiCheck className="w-3.5 h-3.5 text-green-400" /> : <FiCopy className="w-3.5 h-3.5" />}
               </button>
             </div>
@@ -163,8 +163,8 @@ const BlockMiner = () => {
   return (
     <div className="bg-glass border border-glass-border rounded-2xl p-4 mt-4 text-left flex flex-col gap-3.5 min-h-[160px] justify-between font-mono text-[9px]">
       <div className="flex justify-between items-center text-text-secondary border-b border-glass-border pb-1.5">
-        <span>Hashrate: <span className="text-[#FF793F]">{hashrate} TH/s</span></span>
-        <span>Gas: <span className="text-[#C387FF]">14 Gwei</span></span>
+        <span>Hashrate: <span className="text-[#10B981]">{hashrate} TH/s</span></span>
+        <span>Gas: <span className="text-[#06B6D4]">14 Gwei</span></span>
       </div>
 
       <div className="space-y-1.5">
@@ -173,7 +173,7 @@ const BlockMiner = () => {
             <span className="text-text-primary font-bold">#{b.height}</span>
             <span className="text-text-secondary">{b.txs} txs</span>
             <span className="text-text-secondary">{b.hash}</span>
-            <span className="text-[#FF793F]">{b.time}</span>
+            <span className="text-[#10B981]">{b.time}</span>
           </div>
         ))}
       </div>
@@ -195,9 +195,9 @@ const Home = () => {
         <motion.div
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
-          className="inline-flex items-center gap-2 bg-glass border border-glass-border rounded-full px-4 py-1.5 text-[10px] font-bold uppercase tracking-widest text-[#FF793F] mb-8"
+          className="inline-flex items-center gap-2 bg-glass border border-glass-border rounded-full px-4 py-1.5 text-[10px] font-bold uppercase tracking-widest text-[#10B981] mb-8"
         >
-          <span className="w-1.5 h-1.5 rounded-full bg-[#FF793F] animate-pulse" />
+          <span className="w-1.5 h-1.5 rounded-full bg-[#10B981] animate-pulse" />
           BEST BLOCKCHAIN 2026
         </motion.div>
 
@@ -208,7 +208,7 @@ const Home = () => {
           className="font-display text-4xl md:text-6xl lg:text-7xl font-bold leading-tight tracking-tight text-text-primary mb-6 max-w-5xl mx-auto"
         >
           Redefining the Future of <br />
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF793F] to-[#C387FF]">Crypto</span> and <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF793F] to-[#C387FF]">Fintech</span> Products
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#10B981] to-[#06B6D4]">Crypto</span> and <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#10B981] to-[#06B6D4]">Fintech</span> Products
         </motion.h1>
 
         <motion.p
@@ -231,7 +231,7 @@ const Home = () => {
             onClick={() => {
               document.getElementById("search-section")?.scrollIntoView({ behavior: "smooth" });
             }}
-            className="w-14 h-14 rounded-full bg-glass border border-glass-border hover:border-[#FF793F]/40 flex items-center justify-center text-text-primary hover:text-[#FF793F] hover:bg-[#FF793F]/5 shadow-xl transition-all duration-300 group cursor-pointer"
+            className="w-14 h-14 rounded-full bg-glass border border-glass-border hover:border-[#10B981]/40 flex items-center justify-center text-text-primary hover:text-[#10B981] hover:bg-[#10B981]/5 shadow-xl transition-all duration-300 group cursor-pointer"
           >
             <HiArrowRight className="w-5 h-5 rotate-45 group-hover:rotate-[135deg] transition-all duration-300" />
           </button>
@@ -287,7 +287,7 @@ const Home = () => {
             viewport={{ once: true }}
             className="mb-8"
           >
-            <p className="inline-flex items-center gap-2 bg-[#FF793F]/10 border border-[#FF793F]/20 rounded-full px-4 py-1.5 text-[10px] font-bold uppercase tracking-widest text-[#FF793F] mb-3">
+            <p className="inline-flex items-center gap-2 bg-[#10B981]/10 border border-[#10B981]/20 rounded-full px-4 py-1.5 text-[10px] font-bold uppercase tracking-widest text-[#10B981] mb-3">
               <span className="live-dot active" />
               Live Market Data
             </p>

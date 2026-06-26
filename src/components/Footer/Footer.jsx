@@ -21,15 +21,17 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
           <div className="md:col-span-1">
             <div className="flex items-center gap-2 mb-4">
-              <svg className="w-5 h-5 text-[#FF793F]" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 2L15 9H9L12 2Z" fill="currentColor" />
-                <path d="M12 22L9 15H15L12 22Z" fill="currentColor" />
-                <path d="M2 12L9 9V15L2 12Z" fill="currentColor" />
-                <path d="M22 12L15 15V9L22 12Z" fill="currentColor" />
-                <circle cx="12" cy="12" r="3" fill="#C387FF" />
-              </svg>
-              <h3 className="font-display text-lg font-bold text-text-primary">
-                Quantis <span className="text-[#FF793F]">Crypto.</span>
+              <div className="transition-transform duration-300 hover:scale-110 hover:rotate-[-5deg]">
+                <svg className="w-5 h-5 text-[#10B981]" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 2L15 9H9L12 2Z" fill="currentColor" />
+                  <path d="M12 22L9 15H15L12 22Z" fill="currentColor" />
+                  <path d="M2 12L9 9V15L2 12Z" fill="currentColor" />
+                  <path d="M22 12L15 15V9L22 12Z" fill="currentColor" />
+                  <circle cx="12" cy="12" r="3" fill="#06B6D4" />
+                </svg>
+              </div>
+              <h3 className="font-display text-lg font-bold tracking-tight text-text-primary">
+                Quantis <span className="text-[#10B981]">Crypto.</span>
               </h3>
             </div>
             <p className="text-text-secondary text-xs leading-relaxed">
@@ -90,7 +92,7 @@ const Footer = () => {
                 <a
                   key={i}
                   href={href}
-                  className="w-9 h-9 flex items-center justify-center rounded-full bg-glass border border-glass-border text-text-secondary hover:border-[#FF793F]/30 hover:text-gold transition-all duration-350"
+                  className="w-9 h-9 flex items-center justify-center rounded-full bg-glass border border-glass-border text-text-secondary hover:border-[#10B981]/30 hover:text-gold transition-all duration-350"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -107,7 +109,7 @@ const Footer = () => {
               />
               <button
                 type="submit"
-                className="px-4 py-2 rounded-full bg-gradient-to-r from-[#FF793F] to-[#C387FF] text-black text-xs font-bold hover:brightness-110 shadow-lg shadow-[#FF793F]/20 transition-colors cursor-pointer"
+                className="px-4 py-2 rounded-full bg-gradient-to-r from-[#10B981] to-[#06B6D4] text-black text-xs font-bold hover:brightness-110 shadow-lg shadow-[#10B981]/20 transition-colors cursor-pointer"
               >
                 Subscribe
               </button>

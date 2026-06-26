@@ -16,7 +16,7 @@ const MarketSentiment = () => {
     if (val < 25) return { text: "Extreme Fear", color: "text-signal-red" };
     if (val < 45) return { text: "Fear", color: "text-orange-400" };
     if (val < 55) return { text: "Neutral", color: "text-gold" };
-    if (val < 75) return { text: "Greed", color: "text-emerald-400" };
+    if (val < 75) return { text: "Greed", color: "text-brand-secondary" };
     return { text: "Extreme Greed", color: "text-signal-green" };
   };
 
@@ -32,7 +32,7 @@ const MarketSentiment = () => {
   return (
     <div className="glass-card rounded-3xl p-4 sm:p-5 flex flex-col items-center justify-between min-h-[200px] sm:min-h-[210px]">
       <div className="w-full flex items-center justify-between mb-1 sm:mb-2">
-        <span className="text-[10px] sm:text-xs font-semibold uppercase tracking-widest text-text-secondary">
+        <span className="text-[10px] sm:text-xs font-semibold uppercase tracking-wide text-text-secondary">
           Market Sentiment
         </span>
         <span className="flex items-center gap-1.5 text-[9px] sm:text-[10px] text-signal-green bg-signal-green/10 px-2 py-0.5 rounded-lg font-mono">
@@ -44,10 +44,10 @@ const MarketSentiment = () => {
         <svg viewBox="0 0 200 110" className="w-full h-full overflow-visible">
           <defs>
             <linearGradient id="gauge-gradient" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0%" stopColor="#fb7185" />
-              <stop offset="35%" stopColor="#f59e0b" />
-              <stop offset="70%" stopColor="#34d399" />
-              <stop offset="100%" stopColor="#059669" />
+              <stop offset="0%" stopColor="#F43F5E" />
+              <stop offset="35%" stopColor="#F59E0B" />
+              <stop offset="70%" stopColor="#10B981" />
+              <stop offset="100%" stopColor="#06B6D4" />
             </linearGradient>
           </defs>
 

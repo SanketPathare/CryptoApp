@@ -154,7 +154,7 @@ const Dashboard = () => {
         <div className="lg:col-span-2 space-y-4 sm:space-y-6">
           {/* Quick Select Pills */}
           <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-thin -mx-4 sm:mx-0 px-4 sm:px-0">
-            <span className="text-[10px] sm:text-xs font-medium text-text-secondary uppercase tracking-widest mr-1 sm:mr-2 flex-shrink-0">
+            <span className="text-[10px] sm:text-xs font-medium text-text-secondary uppercase tracking-wide mr-1 sm:mr-2 flex-shrink-0">
               Quick view:
             </span>
             {quickSelectCoins.map((c) => {
@@ -201,8 +201,8 @@ const Dashboard = () => {
       <section className="border-t border-glass-border pt-6 sm:pt-8">
         <div className="flex items-center gap-2 mb-4 sm:mb-5">
           <HiOutlineTrendingUp className="w-4 h-4 sm:w-5 sm:h-5 text-gold" />
-          <h2 className="font-display text-lg sm:text-xl font-bold text-text-primary">
-            Market capitalization stats
+          <h2 className="font-display text-base sm:text-lg lg:text-xl font-bold text-text-primary tracking-tight">
+            Market Capitalization
           </h2>
         </div>
         <GlobalStats />
@@ -212,8 +212,8 @@ const Dashboard = () => {
       <section className="border-t border-glass-border pt-6 sm:pt-8">
         <div className="flex items-center gap-2 mb-4 sm:mb-5">
           <HiFire className="w-4 h-4 sm:w-5 sm:h-5 text-gold animate-pulse" />
-          <h2 className="font-display text-lg sm:text-xl font-bold text-text-primary">
-            Trending coins right now
+          <h2 className="font-display text-base sm:text-lg lg:text-xl font-bold text-text-primary tracking-tight">
+            Trending Coins
           </h2>
         </div>
         <TrendingCoins />
@@ -226,8 +226,8 @@ const Dashboard = () => {
             <HiArrowUp className="w-4 h-4 sm:w-5 sm:h-5 text-signal-green" />
             <HiArrowDown className="w-4 h-4 sm:w-5 sm:h-5 text-signal-red" />
           </div>
-          <h2 className="font-display text-lg sm:text-xl font-bold text-text-primary">
-            Top gainers &amp; losers (24h)
+          <h2 className="font-display text-base sm:text-lg lg:text-xl font-bold text-text-primary tracking-tight">
+            Top Gainers &amp; Losers
           </h2>
         </div>
         <TopGainersLosers />

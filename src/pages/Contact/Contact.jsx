@@ -34,7 +34,7 @@ const Contact = () => {
         className="glass-hover rounded-3xl p-8 md:p-10 w-full max-w-lg border-gold/10"
       >
         <div className="text-center mb-8">
-          <h1 className="font-display text-3xl md:text-4xl font-bold text-gradient-gold mb-2">
+          <h1 className="font-display text-3xl md:text-4xl font-bold text-gradient-brand mb-2">
             Contact Us
           </h1>
           <p className="text-text-secondary text-sm">
