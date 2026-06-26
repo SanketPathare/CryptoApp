@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { CoinContext } from "../context/coinContext";
 
 const TopGainersLosers = () => {
-  const { topGainersLosers } = useContext(CoinContext);
+  const { topGainersLosers, currency } = useContext(CoinContext);
 
   if (!topGainersLosers) {
     return (
@@ -37,7 +37,7 @@ const TopGainersLosers = () => {
             </div>
             <div className="text-right">
               <p className="font-mono text-sm text-text-primary">
-                ${coin.current_price?.toLocaleString()}
+                {currency.Symbol}{coin.current_price?.toLocaleString()}
               </p>
               <p className={`text-xs font-semibold ${positive ? "text-signal-green" : "text-signal-red"}`}>
                 {positive ? "+" : ""}{coin.price_change_percentage_24h?.toFixed(2)}%

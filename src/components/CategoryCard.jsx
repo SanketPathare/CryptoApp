@@ -1,6 +1,15 @@
 import { motion } from "framer-motion";
+import { useContext } from "react";
+import { CoinContext } from "../context/coinContext";
 
 const CategoryCard = ({ category, index = 0 }) => {
+  const { currency, allCoin } = useContext(CoinContext);
+  
+  // Calculate exchange rate from USD based on stablecoins price in active currency
+  const usdRate = allCoin.find((c) => c.symbol === "usdt" || c.symbol === "usdc")?.current_price || 1;
+  const marketCap = (category.market_cap || 0) * usdRate;
+  const volume = (category.volume_24h || 0) * usdRate;
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -21,7 +30,7 @@ const CategoryCard = ({ category, index = 0 }) => {
         <div>
           <p className="text-text-secondary uppercase tracking-wider mb-1">Market Cap</p>
           <p className="font-mono text-text-primary font-medium">
-            ${(category.market_cap || 0).toLocaleString()}
+            {currency.Symbol}{marketCap.toLocaleString(undefined, { maximumFractionDigits: 0 })}
           </p>
         </div>
         <div>
@@ -33,7 +42,7 @@ const CategoryCard = ({ category, index = 0 }) => {
         <div className="col-span-2">
           <p className="text-text-secondary uppercase tracking-wider mb-1">Volume</p>
           <p className="font-mono text-text-primary font-medium">
-            ${(category.volume_24h || 0).toLocaleString()}
+            {currency.Symbol}{volume.toLocaleString(undefined, { maximumFractionDigits: 0 })}
           </p>
         </div>
       </div>

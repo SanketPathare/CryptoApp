@@ -4,12 +4,15 @@ import { CoinContext } from "../context/coinContext";
 import { HiTrash } from "react-icons/hi";
 
 const PortfolioCard = ({ holding, onDelete }) => {
-  const { allCoin } = useContext(CoinContext);
+  const { allCoin, currency } = useContext(CoinContext);
   const coin = allCoin.find((c) => c.id === holding.coinId);
 
+  // Compute USD conversion rate dynamically based on stablecoins price
+  const usdRate = allCoin.find((c) => c.symbol === "usdt" || c.symbol === "usdc")?.current_price || 1;
   const currentPrice = coin?.current_price || 0;
   const totalValue = holding.quantity * currentPrice;
-  const costBasis = holding.quantity * holding.buyPrice;
+  const activeBuyPrice = holding.buyPrice * usdRate;
+  const costBasis = holding.quantity * activeBuyPrice;
   const pnl = totalValue - costBasis;
   const pnlPercent = costBasis > 0 ? (pnl / costBasis) * 100 : 0;
 
@@ -41,16 +44,20 @@ const PortfolioCard = ({ holding, onDelete }) => {
         </div>
         <div>
           <p className="text-text-secondary uppercase tracking-wider mb-1">Avg Buy</p>
-          <p className="font-mono text-text-primary font-medium">${holding.buyPrice.toLocaleString()}</p>
+          <p className="font-mono text-text-primary font-medium">
+            {currency.Symbol}{activeBuyPrice.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+          </p>
         </div>
         <div>
           <p className="text-text-secondary uppercase tracking-wider mb-1">Current Value</p>
-          <p className="font-mono text-text-primary font-medium">${totalValue.toLocaleString()}</p>
+          <p className="font-mono text-text-primary font-medium">
+            {currency.Symbol}{totalValue.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+          </p>
         </div>
         <div>
           <p className="text-text-secondary uppercase tracking-wider mb-1">P&L</p>
           <p className={`font-mono font-semibold ${pnl >= 0 ? "text-signal-green" : "text-signal-red"}`}>
-            {pnl >= 0 ? "+" : ""}${pnl.toFixed(2)} ({pnlPercent.toFixed(2)}%)
+            {pnl >= 0 ? "+" : ""}{currency.Symbol}{pnl.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })} ({pnlPercent.toFixed(2)}%)
           </p>
         </div>
       </div>

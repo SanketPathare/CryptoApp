@@ -88,7 +88,7 @@ const MarketShare = () => {
                   transform={`rotate(${seg.angleOffset} 75 75)`}
                   onMouseEnter={() => setHoveredIdx(idx)}
                   onMouseLeave={() => setHoveredIdx(null)}
-                  className="transition-all duration-200 cursor-pointer origin-center"
+                  className="transition-all duration-200 cursor-pointer"
                   style={{
                     filter: isHovered ? `drop-shadow(0 0 4px ${seg.color}44)` : "none",
                   }}

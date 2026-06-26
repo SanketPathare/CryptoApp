@@ -16,8 +16,9 @@
   --color-canvas-bg: #05070b;
   --color-gridline: rgba(255, 255, 255, 0.05);
   --color-shimmer: rgba(255, 255, 255, 0.05);
-  --scrollbar-track: #05070b;
-  --scrollbar-thumb: #FF793F;
+  --scrollbar-track: transparent;
+  --scrollbar-thumb: rgba(255, 255, 255, 0.15);
+  --scrollbar-thumb-hover: rgba(255, 255, 255, 0.3);
   --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.4);
   --shadow-card-hover: 0 8px 32px rgba(195, 135, 255, 0.15), 0 0 60px rgba(255, 121, 63, 0.08);
 }
@@ -34,8 +35,9 @@
   --color-canvas-bg: #f8fafc;
   --color-gridline: rgba(0, 0, 0, 0.05);
   --color-shimmer: rgba(0, 0, 0, 0.05);
-  --scrollbar-track: #e2e8f0;
-  --scrollbar-thumb: #FF793F;
+  --scrollbar-track: transparent;
+  --scrollbar-thumb: rgba(0, 0, 0, 0.15);
+  --scrollbar-thumb-hover: rgba(0, 0, 0, 0.3);
   --shadow-card: 0 8px 24px rgba(15, 23, 42, 0.06), 0 1px 3px rgba(15, 23, 42, 0.04);
   --shadow-card-hover: 0 12px 30px rgba(15, 23, 42, 0.1), 0 0 40px rgba(255, 121, 63, 0.04);
 }
@@ -154,7 +156,7 @@ select option {
 
 ::-webkit-scrollbar {
   width: 8px;
-  height: 7px;
+  height: 8px;
   scroll-behavior: smooth;
 }
 
@@ -164,7 +166,15 @@ select option {
 
 ::-webkit-scrollbar-thumb {
   background: var(--scrollbar-thumb);
+  background-clip: padding-box;
   border-radius: 10px;
+  border: 2.5px solid transparent;
+  transition: background 0.15s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
+  background-clip: padding-box;
 }
 
 html {

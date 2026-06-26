@@ -4,7 +4,7 @@ import CountUp from "./CountUp";
 import LiveDot from "./LiveDot";
 
 const GlobalStats = () => {
-  const { globalData } = useContext(CoinContext);
+  const { globalData, currency } = useContext(CoinContext);
 
   if (!globalData) {
     return (
@@ -17,8 +17,8 @@ const GlobalStats = () => {
   }
 
   const stats = [
-    { label: "Total Market Cap", value: globalData.total_market_cap?.usd || 0, prefix: "$" },
-    { label: "24h Volume", value: globalData.total_volume?.usd || 0, prefix: "$" },
+    { label: "Total Market Cap", value: globalData.total_market_cap?.[currency.name] || 0, prefix: currency.Symbol },
+    { label: "24h Volume", value: globalData.total_volume?.[currency.name] || 0, prefix: currency.Symbol },
     { label: "BTC Dominance", value: globalData.market_cap_percentage?.btc || 0, suffix: "%", decimals: 1 },
     { label: "Active Coins", value: globalData.active_cryptocurrencies || 0 },
   ];
