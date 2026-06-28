@@ -158,7 +158,7 @@ const Coins = () => {
             </span>
           )}
         </div>
-        <div className="h-[250px] md:h-[300px]">
+        <div className="h-[200px] sm:h-[250px] md:h-[300px]">
           <LineChart historicalData={historicalData} />
         </div>
       </motion.div>

@@ -18,7 +18,7 @@ const Footer = () => {
   return (
     <footer className="border-t border-glass-border bg-surface-secondary/40 backdrop-blur-md mt-24">
       <div className="max-w-7xl mx-auto px-5 md:px-10 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
           <div className="md:col-span-1">
             <div className="flex items-center gap-2 mb-4">
               <div className="transition-transform duration-300 hover:scale-110 hover:rotate-[-5deg]">
@@ -105,7 +105,7 @@ const Footer = () => {
                 name="email"
                 type="email"
                 placeholder="Your email"
-                className="flex-1 bg-transparent border-none outline-none px-4 py-2 text-base md:text-xs text-text-primary placeholder-text-secondary"
+                className="flex-1 bg-transparent border-none outline-none px-4 py-2 text-sm text-text-primary placeholder-text-secondary"
               />
               <button
                 type="submit"

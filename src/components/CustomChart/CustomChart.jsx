@@ -79,10 +79,11 @@ const CustomChart = ({ coinId, coinName }) => {
   const maxTime = rawPrices[rawPrices.length - 1][0];
   const xRange = maxTime - minTime || 1;
 
-  // SVG parameters
+  // SVG parameters - responsive
+  const isSmallScreen = typeof window !== "undefined" && window.innerWidth < 640;
   const svgWidth = 800;
   const svgHeight = 350;
-  const margin = { top: 20, right: 70, bottom: 40, left: 10 };
+  const margin = { top: 20, right: isSmallScreen ? 50 : 70, bottom: 40, left: 10 };
   const chartWidth = svgWidth - margin.left - margin.right;
   const chartHeight = svgHeight - margin.top - margin.bottom;
 
@@ -124,7 +125,7 @@ const CustomChart = ({ coinId, coinName }) => {
   const sma25Path = showSMA25 ? getSMAPath(25) : "";
 
   // 3. Generate custom Bar Chart points (Grouping price data into bins)
-  const barCount = 45;
+  const barCount = isSmallScreen ? 25 : 45;
   const bars = [];
   if (chartType === "bar") {
     const chunkSize = Math.ceil(rawPrices.length / barCount);
@@ -484,7 +485,7 @@ const CustomChart = ({ coinId, coinName }) => {
           }}
           onTouchEnd={handleTouchEnd}
           onTouchCancel={handleTouchEnd}
-          className={`overflow-visible h-[280px] md:h-[320px] bg-transparent ${
+          className={`overflow-visible h-[220px] sm:h-[280px] md:h-[320px] bg-transparent ${
             drawMode ? "cursor-crosshair" : "cursor-default"
           }`}
         >
@@ -559,11 +560,11 @@ const CustomChart = ({ coinId, coinName }) => {
                   strokeWidth="1.5"
                 />
                 {/* Body */}
-                <rect
-                  x={bar.x - 4}
-                  y={bar.bodyY}
-                  width="8"
-                  height={bar.bodyHeight}
+                  <rect
+                    x={bar.x - (isSmallScreen ? 2 : 4)}
+                    y={bar.bodyY}
+                    width={isSmallScreen ? 5 : 8}
+                    height={bar.bodyHeight}
                   fill={bar.isPositive ? "#34d399" : "#fb7185"}
                   rx="1"
                 />

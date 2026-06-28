@@ -50,7 +50,7 @@ const PortfolioCard = ({ holding, onDelete }) => {
           </button>
         </div>
 
-        <div className="grid grid-cols-2 gap-3 text-xs">
+        <div className="grid grid-cols-2 gap-2 sm:gap-3 text-[11px] sm:text-xs">
           <div>
             <p className="text-text-secondary uppercase tracking-wider mb-1">Quantity</p>
             <p className="font-mono text-text-primary font-medium">{holding.quantity}</p>

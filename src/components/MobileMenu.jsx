@@ -32,7 +32,7 @@ const MobileMenu = ({ isOpen, onClose }) => {
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ type: "spring", damping: 30, stiffness: 300 }}
-            className="fixed top-0 right-0 h-full w-72 glass-hover z-50 flex flex-col pt-20 px-8"
+            className="fixed top-0 right-0 h-full w-[85vw] sm:w-80 glass-hover z-50 flex flex-col pt-20 px-6 sm:px-8"
           >
             <button
               onClick={onClose}

@@ -4,7 +4,7 @@ const StatsCard = ({ icon, label, value, color = "gold" }) => {
   return (
     <motion.div
       whileHover={{ scale: 1.05, y: -4 }}
-      className="glass-card rounded-2xl p-5 flex flex-col items-center text-center gap-2 min-w-[140px]"
+      className="glass-card rounded-2xl p-5 flex flex-col items-center text-center gap-2 min-w-0"
     >
       <div className={`text-2xl ${color === "gold" ? "text-gold" : color === "green" ? "text-signal-green" : "text-signal-red"}`}>
         {icon}

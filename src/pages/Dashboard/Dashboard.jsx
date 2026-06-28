@@ -113,7 +113,7 @@ const Dashboard = () => {
           </div>
 
           {showDropdown && (
-            <div className="absolute top-full left-0 right-0 mt-2 glass shadow-2xl rounded-2xl overflow-hidden border border-glass-border max-h-72 overflow-y-auto scrollbar-thin z-50">
+            <div className="absolute top-full left-0 right-0 mt-2 glass shadow-2xl rounded-2xl overflow-hidden border border-glass-border max-h-48 sm:max-h-72 overflow-y-auto scrollbar-thin z-50">
               {filteredCoins.length === 0 ? (
                 <div className="p-4 text-center text-xs text-text-secondary">No coins found</div>
               ) : (

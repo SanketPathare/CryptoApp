@@ -107,7 +107,7 @@ const Navbar = () => {
             {isConnected ? (
               <button
                 onClick={handleDisconnect}
-                className="px-4 py-1.5 rounded-full border border-green-500/35 bg-green-500/10 text-green-400 text-xs font-semibold hover:bg-green-500/20 transition-all cursor-pointer truncate max-w-[140px] text-ellipsis"
+                className="px-3 sm:px-4 py-1.5 rounded-full border border-green-500/35 bg-green-500/10 text-green-400 text-xs font-semibold hover:bg-green-500/20 transition-all cursor-pointer truncate max-w-[100px] sm:max-w-[140px] text-ellipsis"
                 title="Click to disconnect"
               >
                 {walletAddress.slice(0, 6)}...{walletAddress.slice(-4)}

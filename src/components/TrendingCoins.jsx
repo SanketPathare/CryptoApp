@@ -11,7 +11,7 @@ const TrendingCoins = () => {
     return (
       <div className="flex gap-4 overflow-x-auto pb-2">
         {[...Array(6)].map((_, i) => (
-          <div key={i} className="glass-card rounded-2xl p-4 min-w-[160px] h-24 skeleton-shimmer flex-shrink-0" />
+          <div key={i} className="glass-card rounded-2xl p-4 min-w-[140px] sm:min-w-[160px] h-24 skeleton-shimmer flex-shrink-0" />
         ))}
       </div>
     );
@@ -31,7 +31,7 @@ const TrendingCoins = () => {
           >
             <Link
               to={`/coins/${coin.id}`}
-              className="glass-card rounded-2xl p-4 min-w-[170px] flex-shrink-0 block hover:border-gold/30 transition-all"
+              className="glass-card rounded-2xl p-4 min-w-[150px] sm:min-w-[170px] flex-shrink-0 block hover:border-gold/30 transition-all"
             >
               <div className="flex items-center gap-3 mb-3">
                 <img src={coin.thumb} alt="" className="w-8 h-8 rounded-full" />

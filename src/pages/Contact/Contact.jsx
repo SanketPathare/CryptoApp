@@ -47,7 +47,7 @@ const Contact = () => {
         className="w-full max-w-lg"
       >
         <TiltCard disabled={isMobile} className="h-full">
-          <div className="glass-hover rounded-3xl p-8 md:p-10 w-full border border-glass-border shadow-2xl h-full relative">
+          <div className="glass-hover rounded-3xl p-6 md:p-10 w-full border border-glass-border shadow-2xl h-full relative overflow-hidden">
             <div className="absolute -top-10 -right-10 w-32 h-32 bg-[#10B981]/10 rounded-full blur-2xl pointer-events-none" />
             <div className="absolute -bottom-10 -left-10 w-32 h-32 bg-[#06B6D4]/10 rounded-full blur-2xl pointer-events-none" />
 
@@ -72,7 +72,7 @@ const Contact = () => {
                   type={type}
                   name={placeholder.toLowerCase()}
                   placeholder={placeholder}
-                  className="flex-1 bg-transparent text-base md:text-sm text-text-primary outline-none border-none placeholder-text-secondary"
+                  className="flex-1 bg-transparent text-sm text-text-primary outline-none border-none placeholder-text-secondary"
                 />
               </div>
             ))}
@@ -84,7 +84,7 @@ const Contact = () => {
                 name="message"
                 placeholder="Message"
                 rows={4}
-                className="flex-1 bg-transparent text-base md:text-sm text-text-primary outline-none border-none placeholder-text-secondary resize-none"
+                className="flex-1 bg-transparent text-sm text-text-primary outline-none border-none placeholder-text-secondary resize-none"
               />
             </div>
 

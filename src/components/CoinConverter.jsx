@@ -46,7 +46,7 @@ const CoinConverter = () => {
           />
         </div>
 
-        <div className="grid grid-cols-[1fr,auto,1fr] gap-3 items-end">
+        <div className="grid grid-cols-[1fr,auto,1fr] gap-2 sm:gap-3 items-end">
           <div>
             <label className="text-xs font-medium uppercase tracking-widest text-text-secondary mb-2 block">
               From
@@ -64,9 +64,9 @@ const CoinConverter = () => {
             </select>
           </div>
 
-          <button
+            <button
             onClick={handleSwap}
-            className="p-2.5 rounded-xl glass hover:border-gold/30 transition-all mt-6 cursor-pointer"
+            className="p-2 sm:p-2.5 rounded-xl glass hover:border-gold/30 transition-all mt-0 sm:mt-6 cursor-pointer"
           >
             <HiSwitchHorizontal className="w-5 h-5 text-gold" />
           </button>

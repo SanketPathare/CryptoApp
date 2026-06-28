@@ -5,7 +5,7 @@ const CompareRow = ({ label, values, format = "text", positive }) => {
   const { currency } = useContext(CoinContext);
 
   return (
-    <div className="grid grid-cols-[140px_repeat(auto-fit,minmax(0,1fr))] gap-4 py-3 px-4 border-b border-glass-border last:border-none items-center">
+    <div className="grid grid-cols-[100px_1fr] sm:grid-cols-[140px_repeat(auto-fit,minmax(0,1fr))] gap-2 sm:gap-4 py-3 px-4 border-b border-glass-border last:border-none items-center">
       <span className="text-xs font-medium uppercase tracking-widest text-text-secondary">
         {label}
       </span>

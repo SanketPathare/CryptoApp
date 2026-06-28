@@ -67,7 +67,7 @@ const SearchCoins = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           onSubmit={searchHandler}
-          className="glass-card rounded-2xl p-2 flex items-center gap-3 max-w-md flex-1 min-w-[250px]"
+          className="glass-card rounded-2xl p-2 flex items-center gap-3 max-w-md flex-1 min-w-0 w-full sm:min-w-[250px]"
         >
           <HiSearch className="w-5 h-5 text-text-secondary ml-3 flex-shrink-0" />
           <input

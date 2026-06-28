@@ -7,7 +7,7 @@ const timeframes = [
 
 const TimeFrameSelector = ({ selected, onChange }) => {
   return (
-    <div className="flex gap-1 glass rounded-xl p-1">
+    <div className="flex gap-1 glass rounded-xl p-1 flex-wrap">
       {timeframes.map((tf) => (
         <button
           key={tf.days}

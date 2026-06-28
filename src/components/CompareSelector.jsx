@@ -36,7 +36,7 @@ const CompareSelector = ({ selectedCoins, onAdd, onRemove }) => {
         })}
       </div>
       {search && (
-        <div className="max-h-40 overflow-y-auto space-y-1">
+        <div className="max-h-32 sm:max-h-40 overflow-y-auto space-y-1">
           {filtered.slice(0, 10).map((c) => (
             <button
               key={c.id}

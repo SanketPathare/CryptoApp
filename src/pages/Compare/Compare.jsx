@@ -51,7 +51,7 @@ const Compare = () => {
           animate={{ opacity: 1, y: 0 }}
           className="glass-card rounded-2xl overflow-hidden"
         >
-          <div className="grid grid-cols-[140px_repeat(auto-fit,minmax(0,1fr))] gap-4 px-4 py-4 border-b border-glass-border bg-glass-hover">
+          <div className="grid grid-cols-[100px_1fr] sm:grid-cols-[140px_repeat(auto-fit,minmax(0,1fr))] gap-2 sm:gap-4 px-4 py-4 border-b border-glass-border bg-glass-hover">
             <span />
             {coins.map((c) => (
               <div key={c.id} className="text-center">

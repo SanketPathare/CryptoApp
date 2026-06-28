@@ -26,7 +26,7 @@ const CategoryCard = ({ category, index = 0 }) => {
           <img key={i} src={url} alt="" className="w-5 h-5 -ml-2 first:ml-0 rounded-full border border-glass-border" />
         ))}
       </div>
-      <div className="grid grid-cols-2 gap-3 text-xs">
+      <div className="grid grid-cols-2 gap-2 sm:gap-3 text-[11px] sm:text-xs">
         <div>
           <p className="text-text-secondary uppercase tracking-wider mb-1">Market Cap</p>
           <p className="font-mono text-text-primary font-medium">
