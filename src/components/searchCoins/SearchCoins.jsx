@@ -142,7 +142,7 @@ const SearchCoins = () => {
                 >
                   <Link
                     to={`/coins/${item.id}`}
-                    className="grid grid-cols-[40px_2fr_1fr_1fr] md:grid-cols-[40px_2fr_1fr_1fr_1fr_40px] gap-4 px-6 py-4 items-center hover:bg-glass-hover transition-colors duration-150 group"
+                    className="grid grid-cols-[40px_2fr_1fr_1fr_30px] md:grid-cols-[40px_2fr_1fr_1fr_1fr_40px] gap-2 sm:gap-4 px-4 sm:px-6 py-4 items-center hover:bg-glass-hover transition-colors duration-150 group"
                   >
                     <span className="text-xs font-mono text-text-secondary">
                       {item.market_cap_rank}

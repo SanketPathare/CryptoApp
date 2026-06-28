@@ -68,7 +68,7 @@ const Navbar = () => {
               </svg>
             </div>
             <h2 className="font-display text-lg md:text-xl font-bold tracking-tight text-text-primary">
-              Quantis <span className="text-[#10B981]">Crypto.</span>
+              Quantis <span className="text-[#10B981] hidden sm:inline">Crypto.</span>
             </h2>
           </Link>
 

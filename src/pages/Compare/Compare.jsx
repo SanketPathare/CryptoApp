@@ -46,12 +46,16 @@ const Compare = () => {
           <p className="text-text-secondary">Select at least 2 coins to compare</p>
         </div>
       ) : (
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="glass-card rounded-2xl overflow-hidden"
-        >
-          <div className="grid grid-cols-[100px_1fr] sm:grid-cols-[140px_repeat(auto-fit,minmax(0,1fr))] gap-2 sm:gap-4 px-4 py-4 border-b border-glass-border bg-glass-hover">
+        <div className="w-full overflow-x-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="glass-card rounded-2xl overflow-hidden min-w-[600px]"
+          >
+            <div
+              style={{ gridTemplateColumns: `120px repeat(${coins.length}, 1fr)` }}
+              className="grid gap-4 px-4 py-4 border-b border-glass-border bg-glass-hover items-center"
+            >
             <span />
             {coins.map((c) => (
               <div key={c.id} className="text-center">
@@ -73,6 +77,7 @@ const Compare = () => {
           <CompareRow label="Total Supply" values={coins.map((c) => (c.total_supply || 0).toLocaleString())} />
           <CompareRow label="Max Supply" values={coins.map((c) => (c.max_supply || 0).toLocaleString())} />
         </motion.div>
+        </div>
       )}
     </motion.div>
   );

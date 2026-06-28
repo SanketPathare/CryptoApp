@@ -76,7 +76,7 @@ const Watchlist = () => {
               >
                 <Link
                   to={`/coins/${item.id}`}
-                  className="grid grid-cols-[40px_2fr_1fr_1fr] md:grid-cols-[40px_2fr_1fr_1fr_1.5fr_40px] gap-4 px-6 py-4 items-center hover:bg-glass-hover transition-colors group"
+                  className="grid grid-cols-[40px_2fr_1fr_1fr_30px] md:grid-cols-[40px_2fr_1fr_1fr_1.5fr_40px] gap-2 sm:gap-4 px-4 sm:px-6 py-4 items-center hover:bg-glass-hover transition-colors group"
                 >
                   <span className="text-xs font-mono text-text-secondary">{item.market_cap_rank}</span>
                   <div className="flex items-center gap-3 min-w-0">
