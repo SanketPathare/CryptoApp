@@ -15,13 +15,11 @@ import Contact from "./pages/Contact/Contact";
 import NotFound from "./pages/NotFound/NotFound";
 import ScrollToTop from "./components/ScrollToTop";
 import ToastNotification from "./components/ToastNotification";
-import AnimatedBackground from "./components/AnimatedBackground";
 
 const App = () => {
   const location = useLocation();
   return (
     <div className="min-h-screen relative">
-      <AnimatedBackground />
       <Navbar />
       <div className="relative z-10">
         <AnimatePresence mode="wait">

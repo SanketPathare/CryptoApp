@@ -4,7 +4,7 @@ const LoadingSkeleton = ({ rows = 5, cols = 4 }) => {
       {Array.from({ length: rows }).map((_, i) => (
         <div
           key={i}
-          className="glass rounded-2xl p-4 flex gap-4"
+          className="glass rounded-md p-4 flex gap-4"
         >
           {Array.from({ length: cols }).map((_, j) => (
             <div

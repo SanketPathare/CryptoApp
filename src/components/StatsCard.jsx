@@ -1,21 +1,11 @@
-import { motion } from "framer-motion";
-
-const StatsCard = ({ icon, label, value, color = "gold" }) => {
+const StatsCard = ({ label, value }) => {
   return (
-    <motion.div
-      whileHover={{ scale: 1.05, y: -4 }}
-      className="glass-card rounded-2xl p-5 flex flex-col items-center text-center gap-2 min-w-0"
-    >
-      <div className={`text-2xl ${color === "gold" ? "text-gold" : color === "green" ? "text-signal-green" : "text-signal-red"}`}>
-        {icon}
-      </div>
-      <span className="font-mono text-sm text-text-secondary uppercase tracking-widest">
-        {label}
-      </span>
-      <span className="font-display text-xl font-semibold text-text-primary">
+    <div className="bg-glass px-4 py-4 md:px-5 md:py-5">
+      <span className="block text-xs text-text-secondary mb-1">{label}</span>
+      <span className="block font-display text-xl md:text-2xl font-bold text-text-primary tnum">
         {value}
       </span>
-    </motion.div>
+    </div>
   );
 };
 

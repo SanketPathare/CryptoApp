@@ -5,8 +5,8 @@ const PriceFlash = ({ value, children, className = "" }) => {
   const [flash, setFlash] = useState("");
 
   useEffect(() => {
-    if (value > prev.current) setFlash("flash-green");
-    else if (value < prev.current) setFlash("flash-red");
+    if (value > prev.current) setFlash("price-up");
+    else if (value < prev.current) setFlash("price-down");
     prev.current = value;
     const t = setTimeout(() => setFlash(""), 600);
     return () => clearTimeout(t);
@@ -16,15 +16,15 @@ const PriceFlash = ({ value, children, className = "" }) => {
     <span className={`${className} ${flash}`}>
       {children}
       <style>{`
-        .flash-green { animation: flashGreen 0.6s ease-out; }
-        .flash-red { animation: flashRed 0.6s ease-out; }
-        @keyframes flashGreen {
-          0% { color: #34d399; text-shadow: 0 0 8px rgba(52,211,153,0.5); }
-          100% { color: inherit; text-shadow: none; }
+        .price-up { animation: priceFlashUp 0.6s ease-out; }
+        .price-down { animation: priceFlashDown 0.6s ease-out; }
+        @keyframes priceFlashUp {
+          0% { color: var(--color-up); }
+          100% { color: inherit; }
         }
-        @keyframes flashRed {
-          0% { color: #fb7185; text-shadow: 0 0 8px rgba(251,113,133,0.5); }
-          100% { color: inherit; text-shadow: none; }
+        @keyframes priceFlashDown {
+          0% { color: var(--color-down); }
+          100% { color: inherit; }
         }
       `}</style>
     </span>

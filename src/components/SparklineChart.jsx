@@ -14,11 +14,11 @@ const SparklineChart = ({ data, width = 80, height = 24, positive = true }) => {
     .join(" ");
 
   return (
-    <svg width={width} height={height} className="flex-shrink-0">
+    <svg width={width} height={height} aria-hidden="true" className="flex-shrink-0">
       <polyline
         points={points}
         fill="none"
-        stroke={positive ? "#34d399" : "#fb7185"}
+        stroke={positive ? "var(--color-up)" : "var(--color-down)"}
         strokeWidth="1.5"
         strokeLinecap="round"
         strokeLinejoin="round"

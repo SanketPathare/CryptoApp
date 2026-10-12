@@ -1,71 +1,93 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* === Paper (light default) === */
 :root {
-  --color-surface: #0A0F1E;
-  --color-surface-secondary: #111827;
-  --color-glass: rgba(255, 255, 255, 0.02);
-  --color-glass-hover: rgba(255, 255, 255, 0.06);
-  --color-glass-border: rgba(255, 255, 255, 0.06);
-  --color-text-primary: #F1F5F9;
-  --color-text-secondary: #94A3B8;
-  --color-overlay: rgba(0, 0, 0, 0.65);
-  --color-canvas-bg: #0A0F1E;
-  --color-gridline: rgba(255, 255, 255, 0.04);
-  --color-shimmer: rgba(255, 255, 255, 0.04);
-  --color-brand-glow: rgba(16, 185, 129, 0.12);
-  --color-cyan-glow: rgba(6, 182, 212, 0.08);
+  --color-surface: #f7e9de;
+  --color-surface-secondary: #fcf4ea;
+  --color-glass: #fcf4ea;
+  --color-glass-hover: #f4e8da;
+  --color-glass-border: #dccfc0;
+  --color-rule: #d9ccbe;
+  --color-text-primary: #1a1613;
+  --color-text-secondary: #6e635b;
+  --color-spot: #8a6212;
+  --color-spot-deep: #6e4f0e;
+  --color-up: #1a6e47;
+  --color-down: #b23a2e;
+  --color-tint: #f1e2d5;
+  --color-secondary-ink: #2b4c6f;
+  --color-overlay: rgba(26, 22, 19, 0.45);
+  --color-canvas-bg: #f7e9de;
+  --color-gridline: rgba(26, 22, 19, 0.07);
+  --color-shimmer: rgba(26, 22, 19, 0.05);
+  --color-spot-wash: rgba(138, 98, 18, 0.08);
   --scrollbar-track: transparent;
-  --scrollbar-thumb: rgba(16, 185, 129, 0.25);
-  --scrollbar-thumb-hover: rgba(16, 185, 129, 0.5);
-  --shadow-elevation-1: 0 4px 16px rgba(0, 0, 0, 0.3);
-  --shadow-elevation-2: 0 8px 32px rgba(0, 0, 0, 0.4), 0 2px 8px rgba(0, 0, 0, 0.2);
-  --shadow-elevation-3: 0 16px 48px rgba(0, 0, 0, 0.5), 0 4px 16px rgba(0, 0, 0, 0.3);
-  --shadow-card-hover: 0 8px 32px rgba(16, 185, 129, 0.12), 0 0 60px rgba(16, 185, 129, 0.04);
-  --shadow-elevation-hover-2: 0 12px 40px rgba(16, 185, 129, 0.15), 0 4px 16px rgba(6, 182, 212, 0.06);
+  --scrollbar-thumb: rgba(138, 98, 18, 0.35);
+  --scrollbar-thumb-hover: rgba(138, 98, 18, 0.6);
+  --shadow-elevation-1: 0 1px 2px rgba(60, 42, 24, 0.06);
+  --shadow-elevation-2: 0 2px 6px rgba(60, 42, 24, 0.07), 0 1px 2px rgba(60, 42, 24, 0.05);
+  --shadow-elevation-3: 0 6px 18px rgba(60, 42, 24, 0.1), 0 1px 3px rgba(60, 42, 24, 0.06);
 }
 
-.light {
-  --color-surface: #f8fafc;
-  --color-surface-secondary: #ffffff;
-  --color-glass: rgba(255, 255, 255, 0.75);
-  --color-glass-hover: rgba(255, 255, 255, 0.9);
-  --color-glass-border: rgba(0, 0, 0, 0.06);
-  --color-text-primary: #0f172a;
-  --color-text-secondary: #64748b;
-  --color-overlay: rgba(0, 0, 0, 0.2);
-  --color-canvas-bg: #f8fafc;
-  --color-gridline: rgba(0, 0, 0, 0.04);
-  --color-shimmer: rgba(0, 0, 0, 0.04);
-  --color-brand-glow: rgba(16, 185, 129, 0.06);
-  --color-cyan-glow: rgba(6, 182, 212, 0.04);
+/* === Ink (dark toggle) === */
+.dark {
+  --color-surface: #1a1713;
+  --color-surface-secondary: #211d18;
+  --color-glass: #211d18;
+  --color-glass-hover: #2a251f;
+  --color-glass-border: #332e27;
+  --color-rule: #332e27;
+  --color-text-primary: #f0e9e0;
+  --color-text-secondary: #a99c8f;
+  --color-spot: #d9a441;
+  --color-spot-deep: #b8862f;
+  --color-up: #4fae7e;
+  --color-down: #e0655a;
+  --color-tint: #241f1a;
+  --color-secondary-ink: #7fa6cc;
+  --color-overlay: rgba(10, 8, 6, 0.6);
+  --color-canvas-bg: #1a1713;
+  --color-gridline: rgba(240, 233, 224, 0.07);
+  --color-shimmer: rgba(240, 233, 224, 0.05);
+  --color-spot-wash: rgba(217, 164, 65, 0.1);
   --scrollbar-track: transparent;
-  --scrollbar-thumb: rgba(16, 185, 129, 0.3);
-  --scrollbar-thumb-hover: rgba(16, 185, 129, 0.5);
-  --shadow-elevation-1: 0 2px 8px rgba(15, 23, 42, 0.04);
-  --shadow-elevation-2: 0 4px 16px rgba(15, 23, 42, 0.06), 0 1px 4px rgba(15, 23, 42, 0.04);
-  --shadow-elevation-3: 0 8px 32px rgba(15, 23, 42, 0.1), 0 2px 8px rgba(15, 23, 42, 0.04);
-  --shadow-card-hover: 0 8px 32px rgba(16, 185, 129, 0.08), 0 0 40px rgba(6, 182, 212, 0.02);
-  --shadow-elevation-hover-2: 0 12px 40px rgba(16, 185, 129, 0.1), 0 4px 16px rgba(6, 182, 212, 0.03);
-}
-
-* {
-  box-sizing: border-box;
-  font-family: "Inter", system-ui, sans-serif;
+  --scrollbar-thumb: rgba(217, 164, 65, 0.35);
+  --scrollbar-thumb-hover: rgba(217, 164, 65, 0.6);
+  --shadow-elevation-1: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-elevation-2: 0 2px 6px rgba(0, 0, 0, 0.45), 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-elevation-3: 0 6px 18px rgba(0, 0, 0, 0.5), 0 1px 3px rgba(0, 0, 0, 0.35);
 }
 
 body {
   background-color: var(--color-surface);
   color: var(--color-text-primary);
-  transition: background-color 0.3s ease, color 0.3s ease;
+  font-family: "Archivo", system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.25s ease, color 0.25s ease;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: "Space Grotesk", sans-serif;
-  line-height: 1.2;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Bodoni Moda", "Times New Roman", serif;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
 }
 
 a {
@@ -73,42 +95,33 @@ a {
   color: inherit;
 }
 
+:focus-visible {
+  outline: 2px solid var(--color-spot);
+  outline-offset: 2px;
+}
+
 select option {
-  background: var(--color-surface);
+  background: var(--color-surface-secondary);
   color: var(--color-text-primary);
 }
 
 @layer components {
-  /* === Glass Tier System (Spatial Depth) === */
-  .glass-sm {
-    background: var(--color-glass);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    border: 1px solid var(--color-glass-border);
-  }
-
-  .glass {
-    background: var(--color-glass);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid var(--color-glass-border);
-  }
-
-  .glass-lg {
-    background: var(--color-glass-hover);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
-    border: 1px solid var(--color-glass-border);
-  }
-
+  /* === Flat panels (formerly glass) === */
+  .glass-sm,
+  .glass,
+  .glass-lg,
   .glass-hover {
-    background: var(--color-glass-hover);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    background: var(--color-glass);
     border: 1px solid var(--color-glass-border);
   }
 
-  /* === Elevation / Depth System === */
+  .glass-hover:hover,
+  .glass-lg:hover {
+    background: var(--color-glass-hover);
+    border-color: var(--color-glass-border);
+  }
+
+  /* === Elevation === */
   .elevation-1 {
     box-shadow: var(--shadow-elevation-1);
   }
@@ -121,69 +134,36 @@ select option {
     box-shadow: var(--shadow-elevation-3);
   }
 
-  /* === Glass Card (Elevation 2 with hover lift) === */
+  /* === Panel card === */
   .glass-card {
     background: var(--color-glass);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
     border: 1px solid var(--color-glass-border);
-    box-shadow: var(--shadow-elevation-2);
-    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    transform-style: preserve-3d;
+    box-shadow: var(--shadow-elevation-1);
+    transition: background-color 0.2s ease, border-color 0.2s ease;
     position: relative;
-  }
-
-  .glass-card::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    background: linear-gradient(
-      180deg,
-      rgba(255, 255, 255, 0.04) 0%,
-      transparent 40%
-    );
-    pointer-events: none;
   }
 
   .glass-card:hover {
     background: var(--color-glass-hover);
-    border-color: rgba(16, 185, 129, 0.3);
-    box-shadow: var(--shadow-elevation-hover-2);
-    transform: translateY(-4px);
+    border-color: var(--color-spot);
   }
 
-  /* === Dark mode light override on glass-card ::before === */
-  .light .glass-card::before {
-    background: linear-gradient(
-      180deg,
-      rgba(16, 185, 129, 0.03) 0%,
-      transparent 40%
-    );
-  }
-
-  /* === Text Gradient === */
+  /* === Brand text: solid spot ink (no gradients) === */
   .text-gradient-brand {
-    background: linear-gradient(to right, #10B981, #06B6D4);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--color-spot);
   }
 
-  /* === Border Glow === */
-  .border-glow-brand {
-    box-shadow: 0 0 15px rgba(16, 185, 129, 0.12), inset 0 0 15px rgba(16, 185, 129, 0.03);
+  /* === Tabular figures for data === */
+  .tnum {
+    font-variant-numeric: tabular-nums lining-nums;
   }
 
-  .border-glow-cyan {
-    box-shadow: 0 0 15px rgba(6, 182, 212, 0.1), inset 0 0 15px rgba(6, 182, 212, 0.03);
-  }
-
-  /* === Skeleton Shimmer === */
+  /* === Skeleton shimmer === */
   .skeleton-shimmer {
     position: relative;
     overflow: hidden;
     background: var(--color-glass);
+    border: 1px solid var(--color-glass-border);
   }
 
   .skeleton-shimmer::after {
@@ -203,11 +183,9 @@ select option {
   /* === Overlay === */
   .overlay {
     background: var(--color-overlay);
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
   }
 
-  /* === Live Dot === */
+  /* === Status dot: spot ink, never a price colour === */
   .live-dot {
     width: 6px;
     height: 6px;
@@ -217,34 +195,32 @@ select option {
   }
 
   .live-dot.active {
-    background: #34d399;
-    box-shadow: 0 0 6px rgba(52, 211, 153, 0.6);
+    background: var(--color-spot);
+    box-shadow: 0 0 0 2px var(--color-spot-wash);
   }
 
   .live-dot.inactive {
-    background: #F43F5E;
-    box-shadow: 0 0 6px rgba(244, 63, 94, 0.6);
+    background: var(--color-down);
+    box-shadow: 0 0 0 2px var(--color-down-wash, rgba(178, 58, 46, 0.15));
   }
+}
 
-  /* === Ambient Glow === */
-  .ambient-glow {
-    position: relative;
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
   }
+  100% {
+    transform: translateX(100%);
+  }
+}
 
-  .ambient-glow::before {
-    content: "";
-    position: absolute;
-    top: -50%;
-    left: -25%;
-    width: 150%;
-    height: 200%;
-    background: radial-gradient(
-      ellipse at center,
-      var(--color-brand-glow) 0%,
-      transparent 70%
-    );
-    pointer-events: none;
-    z-index: -1;
+@keyframes live-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
   }
 }
 
@@ -276,19 +252,14 @@ html {
   scroll-behavior: smooth;
 }
 
-/* === Reduced Motion === */
+/* === Reduced motion === */
 @media (prefers-reduced-motion: reduce) {
-  .glass-card {
-    transition: none;
-  }
-  .glass-card:hover {
-    transform: none;
-  }
-}
-
-/* === Touch Devices: no tilt === */
-@media (hover: none) {
-  .glass-card:hover {
-    transform: none;
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

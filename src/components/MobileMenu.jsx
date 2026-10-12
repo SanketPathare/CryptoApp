@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { HiX } from "react-icons/hi";
 import ThemeToggle from "./ThemeToggle";
 
@@ -16,6 +16,8 @@ const navLinks = [
 ];
 
 const MobileMenu = ({ isOpen, onClose }) => {
+  const location = useLocation();
+
   return (
     <AnimatePresence>
       {isOpen && (
@@ -32,40 +34,34 @@ const MobileMenu = ({ isOpen, onClose }) => {
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ type: "spring", damping: 30, stiffness: 300 }}
-            className="fixed top-0 right-0 h-full w-[85vw] sm:w-80 glass-hover z-50 flex flex-col pt-20 px-6 sm:px-8"
+            className="fixed top-0 right-0 h-full w-[85vw] sm:w-80 bg-surface border-l border-rule z-50 flex flex-col pt-20 px-6 sm:px-8"
           >
             <button
               onClick={onClose}
-              className="absolute top-5 right-5 p-2 rounded-xl glass hover:border-gold/30 transition-all cursor-pointer"
+              className="absolute top-5 right-5 p-2 rounded-md border border-rule hover:border-spot transition-colors cursor-pointer"
+              aria-label="Close menu"
             >
-              <HiX className="w-6 h-6 text-text-primary" />
+              <HiX className="w-5 h-5 text-text-primary" />
             </button>
-            <nav className="flex flex-col gap-5 mt-8">
-              {navLinks.map((link, i) => (
-                <motion.div
+            <nav className="flex flex-col mt-4">
+              {navLinks.map((link) => (
+                <Link
                   key={link.path}
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.05 }}
+                  to={link.path}
+                  onClick={onClose}
+                  className={`font-display text-xl py-3 border-b border-rule transition-colors duration-150 ${
+                    location.pathname === link.path
+                      ? "text-spot"
+                      : "text-text-primary hover:text-spot"
+                  }`}
                 >
-                  <Link
-                    to={link.path}
-                    onClick={onClose}
-                    className="font-display text-xl font-medium text-text-primary hover:text-gold transition-colors duration-200"
-                  >
-                    {link.label}
-                  </Link>
-                </motion.div>
+                  {link.label}
+                </Link>
               ))}
             </nav>
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.3 }}
-              className="mt-auto pb-12 flex justify-center"
-            >
+            <div className="mt-auto pb-12 flex justify-center">
               <ThemeToggle />
-            </motion.div>
+            </div>
           </motion.div>
         </>
       )}

@@ -11,39 +11,37 @@ const Footer = () => {
     const subs = JSON.parse(localStorage.getItem("crypto-subscribers") || "[]");
     subs.push({ email, date: new Date().toISOString() });
     localStorage.setItem("crypto-subscribers", JSON.stringify(subs));
-    toast.success("Subscribed successfully!");
+    toast.success("Subscribed");
     e.target.reset();
   };
 
   return (
-    <footer className="border-t border-glass-border bg-surface-secondary/40 backdrop-blur-md mt-24">
-      <div className="max-w-7xl mx-auto px-5 md:px-10 py-16">
+    <footer className="border-t border-rule bg-surface-secondary mt-24">
+      <div className="max-w-7xl mx-auto px-5 md:px-8 py-14">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
           <div className="md:col-span-1">
-            <div className="flex items-center gap-2 mb-4">
-              <div className="transition-transform duration-300 hover:scale-110 hover:rotate-[-5deg]">
-                <svg className="w-5 h-5 text-[#10B981]" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M12 2L15 9H9L12 2Z" fill="currentColor" />
-                  <path d="M12 22L9 15H15L12 22Z" fill="currentColor" />
-                  <path d="M2 12L9 9V15L2 12Z" fill="currentColor" />
-                  <path d="M22 12L15 15V9L22 12Z" fill="currentColor" />
-                  <circle cx="12" cy="12" r="3" fill="#06B6D4" />
-                </svg>
-              </div>
-              <h3 className="font-display text-lg font-bold tracking-tight text-text-primary">
-                Quantis <span className="text-[#10B981]">Crypto.</span>
+            <div className="flex items-center gap-2.5 mb-3">
+              <svg className="w-5 h-5 text-text-primary" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M12 2L15 9H9L12 2Z" fill="currentColor" />
+                <path d="M12 22L9 15H15L12 22Z" fill="currentColor" />
+                <path d="M2 12L9 9V15L2 12Z" fill="currentColor" />
+                <path d="M22 12L15 15V9L22 12Z" fill="currentColor" />
+                <circle cx="12" cy="12" r="3" fill="var(--color-spot)" />
+              </svg>
+              <h3 className="font-display text-base font-bold tracking-tight text-text-primary">
+                Quantis Crypto
               </h3>
             </div>
-            <p className="text-text-secondary text-xs leading-relaxed">
-              Real-time cryptocurrency tracking and portfolio management. Stay ahead of the market with live data and insights.
+            <p className="text-text-secondary text-sm leading-relaxed">
+              Coin prices, watchlists, and portfolio tracking, updated from CoinGecko.
             </p>
           </div>
 
           <div>
-            <h4 className="font-display text-xs font-bold text-text-primary uppercase tracking-widest mb-4">
+            <h4 className="text-sm font-semibold text-text-primary mb-3">
               Markets
             </h4>
-            <ul className="space-y-2.5">
+            <ul className="space-y-2">
               {[
                 { path: "/", label: "Home" },
                 { path: "/dashboard", label: "Dashboard" },
@@ -51,7 +49,7 @@ const Footer = () => {
                 { path: "/compare", label: "Compare" },
               ].map((link) => (
                 <li key={link.path}>
-                  <Link to={link.path} className="text-text-secondary hover:text-gold transition-colors duration-200 text-xs">
+                  <Link to={link.path} className="text-sm text-text-secondary hover:text-spot transition-colors duration-150">
                     {link.label}
                   </Link>
                 </li>
@@ -60,10 +58,10 @@ const Footer = () => {
           </div>
 
           <div>
-            <h4 className="font-display text-xs font-bold text-text-primary uppercase tracking-widest mb-4">
+            <h4 className="text-sm font-semibold text-text-primary mb-3">
               Tools
             </h4>
-            <ul className="space-y-2.5">
+            <ul className="space-y-2">
               {[
                 { path: "/portfolio", label: "Portfolio" },
                 { path: "/watchlist", label: "Watchlist" },
@@ -71,7 +69,7 @@ const Footer = () => {
                 { path: "/pricing", label: "Pricing" },
               ].map((link) => (
                 <li key={link.path}>
-                  <Link to={link.path} className="text-text-secondary hover:text-gold transition-colors duration-200 text-xs">
+                  <Link to={link.path} className="text-sm text-text-secondary hover:text-spot transition-colors duration-150">
                     {link.label}
                   </Link>
                 </li>
@@ -80,19 +78,20 @@ const Footer = () => {
           </div>
 
           <div>
-            <h4 className="font-display text-xs font-bold text-text-primary uppercase tracking-widest mb-4">
+            <h4 className="text-sm font-semibold text-text-primary mb-3">
               Connect
             </h4>
-            <div className="flex gap-2.5 mb-6">
+            <div className="flex gap-2 mb-5">
               {[
-                { icon: FaGithub, href: "https://github.com" },
-                { icon: FaTwitter, href: "https://twitter.com" },
-                { icon: FaDiscord, href: "https://discord.com" },
-              ].map(({ icon: Icon, href }, i) => (
+                { icon: FaGithub, href: "https://github.com", label: "GitHub" },
+                { icon: FaTwitter, href: "https://twitter.com", label: "Twitter" },
+                { icon: FaDiscord, href: "https://discord.com", label: "Discord" },
+              ].map(({ icon: Icon, href, label }) => (
                 <a
-                  key={i}
+                  key={label}
                   href={href}
-                  className="w-9 h-9 flex items-center justify-center rounded-full bg-glass border border-glass-border text-text-secondary hover:border-[#10B981]/30 hover:text-gold transition-all duration-350"
+                  aria-label={label}
+                  className="w-9 h-9 flex items-center justify-center rounded-md bg-surface border border-rule text-text-secondary hover:border-spot hover:text-spot transition-colors"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -100,16 +99,18 @@ const Footer = () => {
                 </a>
               ))}
             </div>
-            <form onSubmit={handleSubscribe} className="bg-glass border border-glass-border rounded-full p-1 flex">
+            <form onSubmit={handleSubscribe} className="flex gap-2">
               <input
                 name="email"
                 type="email"
-                placeholder="Your email"
-                className="flex-1 bg-transparent border-none outline-none px-4 py-2 text-sm text-text-primary placeholder-text-secondary"
+                required
+                placeholder="you@example.com"
+                aria-label="Email address"
+                className="flex-1 min-w-0 bg-surface border border-rule rounded-md px-3 py-2 text-sm text-text-primary placeholder-text-secondary focus:border-spot outline-none transition-colors"
               />
               <button
                 type="submit"
-                className="px-4 py-2 rounded-full bg-gradient-to-r from-[#10B981] to-[#06B6D4] text-black text-xs font-bold hover:brightness-110 shadow-lg shadow-[#10B981]/20 transition-colors cursor-pointer"
+                className="px-4 py-2 rounded-md bg-text-primary text-surface text-sm font-semibold hover:bg-spot-deep transition-colors cursor-pointer"
               >
                 Subscribe
               </button>
@@ -117,12 +118,12 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="mt-12 pt-8 border-t border-glass-border flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-text-secondary text-[10px]">
-            &copy; {new Date().getFullYear()} Quantis CryptoApp. All rights reserved.
+        <div className="mt-12 pt-6 border-t border-rule flex flex-col md:flex-row items-center justify-between gap-3">
+          <p className="text-text-secondary text-xs">
+            © {new Date().getFullYear()} Quantis Crypto. All rights reserved.
           </p>
-          <p className="text-text-secondary text-[10px] flex items-center gap-1">
-            Made with <HiHeart className="text-signal-red w-3 h-3" /> by Quantis team
+          <p className="text-text-secondary text-xs flex items-center gap-1.5">
+            Built by the Quantis team <HiHeart className="text-spot w-3 h-3" />
           </p>
         </div>
       </div>
