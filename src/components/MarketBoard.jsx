@@ -59,6 +59,7 @@ const MarketBoard = () => {
           {rows.map((coin, i) => {
             const change = coin.price_change_percentage_24h;
             const up = change >= 0;
+            const change7d = coin.price_change_percentage_7d_in_currency ?? change;
             const spark = coin.sparkline_in_7d?.price;
             return (
               <motion.div
@@ -108,7 +109,7 @@ const MarketBoard = () => {
                         data={spark}
                         width={72}
                         height={22}
-                        positive={up}
+                        positive={change7d >= 0}
                       />
                     )}
                   </span>

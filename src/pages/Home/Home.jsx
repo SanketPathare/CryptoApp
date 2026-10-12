@@ -148,6 +148,7 @@ const Home = () => {
   const { globalData } = useContext(CoinContext);
 
   const fmtMoney = (n) => {
+    if (typeof n !== "number" || Number.isNaN(n)) return "—";
     if (n >= 1e12) return `$${(n / 1e12).toFixed(1)}T`;
     if (n >= 1e9) return `$${(n / 1e9).toFixed(1)}B`;
     if (n >= 1e6) return `$${(n / 1e6).toFixed(1)}M`;
@@ -155,8 +156,8 @@ const Home = () => {
   };
 
   const stats = [
-    { label: "Market cap", value: globalData ? fmtMoney(globalData.market_cap) : "—" },
-    { label: "24h volume", value: globalData ? fmtMoney(globalData.total_volume) : "—" },
+    { label: "Market cap", value: fmtMoney(globalData?.total_market_cap?.usd) },
+    { label: "24h volume", value: fmtMoney(globalData?.total_volume?.usd) },
     {
       label: "BTC dominance",
       value: globalData?.market_cap_percentage?.btc
@@ -175,7 +176,7 @@ const Home = () => {
     <div className="relative min-h-screen overflow-x-hidden">
       {/* Hero: headline left, live board right, board runs to the edge */}
       <section className="border-b border-rule">
-        <div className="max-w-7xl mx-auto px-5 md:px-8 py-12 md:py-16 grid lg:grid-cols-[26rem_minmax(0,1fr)] gap-10 lg:gap-14 items-start">
+        <div className="max-w-7xl mx-auto px-5 md:px-8 py-12 md:py-16 grid lg:grid-cols-[26rem_minmax(0,1fr)] gap-10 lg:gap-14 items-start lg:items-center">
           <div>
             <h1 className="font-display text-[clamp(2.5rem,5.5vw,4.25rem)] font-bold leading-[0.95] tracking-tight text-text-primary">
               The whole market, on one page.

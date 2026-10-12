@@ -92,7 +92,7 @@ const Navbar = () => {
               onChange={currencyHandler}
               value={currency.name}
               aria-label="Currency"
-              className="py-1.5 px-2.5 rounded-md bg-surface-secondary text-sm text-text-primary border border-rule hover:border-spot focus:border-spot transition-colors cursor-pointer"
+              className="hidden sm:block py-1.5 px-2.5 rounded-md bg-surface-secondary text-sm text-text-primary border border-rule hover:border-spot focus:border-spot transition-colors cursor-pointer"
             >
               <option value="usd">USD</option>
               <option value="inr">INR</option>
